@@ -15,6 +15,13 @@
 		9CD918A02432EAE000587BC0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9CD9189E2432EAE000587BC0 /* LaunchScreen.storyboard */; };
 		9CD918AB2432EAE000587BC0 /* CatfishTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD918AA2432EAE000587BC0 /* CatfishTests.swift */; };
 		9CD918B62432EAE000587BC0 /* CatfishUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD918B52432EAE000587BC0 /* CatfishUITests.swift */; };
+		9CD918DC2433B7A100587BC0 /* GameInstance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD918D62433B7A100587BC0 /* GameInstance.swift */; };
+		9CD918DD2433B7A100587BC0 /* Like.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD918D72433B7A100587BC0 /* Like.swift */; };
+		9CD918DE2433B7A100587BC0 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD918D82433B7A100587BC0 /* Profile.swift */; };
+		9CD918DF2433B7A100587BC0 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD918D92433B7A100587BC0 /* Post.swift */; };
+		9CD918E02433B7A100587BC0 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD918DA2433B7A100587BC0 /* User.swift */; };
+		9CD918E12433B7A100587BC0 /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD918DB2433B7A100587BC0 /* Comment.swift */; };
+		9CD918E62433B7D500587BC0 /* UserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD918E52433B7D500587BC0 /* UserController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +56,13 @@
 		9CD918B12432EAE000587BC0 /* CatfishUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CatfishUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9CD918B52432EAE000587BC0 /* CatfishUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatfishUITests.swift; sourceTree = "<group>"; };
 		9CD918B72432EAE000587BC0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9CD918D62433B7A100587BC0 /* GameInstance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GameInstance.swift; path = Models/GameInstance.swift; sourceTree = "<group>"; };
+		9CD918D72433B7A100587BC0 /* Like.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Like.swift; path = Models/Like.swift; sourceTree = "<group>"; };
+		9CD918D82433B7A100587BC0 /* Profile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Profile.swift; path = Models/Profile.swift; sourceTree = "<group>"; };
+		9CD918D92433B7A100587BC0 /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Post.swift; path = Models/Post.swift; sourceTree = "<group>"; };
+		9CD918DA2433B7A100587BC0 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = User.swift; path = Models/User.swift; sourceTree = "<group>"; };
+		9CD918DB2433B7A100587BC0 /* Comment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Comment.swift; path = Models/Comment.swift; sourceTree = "<group>"; };
+		9CD918E52433B7D500587BC0 /* UserController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,7 +115,9 @@
 			children = (
 				9CD918932432EADD00587BC0 /* AppDelegate.swift */,
 				9CD918952432EADD00587BC0 /* SceneDelegate.swift */,
-				9CD918972432EADD00587BC0 /* ViewController.swift */,
+				9CD918D52433B77300587BC0 /* Models */,
+				9CD918E42433B7D500587BC0 /* Model Controllers */,
+				9CD918E72433B7F100587BC0 /* ViewControllers */,
 				9CD918992432EADD00587BC0 /* Main.storyboard */,
 				9CD9189C2432EAE000587BC0 /* Assets.xcassets */,
 				9CD9189E2432EAE000587BC0 /* LaunchScreen.storyboard */,
@@ -126,6 +142,35 @@
 				9CD918B72432EAE000587BC0 /* Info.plist */,
 			);
 			path = CatfishUITests;
+			sourceTree = "<group>";
+		};
+		9CD918D52433B77300587BC0 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				9CD918DB2433B7A100587BC0 /* Comment.swift */,
+				9CD918D62433B7A100587BC0 /* GameInstance.swift */,
+				9CD918D72433B7A100587BC0 /* Like.swift */,
+				9CD918D92433B7A100587BC0 /* Post.swift */,
+				9CD918D82433B7A100587BC0 /* Profile.swift */,
+				9CD918DA2433B7A100587BC0 /* User.swift */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		9CD918E42433B7D500587BC0 /* Model Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				9CD918E52433B7D500587BC0 /* UserController.swift */,
+			);
+			path = "Model Controllers";
+			sourceTree = "<group>";
+		};
+		9CD918E72433B7F100587BC0 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				9CD918972432EADD00587BC0 /* ViewController.swift */,
+			);
+			path = ViewControllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -259,9 +304,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9CD918DC2433B7A100587BC0 /* GameInstance.swift in Sources */,
+				9CD918DE2433B7A100587BC0 /* Profile.swift in Sources */,
+				9CD918E62433B7D500587BC0 /* UserController.swift in Sources */,
 				9CD918982432EADD00587BC0 /* ViewController.swift in Sources */,
 				9CD918942432EADD00587BC0 /* AppDelegate.swift in Sources */,
+				9CD918E02433B7A100587BC0 /* User.swift in Sources */,
 				9CD918962432EADD00587BC0 /* SceneDelegate.swift in Sources */,
+				9CD918DF2433B7A100587BC0 /* Post.swift in Sources */,
+				9CD918E12433B7A100587BC0 /* Comment.swift in Sources */,
+				9CD918DD2433B7A100587BC0 /* Like.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
