@@ -1,0 +1,6 @@
+framework module Pods_Catfish {
+  umbrella header "Pods-Catfish-umbrella.h"
+
+  export *
+  module * { export * }
+}
