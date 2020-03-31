@@ -1,0 +1,6 @@
+framework module Pods_CatfishTests {
+  umbrella header "Pods-CatfishTests-umbrella.h"
+
+  export *
+  module * { export * }
+}
