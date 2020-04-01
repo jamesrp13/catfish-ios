@@ -25,6 +25,7 @@ class AppCoordinator: AuthServiceDelegate {
         self.authService.delegate = self
         
         setVC(authStatus: authService.authStatus)
+        
     }
     
     func handleNewAuthStatus(_ status: AuthStatus) {
