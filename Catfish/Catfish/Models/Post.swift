@@ -9,6 +9,9 @@
 import Foundation
 
 struct Post: Codable {
+    let profile: Profile
+    let imageURL: String
+    let caption: String
     let likes: [Like]
     let comments: [Comment]
 }
