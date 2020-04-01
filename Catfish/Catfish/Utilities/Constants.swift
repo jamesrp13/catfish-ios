@@ -12,3 +12,11 @@ enum Images {
     static let postPlaceholder = UIImage(systemName: "photo")
     static let like = UIImage(systemName: "hand.thumbsup")
 }
+
+enum Colors {
+    static let purple = UIColor(named: "Purple")!
+}
+
+enum Fonts {
+    static let header = UIFont.systemFont(ofSize: 24, weight: .bold)
+}
