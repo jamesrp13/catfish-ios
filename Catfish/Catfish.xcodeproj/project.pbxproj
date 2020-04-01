@@ -28,6 +28,14 @@
 		9CD918EE2433D8CE00587BC0 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD918ED2433D8CE00587BC0 /* AppCoordinator.swift */; };
 		9CD918F02433DDDF00587BC0 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD918EF2433DDDF00587BC0 /* AuthService.swift */; };
 		BCE80230D413F0F2EE571314 /* Pods_CatfishTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A85D8011438611879D09344D /* Pods_CatfishTests.framework */; };
+		C09580BE24340A6900E55916 /* CFPostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09580BD24340A6900E55916 /* CFPostCell.swift */; };
+		C09580C124340B3600E55916 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09580C024340B3600E55916 /* Constants.swift */; };
+		C09580C424340B7D00E55916 /* NetworkController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09580C324340B7D00E55916 /* NetworkController.swift */; };
+		C09580C724340D7F00E55916 /* CFPostImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09580C624340D7F00E55916 /* CFPostImageView.swift */; };
+		C09580C924340EE300E55916 /* CFButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09580C824340EE300E55916 /* CFButton.swift */; };
+		C09580CB24340FCE00E55916 /* CFTitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09580CA24340FCE00E55916 /* CFTitleLabel.swift */; };
+		C09580CD2434110F00E55916 /* CFBodyLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09580CC2434110F00E55916 /* CFBodyLabel.swift */; };
+		C09580CF2434150C00E55916 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09580CE2434150C00E55916 /* UIView+Extension.swift */; };
 		D781294EBAB16167C5D8B8A3 /* Pods_Catfish.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CB728BBE6667CD78D729242 /* Pods_Catfish.framework */; };
 /* End PBXBuildFile section */
 
@@ -82,6 +90,14 @@
 		9CD918ED2433D8CE00587BC0 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		9CD918EF2433DDDF00587BC0 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		A85D8011438611879D09344D /* Pods_CatfishTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CatfishTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C09580BD24340A6900E55916 /* CFPostCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CFPostCell.swift; sourceTree = "<group>"; };
+		C09580C024340B3600E55916 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		C09580C324340B7D00E55916 /* NetworkController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkController.swift; sourceTree = "<group>"; };
+		C09580C624340D7F00E55916 /* CFPostImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CFPostImageView.swift; sourceTree = "<group>"; };
+		C09580C824340EE300E55916 /* CFButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CFButton.swift; sourceTree = "<group>"; };
+		C09580CA24340FCE00E55916 /* CFTitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CFTitleLabel.swift; sourceTree = "<group>"; };
+		C09580CC2434110F00E55916 /* CFBodyLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CFBodyLabel.swift; sourceTree = "<group>"; };
+		C09580CE2434150C00E55916 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		D8A0B94B8D441C8DF38DC431 /* Pods-CatfishTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CatfishTests.release.xcconfig"; path = "Target Support Files/Pods-CatfishTests/Pods-CatfishTests.release.xcconfig"; sourceTree = "<group>"; };
 		E412041373DC7AFF34CDE648 /* Pods_Catfish_CatfishUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Catfish_CatfishUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -156,7 +172,11 @@
 				9CD918EF2433DDDF00587BC0 /* AuthService.swift */,
 				9CD918D52433B77300587BC0 /* Models */,
 				9CD918E42433B7D500587BC0 /* Model Controllers */,
+				C09580BF24340A6E00E55916 /* Custom Views */,
 				9CD918E72433B7F100587BC0 /* ViewControllers */,
+				C09580D02434151200E55916 /* Extensions */,
+				C09580C224340B3C00E55916 /* Utilities */,
+				C09580C524340B8600E55916 /* Networking */,
 				9CD918992432EADD00587BC0 /* Main.storyboard */,
 				9CD9189C2432EAE000587BC0 /* Assets.xcassets */,
 				9CD9189E2432EAE000587BC0 /* LaunchScreen.storyboard */,
@@ -212,6 +232,42 @@
 				9CD918EB2433D7E400587BC0 /* LoadingViewController.swift */,
 			);
 			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		C09580BF24340A6E00E55916 /* Custom Views */ = {
+			isa = PBXGroup;
+			children = (
+				C09580BD24340A6900E55916 /* CFPostCell.swift */,
+				C09580C824340EE300E55916 /* CFButton.swift */,
+				C09580CA24340FCE00E55916 /* CFTitleLabel.swift */,
+				C09580CC2434110F00E55916 /* CFBodyLabel.swift */,
+				C09580C624340D7F00E55916 /* CFPostImageView.swift */,
+			);
+			path = "Custom Views";
+			sourceTree = "<group>";
+		};
+		C09580C224340B3C00E55916 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				C09580C024340B3600E55916 /* Constants.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		C09580C524340B8600E55916 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				C09580C324340B7D00E55916 /* NetworkController.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		C09580D02434151200E55916 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				C09580CE2434150C00E55916 /* UIView+Extension.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		E5D3BF189FFCC8A77AC33EB0 /* Pods */ = {
@@ -503,16 +559,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C09580C924340EE300E55916 /* CFButton.swift in Sources */,
+				C09580CB24340FCE00E55916 /* CFTitleLabel.swift in Sources */,
+				C09580C424340B7D00E55916 /* NetworkController.swift in Sources */,
 				9CD918EE2433D8CE00587BC0 /* AppCoordinator.swift in Sources */,
 				9CD918DC2433B7A100587BC0 /* GameInstance.swift in Sources */,
 				9CD918DE2433B7A100587BC0 /* Profile.swift in Sources */,
 				9CD918E62433B7D500587BC0 /* UserController.swift in Sources */,
 				9CD918982432EADD00587BC0 /* ViewController.swift in Sources */,
+				C09580C124340B3600E55916 /* Constants.swift in Sources */,
 				9CD918942432EADD00587BC0 /* AppDelegate.swift in Sources */,
 				9CD918F02433DDDF00587BC0 /* AuthService.swift in Sources */,
+				C09580CD2434110F00E55916 /* CFBodyLabel.swift in Sources */,
 				9CD918E02433B7A100587BC0 /* User.swift in Sources */,
 				9CD918962432EADD00587BC0 /* SceneDelegate.swift in Sources */,
+				C09580C724340D7F00E55916 /* CFPostImageView.swift in Sources */,
+				C09580CF2434150C00E55916 /* UIView+Extension.swift in Sources */,
 				9CD918DF2433B7A100587BC0 /* Post.swift in Sources */,
+				C09580BE24340A6900E55916 /* CFPostCell.swift in Sources */,
 				9CD918EC2433D7E400587BC0 /* LoadingViewController.swift in Sources */,
 				9CD918E12433B7A100587BC0 /* Comment.swift in Sources */,
 				9CD918DD2433B7A100587BC0 /* Like.swift in Sources */,
