@@ -36,6 +36,11 @@
 		C09580CB24340FCE00E55916 /* CFTitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09580CA24340FCE00E55916 /* CFTitleLabel.swift */; };
 		C09580CD2434110F00E55916 /* CFBodyLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09580CC2434110F00E55916 /* CFBodyLabel.swift */; };
 		C09580CF2434150C00E55916 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09580CE2434150C00E55916 /* UIView+Extension.swift */; };
+		C09580D22435474300E55916 /* UITextField+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09580D12435474300E55916 /* UITextField+Convenience.swift */; };
+		C09580D42435475100E55916 /* UILabel+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09580D32435475100E55916 /* UILabel+Convenience.swift */; };
+		C09580D6243547F700E55916 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09580D5243547F700E55916 /* FeedViewController.swift */; };
+		C09580D92435480700E55916 /* InputAccessoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09580D72435480700E55916 /* InputAccessoryViewController.swift */; };
+		C09580DA2435480700E55916 /* NewGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09580D82435480700E55916 /* NewGameViewController.swift */; };
 		D781294EBAB16167C5D8B8A3 /* Pods_Catfish.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CB728BBE6667CD78D729242 /* Pods_Catfish.framework */; };
 /* End PBXBuildFile section */
 
@@ -98,6 +103,11 @@
 		C09580CA24340FCE00E55916 /* CFTitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CFTitleLabel.swift; sourceTree = "<group>"; };
 		C09580CC2434110F00E55916 /* CFBodyLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CFBodyLabel.swift; sourceTree = "<group>"; };
 		C09580CE2434150C00E55916 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
+		C09580D12435474300E55916 /* UITextField+Convenience.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITextField+Convenience.swift"; sourceTree = "<group>"; };
+		C09580D32435475100E55916 /* UILabel+Convenience.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UILabel+Convenience.swift"; sourceTree = "<group>"; };
+		C09580D5243547F700E55916 /* FeedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
+		C09580D72435480700E55916 /* InputAccessoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputAccessoryViewController.swift; sourceTree = "<group>"; };
+		C09580D82435480700E55916 /* NewGameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewGameViewController.swift; sourceTree = "<group>"; };
 		D8A0B94B8D441C8DF38DC431 /* Pods-CatfishTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CatfishTests.release.xcconfig"; path = "Target Support Files/Pods-CatfishTests/Pods-CatfishTests.release.xcconfig"; sourceTree = "<group>"; };
 		E412041373DC7AFF34CDE648 /* Pods_Catfish_CatfishUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Catfish_CatfishUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -229,6 +239,9 @@
 			isa = PBXGroup;
 			children = (
 				9CD918972432EADD00587BC0 /* ViewController.swift */,
+				C09580D5243547F700E55916 /* FeedViewController.swift */,
+				C09580D72435480700E55916 /* InputAccessoryViewController.swift */,
+				C09580D82435480700E55916 /* NewGameViewController.swift */,
 				9CD918EB2433D7E400587BC0 /* LoadingViewController.swift */,
 			);
 			path = ViewControllers;
@@ -265,6 +278,8 @@
 		C09580D02434151200E55916 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				C09580D32435475100E55916 /* UILabel+Convenience.swift */,
+				C09580D12435474300E55916 /* UITextField+Convenience.swift */,
 				C09580CE2434150C00E55916 /* UIView+Extension.swift */,
 			);
 			path = Extensions;
@@ -568,18 +583,23 @@
 				9CD918E62433B7D500587BC0 /* UserController.swift in Sources */,
 				9CD918982432EADD00587BC0 /* ViewController.swift in Sources */,
 				C09580C124340B3600E55916 /* Constants.swift in Sources */,
+				C09580D42435475100E55916 /* UILabel+Convenience.swift in Sources */,
+				C09580D22435474300E55916 /* UITextField+Convenience.swift in Sources */,
 				9CD918942432EADD00587BC0 /* AppDelegate.swift in Sources */,
 				9CD918F02433DDDF00587BC0 /* AuthService.swift in Sources */,
 				C09580CD2434110F00E55916 /* CFBodyLabel.swift in Sources */,
 				9CD918E02433B7A100587BC0 /* User.swift in Sources */,
 				9CD918962432EADD00587BC0 /* SceneDelegate.swift in Sources */,
+				C09580D92435480700E55916 /* InputAccessoryViewController.swift in Sources */,
 				C09580C724340D7F00E55916 /* CFPostImageView.swift in Sources */,
 				C09580CF2434150C00E55916 /* UIView+Extension.swift in Sources */,
 				9CD918DF2433B7A100587BC0 /* Post.swift in Sources */,
 				C09580BE24340A6900E55916 /* CFPostCell.swift in Sources */,
 				9CD918EC2433D7E400587BC0 /* LoadingViewController.swift in Sources */,
 				9CD918E12433B7A100587BC0 /* Comment.swift in Sources */,
+				C09580D6243547F700E55916 /* FeedViewController.swift in Sources */,
 				9CD918DD2433B7A100587BC0 /* Like.swift in Sources */,
+				C09580DA2435480700E55916 /* NewGameViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
