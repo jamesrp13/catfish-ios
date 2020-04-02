@@ -11,4 +11,12 @@ import Foundation
 struct User: Codable {
     let username: String
     let password: String
+    let email: String
+    let id: Int
+    let token: String
+}
+
+struct ReturnedUser: Codable {
+    let id: Int
+    let token: String
 }
