@@ -49,8 +49,9 @@ class ProfileCollectionViewController: UICollectionViewController {
             fatalError("Unable to cast cell as CFProfileCell")
         }
     
-        cell.profile = profiles[indexPath.row]
-    
+        let profile = profiles[indexPath.row]
+        cell.set(profile: profile)
+        
         return cell
     }
 

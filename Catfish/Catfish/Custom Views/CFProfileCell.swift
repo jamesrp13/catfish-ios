@@ -9,9 +9,20 @@
 import UIKit
 
 class CFProfileCell: UICollectionViewCell {
-    // MARK: - Properties
     
-    var profile: Profile? { didSet { updateViews() }}
+    // MARK: - Public Methods
+    
+    func set(profile: Profile,
+             imageSize: CGFloat = 50,
+             imageOnly: Bool = false,
+             labelFont: UIFont = UIFont.systemFont(ofSize: 14, weight: .bold),
+             layoutAxis: NSLayoutConstraint.Axis = .vertical) {
+        self.imageSize = imageSize
+        self.imageOnly = imageOnly
+        self.labelFont = labelFont
+        self.layoutAxis = layoutAxis
+        updateViews(with: profile)
+    }
     
     // MARK: - Initialization
     
@@ -26,31 +37,42 @@ class CFProfileCell: UICollectionViewCell {
     }
     
     // MARK: - Private
-    private let imageView = CircularImageView(width: 50)
-    private let nameLabel = UILabel(text: "Jonny", font: .systemFont(ofSize: 14, weight: .bold) , textAlignment: .center)
-    private lazy var vStack = UIStackView(arrangedSubviews: [imageView, nameLabel])
+    
+    private var imageSize: CGFloat = 50
+    private var imageOnly = false
+    private var labelFont: UIFont = .systemFont(ofSize: 14, weight: .bold)
+    private var layoutAxis: NSLayoutConstraint.Axis = .horizontal
+    
+    private lazy var imageView = CircularImageView(width: imageSize)
+    private lazy var nameLabel = UILabel(text: "Jonny", font: labelFont , textAlignment: .center)
+    private lazy var stackView = UIStackView(arrangedSubviews: [imageView, nameLabel])
     
     private func configure() {
-        vStack.axis = .vertical
-        vStack.alignment = .center
-        vStack.translatesAutoresizingMaskIntoConstraints = false
-        addSubviews(vStack)
+        stackView.axis = layoutAxis
+        stackView.alignment = .center
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        addSubviews(stackView)
         
         NSLayoutConstraint.activate([
-            vStack.topAnchor.constraint(equalTo: topAnchor),
-            vStack.leadingAnchor.constraint(equalTo: leadingAnchor),
-            vStack.trailingAnchor.constraint(equalTo: trailingAnchor),
-            vStack.bottomAnchor.constraint(equalTo: bottomAnchor),
+            stackView.topAnchor.constraint(equalTo: topAnchor),
+            stackView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            stackView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            stackView.bottomAnchor.constraint(equalTo: bottomAnchor),
         ])
         
         imageView.backgroundColor = Colors.purple
         imageView.image = Images.postPlaceholder
     }
     
-    private func updateViews() {
+    private func updateViews(with profile: Profile) {
+        imageView.setWidth(imageSize)
+        nameLabel.isHidden = imageOnly
+        nameLabel.font = labelFont
+        stackView.axis = layoutAxis
+        
         // Fetch image
         
-        nameLabel.text = profile?.name
+        nameLabel.text = profile.name
     }
 }
 

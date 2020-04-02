@@ -135,19 +135,19 @@ extension FeedViewController: UITableViewDataSource {
 
 // Uncomment below to enable SwiftUI previews for visual feedback
 
-import SwiftUI
-
-struct ViewWrapper: UIViewRepresentable {
-    func makeUIView(context: UIViewRepresentableContext<ViewWrapper>) -> UIView {
-        return FeedViewController().view
-    }
-
-    func updateUIView(_ uiView: ViewWrapper.UIViewType, context: UIViewRepresentableContext<ViewWrapper>) {
-    }
-}
-
-struct ViewWrapper_Previews: PreviewProvider {
-    static var previews: some View {
-        ViewWrapper()
-    }
-}
+//import SwiftUI
+//
+//struct ViewWrapper: UIViewRepresentable {
+//    func makeUIView(context: UIViewRepresentableContext<ViewWrapper>) -> UIView {
+//        return FeedViewController().view
+//    }
+//
+//    func updateUIView(_ uiView: ViewWrapper.UIViewType, context: UIViewRepresentableContext<ViewWrapper>) {
+//    }
+//}
+//
+//struct ViewWrapper_Previews: PreviewProvider {
+//    static var previews: some View {
+//        ViewWrapper()
+//    }
+//}
