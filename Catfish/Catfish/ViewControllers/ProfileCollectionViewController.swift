@@ -24,6 +24,7 @@ class ProfileCollectionViewController: UICollectionViewController {
     ]
 
     // MARK: - View Lifecycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         guard let flowLayout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout,
@@ -36,6 +37,7 @@ class ProfileCollectionViewController: UICollectionViewController {
         
         flowLayout.scrollDirection = .horizontal
         flowLayout.minimumLineSpacing = 5
+        flowLayout.itemSize = CGSize(width: 80, height: 80)
     }
 
     // MARK: Collection View Data Source
@@ -79,11 +81,4 @@ class ProfileCollectionViewController: UICollectionViewController {
     
     }
     */
-
-}
-
-extension ProfileCollectionViewController: UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 80, height: 80)
-    }
 }

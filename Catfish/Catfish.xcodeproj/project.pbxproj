@@ -10,7 +10,6 @@
 		04C8BF1524360E3E004C276F /* CircularImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C8BF1424360E3E004C276F /* CircularImageView.swift */; };
 		04C8BF1724360FE5004C276F /* CFProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C8BF1624360FE5004C276F /* CFProfileCell.swift */; };
 		04C8BF1924361038004C276F /* ProfileCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C8BF1824361038004C276F /* ProfileCollectionViewController.swift */; };
-		04C8BF1B24361ED9004C276F /* MatchingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C8BF1A24361ED9004C276F /* MatchingViewController.swift */; };
 		4032CFAF7A15238C0B4A518C /* Pods_Catfish_CatfishUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E412041373DC7AFF34CDE648 /* Pods_Catfish_CatfishUITests.framework */; };
 		8590C5782435002B004BC31C /* CFGameCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8590C5772435002A004BC31C /* CFGameCell.swift */; };
 		8590C57A243500A9004BC31C /* AddGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8590C579243500A9004BC31C /* AddGameViewController.swift */; };
@@ -72,7 +71,6 @@
 		04C8BF1424360E3E004C276F /* CircularImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircularImageView.swift; sourceTree = "<group>"; };
 		04C8BF1624360FE5004C276F /* CFProfileCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CFProfileCell.swift; sourceTree = "<group>"; };
 		04C8BF1824361038004C276F /* ProfileCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileCollectionViewController.swift; sourceTree = "<group>"; };
-		04C8BF1A24361ED9004C276F /* MatchingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchingViewController.swift; sourceTree = "<group>"; };
 		0EACC25E6D37D990176363A4 /* Pods-Catfish.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Catfish.release.xcconfig"; path = "Target Support Files/Pods-Catfish/Pods-Catfish.release.xcconfig"; sourceTree = "<group>"; };
 		5B9975F0BB384C962280CA6E /* Pods-Catfish-CatfishUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Catfish-CatfishUITests.release.xcconfig"; path = "Target Support Files/Pods-Catfish-CatfishUITests/Pods-Catfish-CatfishUITests.release.xcconfig"; sourceTree = "<group>"; };
 		5CB728BBE6667CD78D729242 /* Pods_Catfish.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Catfish.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -252,7 +250,6 @@
 			children = (
 				9CD918972432EADD00587BC0 /* ViewController.swift */,
 				C09580D5243547F700E55916 /* FeedViewController.swift */,
-				04C8BF1A24361ED9004C276F /* MatchingViewController.swift */,
 				04C8BF1824361038004C276F /* ProfileCollectionViewController.swift */,
 				C09580D72435480700E55916 /* InputAccessoryViewController.swift */,
 				C09580D82435480700E55916 /* NewGameViewController.swift */,
@@ -593,7 +590,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				04C8BF1724360FE5004C276F /* CFProfileCell.swift in Sources */,
-				04C8BF1B24361ED9004C276F /* MatchingViewController.swift in Sources */,
 				04C8BF1524360E3E004C276F /* CircularImageView.swift in Sources */,
 				C09580C924340EE300E55916 /* CFButton.swift in Sources */,
 				C09580CB24340FCE00E55916 /* CFTitleLabel.swift in Sources */,
