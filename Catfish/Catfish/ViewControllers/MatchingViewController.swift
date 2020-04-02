@@ -18,7 +18,7 @@ class MatchingViewController: UIViewController {
     
     // MARK: - Private
 
-    let headerProfileCVC = ProfileCollectionViewController()
+    let headerProfileCVC = ProfileCollectionViewController(dragEnabled: true)
     let profileMatchCVC = ProfileMatchCollectionViewController()
     
     private func configure() {

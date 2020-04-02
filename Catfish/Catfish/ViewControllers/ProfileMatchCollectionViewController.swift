@@ -12,6 +12,8 @@ private let reuseIdentifier = "Profile Cell"
 
 class ProfileMatchCollectionViewController: UICollectionViewController {
     
+    // MARK: - Publice
+    
     let realLifeProfiles = [Profile]()
 
     typealias Match = (catFishProfile: Profile, realLifeProfile: Profile?)
@@ -45,13 +47,11 @@ class ProfileMatchCollectionViewController: UICollectionViewController {
     // MARK: Collection View Data Source
 
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return matches.count
     }
 
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of items
         return 2
     }
 
@@ -174,7 +174,6 @@ extension ProfileMatchCollectionViewController: UICollectionViewDropDelegate {
                 })
                 
                 coordinator.drop(item.dragItem, toItemAt: destinationIndexPath)
-                
             }
         }
     }

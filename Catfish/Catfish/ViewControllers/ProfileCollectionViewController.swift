@@ -25,8 +25,9 @@ class ProfileCollectionViewController: UICollectionViewController {
     
     // MARK: - Init
     
-    convenience init() {
+    convenience init(dragEnabled: Bool = false) {
         self.init(collectionViewLayout: UICollectionViewFlowLayout())
+        collectionView.dragInteractionEnabled = dragEnabled
     }
     
     // MARK: - View Lifecycle
@@ -41,7 +42,6 @@ class ProfileCollectionViewController: UICollectionViewController {
         collectionView.register(CFProfileCell.self, forCellWithReuseIdentifier: reuseIdentifier)
         
         collectionView.dragDelegate = self
-        collectionView.dragInteractionEnabled = true
         
         flowLayout.scrollDirection = .horizontal
         flowLayout.minimumLineSpacing = 5
