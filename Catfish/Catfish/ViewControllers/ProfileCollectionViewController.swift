@@ -22,6 +22,12 @@ class ProfileCollectionViewController: UICollectionViewController {
         Profile(name: "Jeffery"),
         Profile(name: "Timothy"),
     ]
+    
+    // MARK: - Init
+    
+    convenience init() {
+        self.init(collectionViewLayout: UICollectionViewFlowLayout())
+    }
 
     // MARK: - View Lifecycle
     
@@ -82,3 +88,4 @@ class ProfileCollectionViewController: UICollectionViewController {
     }
     */
 }
+
