@@ -37,7 +37,7 @@ class NetworkController {
             completion(.failure(NetworkError.badEncode))
             return
         }
-        var request = postURL(from: baseURL, with: HTTPMethod.post)
+        var request = postURL(from: baseURL, method: HTTPMethod.post)
         request.httpBody = postJSON
         
         perform(request) { result in
@@ -46,7 +46,7 @@ class NetworkController {
                 completion(.failure(error))
             case .success(let data):
                 // Not sure what data we get back here
-                print(String(data: data, encoding: .utf8))
+                print(String(data: data, encoding: .utf8)!)
             }
         }
     }
@@ -55,7 +55,8 @@ class NetworkController {
 
     func register(with username: String, password: String, email: String, completion: @escaping (Result<User, Error>) -> Void) {
         let userToRegister = createUserJSON(username, password, and: email)
-        var request = userURL(from: baseURL, with: HTTPMethod.post)
+        let token = ""
+        var request = userURL(from: baseURL, method: HTTPMethod.post, token: token)
         request.httpBody = userToRegister
         
         perform(request) { result in
@@ -139,16 +140,17 @@ class NetworkController {
         }
     }
     
-    func userURL(from url: URL, with method: String) -> URLRequest {
+    func userURL(from url: URL, method: String, token: String) -> URLRequest {
         let url = url
             .appendingPathComponent("user")
         var request = URLRequest(url: url)
         request.httpMethod = method
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.setValue(token, forHTTPHeaderField: "Authorization")
         return request
     }
     
-    func postURL(from url: URL, with method: String) -> URLRequest {
+    func postURL(from url: URL, method: String) -> URLRequest {
         let url = url
             .appendingPathComponent("post")
         var request = URLRequest(url: url)
