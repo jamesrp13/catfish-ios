@@ -26,9 +26,16 @@ class NetworkController {
     // MARK: - Properties
 
     var userController: UserController?
+    var authService: AuthServiceProtocol
     private let baseURL = URL(string: "URL HERE!!!")!
     let cache = NSCache<NSString, UIImage>()
     let method: String = HTTPMethod.post
+    
+    // MARK: - Lifecycle Methods
+    
+    init(authService: AuthServiceProtocol) {
+        self.authService = authService
+    }
     
     // MARK: - Posts
     
@@ -55,7 +62,7 @@ class NetworkController {
 
     func register(with username: String, password: String, email: String, completion: @escaping (Result<User, Error>) -> Void) {
         let userToRegister = createUserJSON(username, password, and: email)
-        let token = ""
+        let token = ""// authService.getToken(completion: <#T##(Result<String, AuthError>) -> Void#>)
         var request = userURL(from: baseURL, method: HTTPMethod.post, token: token)
         request.httpBody = userToRegister
         
