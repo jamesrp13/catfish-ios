@@ -14,11 +14,14 @@ class LoadingViewController: UIViewController {
     
     init() {
         super.init(nibName: nil, bundle: nil)
-        
+        configureViews()
         loadingWheel.startAnimating()
     }
     
-    func configureViews() {
+    private func configureViews() {
+        view.addSubview(loadingWheel)
+        loadingWheel.translatesAutoresizingMaskIntoConstraints = false
+        
         NSLayoutConstraint.activate([
             loadingWheel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             loadingWheel.centerYAnchor.constraint(equalTo: view.centerYAnchor)
