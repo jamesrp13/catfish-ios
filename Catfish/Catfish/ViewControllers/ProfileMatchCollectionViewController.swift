@@ -16,7 +16,7 @@ class ProfileMatchCollectionViewController: UICollectionViewController {
 
     typealias Match = (catFishProfile: Profile, realLifeProfile: Profile?)
     
-    let matches: [Match] = [
+    var matches: [Match] = [
         (Profile(name: "Bart Simpson"), Profile(name: "Caitlyn")),
         (Profile(name: "Meg Ryan"), Profile(name: "Jonny")),
         (Profile(name: "Jake Peralta"), Profile(name: "Barbara")),
@@ -37,6 +37,9 @@ class ProfileMatchCollectionViewController: UICollectionViewController {
         super.viewDidLoad()
         collectionView.backgroundColor = .white
         collectionView.register(CFProfileCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+        collectionView.dragDelegate = self
+        collectionView.dropDelegate = self
+        collectionView.dragInteractionEnabled = true
     }
     
     // MARK: Collection View Data Source
@@ -59,7 +62,6 @@ class ProfileMatchCollectionViewController: UICollectionViewController {
     
         let match = matches[indexPath.section]
         
-        
         if indexPath.row == 0 {
             let profile = match.catFishProfile
             cell.set(profile: profile, imageSize: 50, labelFont: .systemFont(ofSize: 16, weight: .bold), layoutAxis: .horizontal)
@@ -69,40 +71,8 @@ class ProfileMatchCollectionViewController: UICollectionViewController {
             }
         }
         
-        
         return cell
     }
-
-    // MARK: Collection View Delegate
-
-    /*
-    // Uncomment this method to specify if the specified item should be highlighted during tracking
-    override func collectionView(_ collectionView: UICollectionView, shouldHighlightItemAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    */
-
-    /*
-    // Uncomment this method to specify if the specified item should be selected
-    override func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    */
-
-    /*
-    // Uncomment these methods to specify if an action menu should be displayed for the specified item, and react to actions performed on the item
-    override func collectionView(_ collectionView: UICollectionView, shouldShowMenuForItemAt indexPath: IndexPath) -> Bool {
-        return false
-    }
-
-    override func collectionView(_ collectionView: UICollectionView, canPerformAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) -> Bool {
-        return false
-    }
-
-    override func collectionView(_ collectionView: UICollectionView, performAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) {
-    
-    }
-    */
 }
 
 // MARK: - Flow Layout Delegate
@@ -122,5 +92,90 @@ extension ProfileMatchCollectionViewController: UICollectionViewDelegateFlowLayo
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return .init(top: 10, left: 20, bottom: 10, right: 20)
+    }
+}
+
+// MARK: - Drag Delegate
+
+extension ProfileMatchCollectionViewController: UICollectionViewDragDelegate {
+    func collectionView(_ collectionView: UICollectionView, itemsForBeginning session: UIDragSession, at indexPath: IndexPath) -> [UIDragItem] {
+        session.localContext = collectionView
+        return dragItems(at: indexPath)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, itemsForAddingTo session: UIDragSession, at indexPath: IndexPath, point: CGPoint) -> [UIDragItem] {
+        return dragItems(at: indexPath)
+    }
+    
+    private func dragItems(at indexPath: IndexPath) -> [UIDragItem] {
+        guard indexPath.item == 1,
+            let profile = matches[indexPath.section].realLifeProfile else { return [] }
+        
+        let name = profile.name as NSString
+
+        let dragItem = UIDragItem(itemProvider: NSItemProvider(object: name))
+        dragItem.localObject = profile
+        return [dragItem]
+    }
+}
+
+// MARK: - Drop Delegate
+
+extension ProfileMatchCollectionViewController: UICollectionViewDropDelegate {
+    
+    // Determines if we are dealing with a local drag session (within the app)
+    private func isLocal(_ session: UIDropSession) -> Bool {
+        return session.localDragSession?.localContext as? UICollectionView == collectionView
+    }
+    
+    // If it's a local session, we can handle it, otherwise we need a url and a UIImage
+    func collectionView(_ collectionView: UICollectionView, canHandle session: UIDropSession) -> Bool {
+        return true
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, dropSessionDidUpdate session: UIDropSession, withDestinationIndexPath destinationIndexPath: IndexPath?) -> UICollectionViewDropProposal {
+        
+        if destinationIndexPath?.item == 1 {
+            if isLocal(session) {
+                return UICollectionViewDropProposal(operation: .move, intent: .insertIntoDestinationIndexPath)
+            } else {
+                return UICollectionViewDropProposal(operation: .copy, intent: .insertIntoDestinationIndexPath)
+            }
+        } else {
+            return UICollectionViewDropProposal(operation: .cancel, intent: .unspecified)
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, performDropWith coordinator: UICollectionViewDropCoordinator) {
+        let destinationIndexPath = coordinator.destinationIndexPath ?? IndexPath(item: 0, section: 0)
+        
+        if isLocal(coordinator.session) {
+            
+            for item in coordinator.items {
+                guard let sourceIndexPath = item.sourceIndexPath else { continue }
+                
+                collectionView.performBatchUpdates({
+                    let profile = matches[sourceIndexPath.section].realLifeProfile
+                    matches[sourceIndexPath.section].realLifeProfile = nil
+                    matches[destinationIndexPath.section].realLifeProfile = profile
+                    collectionView.deleteItems(at: [sourceIndexPath])
+                    collectionView.insertItems(at: [destinationIndexPath])
+                })
+                
+                coordinator.drop(item.dragItem, toItemAt: destinationIndexPath)
+            }
+        } else {
+            for item in coordinator.items {
+                guard let profile = item.dragItem.localObject as? Profile else { continue }
+                
+                collectionView.performBatchUpdates({
+                    collectionView.deleteItems(at: [destinationIndexPath])
+                    matches[destinationIndexPath.row].realLifeProfile = profile
+                    collectionView.insertItems(at: [destinationIndexPath])
+                })
+                
+                coordinator.drop(item.dragItem, toItemAt: destinationIndexPath)
+            }
+        }
     }
 }

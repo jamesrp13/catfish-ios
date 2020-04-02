@@ -33,14 +33,16 @@ class AppCoordinator: AuthServiceDelegate {
     }
 
     func setVC(authStatus: AuthStatus) {
-        switch authStatus {
-        case .unknown:
-            rootViewController = LoadingViewController()
-        case .authenticated:
-            print("To Do")
-            // TODO: - add main view controller
-        case .unauthenticated:
-            rootViewController = authService.authViewController
-        }
+//        rootViewController = FeedViewController()
+        rootViewController = MatchingViewController()
+//        switch authStatus {
+//        case .unknown:
+//            rootViewController = LoadingViewController()
+//        case .authenticated:
+//            print("To Do")
+//            // TODO: - add main view controller
+//        case .unauthenticated:
+//            rootViewController = authService.authViewController
+//        }
     }
 }
