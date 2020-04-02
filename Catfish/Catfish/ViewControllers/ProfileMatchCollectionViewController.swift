@@ -68,6 +68,8 @@ class ProfileMatchCollectionViewController: UICollectionViewController {
         } else if indexPath.row == 1 {
             if let profile = match.realLifeProfile {
                 cell.set(profile: profile, imageSize: 50, imageOnly: true)
+            } else {
+                cell.set(profile: Profile(name: ""), imageSize: 50, imageOnly: true)
             }
         }
         
@@ -123,12 +125,11 @@ extension ProfileMatchCollectionViewController: UICollectionViewDragDelegate {
 
 extension ProfileMatchCollectionViewController: UICollectionViewDropDelegate {
     
-    // Determines if we are dealing with a local drag session (within the app)
+    /// Determines if we are dealing with a local drag session, or one coming from another collection view
     private func isLocal(_ session: UIDropSession) -> Bool {
         return session.localDragSession?.localContext as? UICollectionView == collectionView
     }
     
-    // If it's a local session, we can handle it, otherwise we need a url and a UIImage
     func collectionView(_ collectionView: UICollectionView, canHandle session: UIDropSession) -> Bool {
         return true
     }
@@ -159,22 +160,21 @@ extension ProfileMatchCollectionViewController: UICollectionViewDropDelegate {
                     matches[sourceIndexPath.section].realLifeProfile = nil
                     matches[destinationIndexPath.section].realLifeProfile = profile
                     collectionView.deleteItems(at: [sourceIndexPath])
-                    collectionView.insertItems(at: [destinationIndexPath])
+                    collectionView.reloadItems(at: [destinationIndexPath])
                 })
-                
-                coordinator.drop(item.dragItem, toItemAt: destinationIndexPath)
             }
         } else {
+            
             for item in coordinator.items {
                 guard let profile = item.dragItem.localObject as? Profile else { continue }
                 
                 collectionView.performBatchUpdates({
-                    collectionView.deleteItems(at: [destinationIndexPath])
-                    matches[destinationIndexPath.row].realLifeProfile = profile
-                    collectionView.insertItems(at: [destinationIndexPath])
+                    matches[destinationIndexPath.section].realLifeProfile = profile
+                    collectionView.reloadItems(at: [destinationIndexPath])
                 })
                 
                 coordinator.drop(item.dragItem, toItemAt: destinationIndexPath)
+                
             }
         }
     }
