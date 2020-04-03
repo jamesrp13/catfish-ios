@@ -28,29 +28,37 @@ class CreateProfileViewController: UIViewController {
     
     private let nameLabel = UILabel(text: "Name:")
     private let nameTextField = UITextField(placeholder: "Name")
-    private lazy var teamVStack: UIStackView = {
-        let teamVStack = UIStackView(arrangedSubviews: [nameLabel, nameTextField])
-        teamVStack.axis = .vertical
-        teamVStack.spacing = 10
-        return teamVStack
+    private lazy var nameVStack: UIStackView = {
+        let nameVStack = UIStackView(arrangedSubviews: [nameLabel, nameTextField])
+        nameVStack.axis = .vertical
+        nameVStack.spacing = 10
+        return nameVStack
     }()
     
-    private let sendCodeLabel = UILabel(text: "Send this code to your friends", textAlignment: .center)
+    private let bioLabel = UILabel(text: "Bio:")
+    private lazy var bioTextView: UITextView = {
+        let bioTextView = UITextView()
+        bioTextView.translatesAutoresizingMaskIntoConstraints = false
+        bioTextView.heightAnchor.constraint(equalToConstant: 200).isActive = true
+        
+        bioTextView.layer.borderColor = UIColor.systemGray4.cgColor
+        bioTextView.layer.borderWidth = 1.0
+        bioTextView.layer.cornerRadius = 5.0
+        
+        return bioTextView
+    }()
     
-    private let bioLabel = UILabel(text: "Invite code:")
-    private let bioTextView = UITextView()
-    private lazy var inviteVStack: UIStackView = {
-        let inviteVStack = UIStackView(arrangedSubviews: [bioLabel, bioTextView])
-        inviteVStack.axis = .vertical
-        inviteVStack.spacing = 10
-        return inviteVStack
+    private lazy var bioVStack: UIStackView = {
+        let bioVStack = UIStackView(arrangedSubviews: [bioLabel, bioTextView])
+        bioVStack.axis = .vertical
+        bioVStack.spacing = 10
+        return bioVStack
     }()
     
     private lazy var mainVStack = UIStackView(arrangedSubviews: [
         createProfileLabel,
-        teamVStack,
-        sendCodeLabel,
-        inviteVStack
+        nameVStack,
+        bioVStack
     ])
     
     private let createButton = CFButton(backgroundColor: Colors.purple, title: "Create", image: nil)
@@ -93,19 +101,19 @@ class CreateProfileViewController: UIViewController {
 
 // Uncomment below to enable SwiftUI previews for visual feedback
 
-//import SwiftUI
-//
-//struct ViewWrapper: UIViewRepresentable {
-//    func makeUIView(context: UIViewRepresentableContext<ViewWrapper>) -> UIView {
-//        return NewGameViewController().view
-//    }
-//
-//    func updateUIView(_ uiView: ViewWrapper.UIViewType, context: UIViewRepresentableContext<ViewWrapper>) {
-//    }
-//}
-//
-//struct ViewWrapper_Previews: PreviewProvider {
-//    static var previews: some View {
-//        ViewWrapper()
-//    }
-//}
+import SwiftUI
+
+struct ViewWrapper: UIViewRepresentable {
+    func makeUIView(context: UIViewRepresentableContext<ViewWrapper>) -> UIView {
+        return CreateProfileViewController().view
+    }
+
+    func updateUIView(_ uiView: ViewWrapper.UIViewType, context: UIViewRepresentableContext<ViewWrapper>) {
+    }
+}
+
+struct ViewWrapper_Previews: PreviewProvider {
+    static var previews: some View {
+        ViewWrapper()
+    }
+}
