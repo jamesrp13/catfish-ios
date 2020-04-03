@@ -12,5 +12,6 @@ struct User: Codable {
     let firstName: String
     let lastName: String
     let email: String
-    let id: Int
+    let phone: String
+    let id: String
 }

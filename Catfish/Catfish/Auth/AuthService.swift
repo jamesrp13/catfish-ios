@@ -75,6 +75,14 @@ class FirebaseAuthService: NSObject, AuthServiceProtocol, FUIAuthDelegate, AuthU
     
     func setAuthStatus(from auth: FirebaseAuth.Auth) {
         authStatus = auth.currentUser == nil ? .unauthenticated : .authenticated
+        
+        if auth.currentUser != nil {
+            getToken { (result) in
+                if case let .success(token) = result {
+                    print(token)
+                }
+            }
+        }
     }
     
     func getToken(completion: @escaping (Result<String, AuthError>) -> Void) {
