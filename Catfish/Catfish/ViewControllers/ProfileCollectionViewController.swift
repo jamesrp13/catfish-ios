@@ -14,7 +14,7 @@ class ProfileCollectionViewController: UICollectionViewController {
     
     // MARK: - Properties
     
-    let profiles: [Profile] = [
+    var profiles: [Profile] = [
         Profile(name: "Jonny"),
         Profile(name: "Caitlyn"),
         Profile(name: "Barbara"),
@@ -22,63 +22,69 @@ class ProfileCollectionViewController: UICollectionViewController {
         Profile(name: "Jeffery"),
         Profile(name: "Timothy"),
     ]
-
+    
+    // MARK: - Init
+    
+    convenience init(dragEnabled: Bool = false) {
+        self.init(collectionViewLayout: UICollectionViewFlowLayout())
+        collectionView.dragInteractionEnabled = dragEnabled
+    }
+    
     // MARK: - View Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         guard let flowLayout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout,
-        let collectionView = collectionView else { return }
+            let collectionView = collectionView else { return }
         
         collectionView.backgroundColor = .white
         collectionView.showsHorizontalScrollIndicator = false
         collectionView.register(CFProfileCell.self, forCellWithReuseIdentifier: reuseIdentifier)
         
+        collectionView.dragDelegate = self
         
         flowLayout.scrollDirection = .horizontal
         flowLayout.minimumLineSpacing = 5
         flowLayout.itemSize = CGSize(width: 80, height: 80)
     }
-
+    
     // MARK: Collection View Data Source
-
+    
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return profiles.count
     }
-
+    
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as? CFProfileCell else {
             fatalError("Unable to cast cell as CFProfileCell")
         }
-    
+        
         let profile = profiles[indexPath.row]
         cell.set(profile: profile)
         
         return cell
     }
-
-    // MARK: Collection View Delegate
-
-
-    /*
-    // Uncomment this method to specify if the specified item should be selected
-    override func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    */
-
-    /*
-    // Uncomment these methods to specify if an action menu should be displayed for the specified item, and react to actions performed on the item
-    override func collectionView(_ collectionView: UICollectionView, shouldShowMenuForItemAt indexPath: IndexPath) -> Bool {
-        return false
-    }
-
-    override func collectionView(_ collectionView: UICollectionView, canPerformAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) -> Bool {
-        return false
-    }
-
-    override func collectionView(_ collectionView: UICollectionView, performAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) {
-    
-    }
-    */
 }
+
+// MARK: - Drag Delegate
+
+extension ProfileCollectionViewController: UICollectionViewDragDelegate {
+    func collectionView(_ collectionView: UICollectionView, itemsForBeginning session: UIDragSession, at indexPath: IndexPath) -> [UIDragItem] {
+        session.localContext = collectionView
+        return dragItems(at: indexPath)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, itemsForAddingTo session: UIDragSession, at indexPath: IndexPath, point: CGPoint) -> [UIDragItem] {
+        return dragItems(at: indexPath)
+    }
+    
+    private func dragItems(at indexPath: IndexPath) -> [UIDragItem] {
+        let profile = profiles[indexPath.row]
+        let name = profile.name as NSString
+        
+        let dragItem = UIDragItem(itemProvider: NSItemProvider(object: name))
+        dragItem.localObject = profile
+        return [dragItem]
+    }
+}
+

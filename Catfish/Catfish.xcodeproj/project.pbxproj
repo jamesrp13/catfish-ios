@@ -10,6 +10,8 @@
 		04C8BF1524360E3E004C276F /* CircularImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C8BF1424360E3E004C276F /* CircularImageView.swift */; };
 		04C8BF1724360FE5004C276F /* CFProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C8BF1624360FE5004C276F /* CFProfileCell.swift */; };
 		04C8BF1924361038004C276F /* ProfileCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C8BF1824361038004C276F /* ProfileCollectionViewController.swift */; };
+		04C8BF1F24362F10004C276F /* ProfileMatchCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C8BF1E24362F10004C276F /* ProfileMatchCollectionViewController.swift */; };
+		04C8BF232436588E004C276F /* MatchingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C8BF222436588E004C276F /* MatchingViewController.swift */; };
 		4032CFAF7A15238C0B4A518C /* Pods_Catfish_CatfishUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E412041373DC7AFF34CDE648 /* Pods_Catfish_CatfishUITests.framework */; };
 		9CC074782434FEC800EB37C3 /* GameCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC074772434FEC800EB37C3 /* GameCoordinator.swift */; };
 		8590C5782435002B004BC31C /* CFGameCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8590C5772435002A004BC31C /* CFGameCell.swift */; };
@@ -75,6 +77,8 @@
 		04C8BF1424360E3E004C276F /* CircularImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircularImageView.swift; sourceTree = "<group>"; };
 		04C8BF1624360FE5004C276F /* CFProfileCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CFProfileCell.swift; sourceTree = "<group>"; };
 		04C8BF1824361038004C276F /* ProfileCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileCollectionViewController.swift; sourceTree = "<group>"; };
+		04C8BF1E24362F10004C276F /* ProfileMatchCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileMatchCollectionViewController.swift; sourceTree = "<group>"; };
+		04C8BF222436588E004C276F /* MatchingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchingViewController.swift; sourceTree = "<group>"; };
 		0EACC25E6D37D990176363A4 /* Pods-Catfish.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Catfish.release.xcconfig"; path = "Target Support Files/Pods-Catfish/Pods-Catfish.release.xcconfig"; sourceTree = "<group>"; };
 		5B9975F0BB384C962280CA6E /* Pods-Catfish-CatfishUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Catfish-CatfishUITests.release.xcconfig"; path = "Target Support Files/Pods-Catfish-CatfishUITests/Pods-Catfish-CatfishUITests.release.xcconfig"; sourceTree = "<group>"; };
 		5CB728BBE6667CD78D729242 /* Pods_Catfish.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Catfish.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -261,6 +265,8 @@
 				9CD918972432EADD00587BC0 /* ViewController.swift */,
 				C09580D5243547F700E55916 /* FeedViewController.swift */,
 				04C8BF1824361038004C276F /* ProfileCollectionViewController.swift */,
+				04C8BF1E24362F10004C276F /* ProfileMatchCollectionViewController.swift */,
+				04C8BF222436588E004C276F /* MatchingViewController.swift */,
 				C09580D72435480700E55916 /* InputAccessoryViewController.swift */,
 				C09580D82435480700E55916 /* NewGameViewController.swift */,
 				9CD918EB2433D7E400587BC0 /* LoadingViewController.swift */,
@@ -623,6 +629,7 @@
 				C09580CB24340FCE00E55916 /* CFTitleLabel.swift in Sources */,
 				04C8BF1924361038004C276F /* ProfileCollectionViewController.swift in Sources */,
 				C09580C424340B7D00E55916 /* NetworkController.swift in Sources */,
+				04C8BF232436588E004C276F /* MatchingViewController.swift in Sources */,
 				9CD918EE2433D8CE00587BC0 /* AppCoordinator.swift in Sources */,
 				9CD918DC2433B7A100587BC0 /* GameInstance.swift in Sources */,
 				9CD918DE2433B7A100587BC0 /* Profile.swift in Sources */,
@@ -632,6 +639,7 @@
 				C09580C124340B3600E55916 /* Constants.swift in Sources */,
 				C09580D42435475100E55916 /* UILabel+Convenience.swift in Sources */,
 				C09580D22435474300E55916 /* UITextField+Convenience.swift in Sources */,
+				04C8BF1F24362F10004C276F /* ProfileMatchCollectionViewController.swift in Sources */,
 				9CD918942432EADD00587BC0 /* AppDelegate.swift in Sources */,
 				8590C57A243500A9004BC31C /* AddGameViewController.swift in Sources */,
 				9CD918F02433DDDF00587BC0 /* AuthService.swift in Sources */,
@@ -756,7 +764,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -810,7 +818,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -871,7 +879,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2HKCZL2J7X;
 				INFOPLIST_FILE = CatfishTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -894,7 +902,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2HKCZL2J7X;
 				INFOPLIST_FILE = CatfishTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

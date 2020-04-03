@@ -68,6 +68,8 @@ class CFProfileCell: UICollectionViewCell {
         imageView.setWidth(imageSize)
         nameLabel.isHidden = imageOnly
         nameLabel.font = labelFont
+        nameLabel.textAlignment = layoutAxis == .vertical ? .center : .left
+        stackView.spacing = layoutAxis == .vertical ? 0 : 12
         stackView.axis = layoutAxis
         
         // Fetch image
