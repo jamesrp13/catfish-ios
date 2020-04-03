@@ -42,7 +42,7 @@ class CreateProfileViewController: UIViewController {
         return profilePic
     }()
     private let uploadButton: UIButton = {
-        let uploadButton = UIButton()
+        let uploadButton = UIButton(type: .system)
         uploadButton.setTitle("Upload your Catfish profile picture", for: .normal)
         uploadButton.setTitleColor(Colors.purple, for: .normal)
         uploadButton.titleLabel?.font = .systemFont(ofSize: 16)
