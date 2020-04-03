@@ -1,15 +1,15 @@
 //
-//  NewGameViewController.swift
+//  CreateProfileViewController.swift
 //  Catfish
 //
-//  Created by Shawn Gee on 4/1/20.
+//  Created by Shawn Gee on 4/3/20.
 //  Copyright © 2020 James Pacheco. All rights reserved.
 //
 
 import UIKit
 
-class NewGameViewController: UIViewController {
-
+class CreateProfileViewController: UIViewController {
+    
     // MARK: - View Lifecycle
     
     override func viewDidLoad() {
@@ -24,52 +24,31 @@ class NewGameViewController: UIViewController {
     
     // Views:
     
-    private let createGameLabel = UILabel(text: "Create a new game", font: Fonts.header, textAlignment: .center)
+    private let createProfileLabel = UILabel(text: "Create your Catfish profile", font: Fonts.header, textAlignment: .center)
     
-    private let teamNameLabel = UILabel(text: "Team Name:")
-    private let teamNameTextField = UITextField(placeholder: "Name")
+    private let nameLabel = UILabel(text: "Name:")
+    private let nameTextField = UITextField(placeholder: "Name")
     private lazy var teamVStack: UIStackView = {
-        let teamVStack = UIStackView(arrangedSubviews: [teamNameLabel, teamNameTextField])
+        let teamVStack = UIStackView(arrangedSubviews: [nameLabel, nameTextField])
         teamVStack.axis = .vertical
         teamVStack.spacing = 10
         return teamVStack
     }()
     
-    private let gameDurationLabel = UILabel(text: "Game Duration:")
-    private lazy var gameDurationTextField: UITextField = {
-        let gameDurationTextField = UITextField(placeholder: nil)
-        gameDurationTextField.text = "7 Days"
-        
-        gameDurationTextField.layer.borderColor = Colors.purple.cgColor
-        gameDurationTextField.layer.borderWidth = 1.0
-        gameDurationTextField.layer.cornerRadius = 5.0
-        
-        durationManager = PickerTextFieldManager(textField: gameDurationTextField, options: ["3 Days", "5 Days", "7 Days"], initialIndex: 2)
-        
-        return gameDurationTextField
-    }()
-    private lazy var gameDurationHStack: UIStackView = {
-        let gameDurationHStack = UIStackView(arrangedSubviews: [gameDurationLabel, gameDurationTextField])
-        gameDurationHStack.spacing = 40
-        gameDurationLabel.setContentHuggingPriority(.required, for: .horizontal)
-        return gameDurationHStack
-    }()
-    
     private let sendCodeLabel = UILabel(text: "Send this code to your friends", textAlignment: .center)
     
-    private let inviteCodeLabel = UILabel(text: "Invite code:")
-    private let inviteCodeTextField = UITextField(placeholder: "XXYYZZ")
+    private let bioLabel = UILabel(text: "Invite code:")
+    private let bioTextView = UITextView()
     private lazy var inviteVStack: UIStackView = {
-        let inviteVStack = UIStackView(arrangedSubviews: [inviteCodeLabel, inviteCodeTextField])
+        let inviteVStack = UIStackView(arrangedSubviews: [bioLabel, bioTextView])
         inviteVStack.axis = .vertical
         inviteVStack.spacing = 10
         return inviteVStack
     }()
     
     private lazy var mainVStack = UIStackView(arrangedSubviews: [
-        createGameLabel,
+        createProfileLabel,
         teamVStack,
-        gameDurationHStack,
         sendCodeLabel,
         inviteVStack
     ])
@@ -83,7 +62,7 @@ class NewGameViewController: UIViewController {
         
         addChild(inputAccessoryVC)
         inputAccessoryVC.didMove(toParent: self)
-        inputAccessoryVC.register(teamNameTextField, gameDurationTextField, inviteCodeTextField)
+        inputAccessoryVC.register(nameTextField, bioTextView)
         
         mainVStack.axis = .vertical
         mainVStack.spacing = 25

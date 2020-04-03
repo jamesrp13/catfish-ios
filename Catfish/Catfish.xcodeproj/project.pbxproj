@@ -13,10 +13,11 @@
 		04C8BF1F24362F10004C276F /* ProfileMatchCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C8BF1E24362F10004C276F /* ProfileMatchCollectionViewController.swift */; };
 		04C8BF232436588E004C276F /* MatchingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C8BF222436588E004C276F /* MatchingViewController.swift */; };
 		04E48AC62437554600A1C8DA /* PickerTextFieldManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E48AC52437554600A1C8DA /* PickerTextFieldManager.swift */; };
+		04E48AC82437660B00A1C8DA /* CreateProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E48AC72437660B00A1C8DA /* CreateProfileViewController.swift */; };
 		4032CFAF7A15238C0B4A518C /* Pods_Catfish_CatfishUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E412041373DC7AFF34CDE648 /* Pods_Catfish_CatfishUITests.framework */; };
-		9CC074782434FEC800EB37C3 /* GameCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC074772434FEC800EB37C3 /* GameCoordinator.swift */; };
 		8590C5782435002B004BC31C /* CFGameCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8590C5772435002A004BC31C /* CFGameCell.swift */; };
 		8590C57A243500A9004BC31C /* AddGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8590C579243500A9004BC31C /* AddGameViewController.swift */; };
+		9CC074782434FEC800EB37C3 /* GameCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC074772434FEC800EB37C3 /* GameCoordinator.swift */; };
 		9CD918942432EADD00587BC0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD918932432EADD00587BC0 /* AppDelegate.swift */; };
 		9CD918962432EADD00587BC0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD918952432EADD00587BC0 /* SceneDelegate.swift */; };
 		9CD918982432EADD00587BC0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD918972432EADD00587BC0 /* ViewController.swift */; };
@@ -51,7 +52,7 @@
 		C09580D22435474300E55916 /* UITextField+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09580D12435474300E55916 /* UITextField+Convenience.swift */; };
 		C09580D42435475100E55916 /* UILabel+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09580D32435475100E55916 /* UILabel+Convenience.swift */; };
 		C09580D6243547F700E55916 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09580D5243547F700E55916 /* FeedViewController.swift */; };
-		C09580D92435480700E55916 /* InputAccessoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09580D72435480700E55916 /* InputAccessoryViewController.swift */; };
+		C09580D92435480700E55916 /* TextInputAccessoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09580D72435480700E55916 /* TextInputAccessoryViewController.swift */; };
 		C09580DA2435480700E55916 /* NewGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09580D82435480700E55916 /* NewGameViewController.swift */; };
 		D781294EBAB16167C5D8B8A3 /* Pods_Catfish.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CB728BBE6667CD78D729242 /* Pods_Catfish.framework */; };
 /* End PBXBuildFile section */
@@ -81,6 +82,7 @@
 		04C8BF1E24362F10004C276F /* ProfileMatchCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileMatchCollectionViewController.swift; sourceTree = "<group>"; };
 		04C8BF222436588E004C276F /* MatchingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchingViewController.swift; sourceTree = "<group>"; };
 		04E48AC52437554600A1C8DA /* PickerTextFieldManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerTextFieldManager.swift; sourceTree = SOURCE_ROOT; };
+		04E48AC72437660B00A1C8DA /* CreateProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateProfileViewController.swift; sourceTree = "<group>"; };
 		0EACC25E6D37D990176363A4 /* Pods-Catfish.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Catfish.release.xcconfig"; path = "Target Support Files/Pods-Catfish/Pods-Catfish.release.xcconfig"; sourceTree = "<group>"; };
 		5B9975F0BB384C962280CA6E /* Pods-Catfish-CatfishUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Catfish-CatfishUITests.release.xcconfig"; path = "Target Support Files/Pods-Catfish-CatfishUITests/Pods-Catfish-CatfishUITests.release.xcconfig"; sourceTree = "<group>"; };
 		5CB728BBE6667CD78D729242 /* Pods_Catfish.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Catfish.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -130,7 +132,7 @@
 		C09580D12435474300E55916 /* UITextField+Convenience.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITextField+Convenience.swift"; sourceTree = "<group>"; };
 		C09580D32435475100E55916 /* UILabel+Convenience.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UILabel+Convenience.swift"; sourceTree = "<group>"; };
 		C09580D5243547F700E55916 /* FeedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
-		C09580D72435480700E55916 /* InputAccessoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputAccessoryViewController.swift; sourceTree = "<group>"; };
+		C09580D72435480700E55916 /* TextInputAccessoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextInputAccessoryViewController.swift; sourceTree = "<group>"; };
 		C09580D82435480700E55916 /* NewGameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewGameViewController.swift; sourceTree = "<group>"; };
 		D8A0B94B8D441C8DF38DC431 /* Pods-CatfishTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CatfishTests.release.xcconfig"; path = "Target Support Files/Pods-CatfishTests/Pods-CatfishTests.release.xcconfig"; sourceTree = "<group>"; };
 		E412041373DC7AFF34CDE648 /* Pods_Catfish_CatfishUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Catfish_CatfishUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -269,10 +271,11 @@
 				04C8BF1824361038004C276F /* ProfileCollectionViewController.swift */,
 				04C8BF1E24362F10004C276F /* ProfileMatchCollectionViewController.swift */,
 				04C8BF222436588E004C276F /* MatchingViewController.swift */,
-				C09580D72435480700E55916 /* InputAccessoryViewController.swift */,
+				C09580D72435480700E55916 /* TextInputAccessoryViewController.swift */,
 				C09580D82435480700E55916 /* NewGameViewController.swift */,
 				9CD918EB2433D7E400587BC0 /* LoadingViewController.swift */,
 				8590C579243500A9004BC31C /* AddGameViewController.swift */,
+				04E48AC72437660B00A1C8DA /* CreateProfileViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -293,7 +296,7 @@
 				9CD918F92434F0F200587BC0 /* CoordinatorProtocols.swift */,
 			);
 			path = Coordinator;
-		sourceTree = "<group>";
+			sourceTree = "<group>";
 		};
 		C09580BF24340A6E00E55916 /* Custom Views */ = {
 			isa = PBXGroup;
@@ -650,7 +653,8 @@
 				9CD918E02433B7A100587BC0 /* User.swift in Sources */,
 				9CD918962432EADD00587BC0 /* SceneDelegate.swift in Sources */,
 				9CD918F72434EF1900587BC0 /* AuthEnums.swift in Sources */,
-				C09580D92435480700E55916 /* InputAccessoryViewController.swift in Sources */,
+				C09580D92435480700E55916 /* TextInputAccessoryViewController.swift in Sources */,
+				04E48AC82437660B00A1C8DA /* CreateProfileViewController.swift in Sources */,
 				04E48AC62437554600A1C8DA /* PickerTextFieldManager.swift in Sources */,
 				C09580C724340D7F00E55916 /* CFPostImageView.swift in Sources */,
 				C09580CF2434150C00E55916 /* UIView+Extension.swift in Sources */,
