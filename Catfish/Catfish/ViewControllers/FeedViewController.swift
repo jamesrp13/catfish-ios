@@ -25,7 +25,7 @@ class FeedViewController: UIViewController {
     
     private let tableView = UITableView()
     private let headerView = UITableViewHeaderFooterView()
-    private let profileCollectionVC = ProfileCollectionViewController(collectionViewLayout: UICollectionViewFlowLayout())
+    private let profileCollectionVC = GameUserCollectionViewController(collectionViewLayout: UICollectionViewFlowLayout())
     
     private func configureTableView() {
         tableView.register(CFPostCell.self, forCellReuseIdentifier: "PostCell")
