@@ -15,6 +15,10 @@ struct Post: Codable {
     var reactions: [Reaction]
     var comments: [Comment]
     var id: String
+    
+    static var mocks: [Post] = {
+        return Profile.mocks.map { Post(profile: $0, imageURL: $0.imageURL, caption: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.", reactions: [], comments: [], id: $0.id)}
+    }()
 }
 
 struct CreatePost: Codable {

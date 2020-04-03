@@ -29,4 +29,8 @@ struct GameUser: Codable, ProfileDisplayable, User, Hashable {
     var imageURL: URL
     var firstName: String
     var uid: String
+    
+    static var mocks: [GameUser] = {
+        return Profile.mocks.map { GameUser(imageURL: $0.imageURL, firstName: $0.username, uid: $0.id)}
+    }()
 }

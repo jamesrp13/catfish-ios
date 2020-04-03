@@ -13,15 +13,7 @@ private let reuseIdentifier = "Profile Cell"
 class ProfileCollectionViewController: UICollectionViewController {
     
     // MARK: - Properties
-    
-    var profiles: [Profile] = [
-        Profile(name: "Jonny"),
-        Profile(name: "Caitlyn"),
-        Profile(name: "Barbara"),
-        Profile(name: "Susan"),
-        Profile(name: "Jeffery"),
-        Profile(name: "Timothy"),
-    ]
+    let profiles = Profile.mocks
     
     // MARK: - Init
     
@@ -60,7 +52,7 @@ class ProfileCollectionViewController: UICollectionViewController {
         }
         
         let profile = profiles[indexPath.row]
-        cell.set(profile: profile)
+        cell.set(state: .filled(profile))
         
         return cell
     }
@@ -80,7 +72,7 @@ extension ProfileCollectionViewController: UICollectionViewDragDelegate {
     
     private func dragItems(at indexPath: IndexPath) -> [UIDragItem] {
         let profile = profiles[indexPath.row]
-        let name = profile.name as NSString
+        let name = profile.username as NSString
         
         let dragItem = UIDragItem(itemProvider: NSItemProvider(object: name))
         dragItem.localObject = profile

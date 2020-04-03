@@ -18,14 +18,8 @@ class ProfileMatchCollectionViewController: UICollectionViewController {
 
     typealias Match = (catFishProfile: Profile, realLifeProfile: Profile?)
     
-    var matches: [Match] = [
-        (Profile(name: "Bart Simpson"), Profile(name: "Caitlyn")),
-        (Profile(name: "Meg Ryan"), Profile(name: "Jonny")),
-        (Profile(name: "Jake Peralta"), Profile(name: "Barbara")),
-        (Profile(name: "John Mayer"), Profile(name: "Susan")),
-        (Profile(name: "Jennifer Lopez"), Profile(name: "Jeffery")),
-        (Profile(name: "Jimmy Fallon"), Profile(name: "Timothy")),
-    ]
+    
+    var matches: [Match] = []
     
     // MARK: - Init
     
@@ -64,12 +58,12 @@ class ProfileMatchCollectionViewController: UICollectionViewController {
         
         if indexPath.row == 0 {
             let profile = match.catFishProfile
-            cell.set(profile: profile, imageSize: 50, labelFont: .systemFont(ofSize: 16, weight: .bold), layoutAxis: .horizontal)
+            cell.set(state: .filled(profile), imageSize: 50, labelFont: .systemFont(ofSize: 16, weight: .bold), layoutAxis: .horizontal)
         } else if indexPath.row == 1 {
             if let profile = match.realLifeProfile {
-                cell.set(profile: profile, imageSize: 50, imageOnly: true)
+                cell.set(state: .filled(profile), imageSize: 50, imageOnly: true)
             } else {
-                cell.set(profile: Profile(name: ""), imageSize: 50, imageOnly: true)
+                cell.set(state: .empty, imageSize: 50, imageOnly: true)
             }
         }
         
@@ -113,7 +107,7 @@ extension ProfileMatchCollectionViewController: UICollectionViewDragDelegate {
         guard indexPath.item == 1,
             let profile = matches[indexPath.section].realLifeProfile else { return [] }
         
-        let name = profile.name as NSString
+        let name = profile.username as NSString
 
         let dragItem = UIDragItem(itemProvider: NSItemProvider(object: name))
         dragItem.localObject = profile

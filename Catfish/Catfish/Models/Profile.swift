@@ -19,6 +19,19 @@ struct Profile: Codable, ProfileDisplayable {
     var about: String
     var imageURL: URL
     var id: String
+    
+    static var mocks: [Profile] = {
+        let imageURL = Bundle.main.url(forResource: "TestImage", withExtension: ".HEIC")!
+        
+        return [
+            Profile(username: "Jonny", about: "", imageURL: imageURL, id: "12345"),
+            Profile(username: "Caitlyn", about: "", imageURL: imageURL, id: "1245"),
+            Profile(username: "Barbara", about: "", imageURL: imageURL, id: "2345"),
+            Profile(username: "Susan", about: "", imageURL: imageURL, id: "1235"),
+            Profile(username: "Jeffery", about: "", imageURL: imageURL, id: "1234"),
+            Profile(username: "Timothy", about: "", imageURL: imageURL, id: "1345"),
+        ]
+    }()
 }
 
 struct CreateProfile: Codable {
