@@ -12,6 +12,7 @@
 		04C8BF1924361038004C276F /* ProfileCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C8BF1824361038004C276F /* ProfileCollectionViewController.swift */; };
 		04C8BF1F24362F10004C276F /* ProfileMatchCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C8BF1E24362F10004C276F /* ProfileMatchCollectionViewController.swift */; };
 		04C8BF232436588E004C276F /* MatchingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C8BF222436588E004C276F /* MatchingViewController.swift */; };
+		04E48AC62437554600A1C8DA /* PickerTextFieldManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E48AC52437554600A1C8DA /* PickerTextFieldManager.swift */; };
 		4032CFAF7A15238C0B4A518C /* Pods_Catfish_CatfishUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E412041373DC7AFF34CDE648 /* Pods_Catfish_CatfishUITests.framework */; };
 		9CC074782434FEC800EB37C3 /* GameCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC074772434FEC800EB37C3 /* GameCoordinator.swift */; };
 		8590C5782435002B004BC31C /* CFGameCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8590C5772435002A004BC31C /* CFGameCell.swift */; };
@@ -79,6 +80,7 @@
 		04C8BF1824361038004C276F /* ProfileCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileCollectionViewController.swift; sourceTree = "<group>"; };
 		04C8BF1E24362F10004C276F /* ProfileMatchCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileMatchCollectionViewController.swift; sourceTree = "<group>"; };
 		04C8BF222436588E004C276F /* MatchingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchingViewController.swift; sourceTree = "<group>"; };
+		04E48AC52437554600A1C8DA /* PickerTextFieldManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerTextFieldManager.swift; sourceTree = SOURCE_ROOT; };
 		0EACC25E6D37D990176363A4 /* Pods-Catfish.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Catfish.release.xcconfig"; path = "Target Support Files/Pods-Catfish/Pods-Catfish.release.xcconfig"; sourceTree = "<group>"; };
 		5B9975F0BB384C962280CA6E /* Pods-Catfish-CatfishUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Catfish-CatfishUITests.release.xcconfig"; path = "Target Support Files/Pods-Catfish-CatfishUITests/Pods-Catfish-CatfishUITests.release.xcconfig"; sourceTree = "<group>"; };
 		5CB728BBE6667CD78D729242 /* Pods_Catfish.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Catfish.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -311,6 +313,7 @@
 		C09580C224340B3C00E55916 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				04E48AC52437554600A1C8DA /* PickerTextFieldManager.swift */,
 				C09580C024340B3600E55916 /* Constants.swift */,
 			);
 			path = Utilities;
@@ -648,6 +651,7 @@
 				9CD918962432EADD00587BC0 /* SceneDelegate.swift in Sources */,
 				9CD918F72434EF1900587BC0 /* AuthEnums.swift in Sources */,
 				C09580D92435480700E55916 /* InputAccessoryViewController.swift in Sources */,
+				04E48AC62437554600A1C8DA /* PickerTextFieldManager.swift in Sources */,
 				C09580C724340D7F00E55916 /* CFPostImageView.swift in Sources */,
 				C09580CF2434150C00E55916 /* UIView+Extension.swift in Sources */,
 				9CD918DF2433B7A100587BC0 /* Post.swift in Sources */,
