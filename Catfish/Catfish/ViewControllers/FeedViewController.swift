@@ -11,38 +11,7 @@ import UIKit
 class FeedViewController: UIViewController {
     // MARK: - Properties
     
-    var posts: [Post] = [
-        Post(profile: Profile(name: "Bart Simpson"),
-             imageURL: "",
-             caption: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-             likes: [],
-             comments: []),
-        Post(profile: Profile(name: "Meg Ryan"),
-             imageURL: "",
-             caption: "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-             likes: [],
-             comments: []),
-        Post(profile: Profile(name: "Jake Peralta"),
-             imageURL: "",
-             caption: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
-             likes: [],
-             comments: []),
-        Post(profile: Profile(name: "John Mayer"),
-             imageURL: "",
-             caption: "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-             likes: [],
-             comments: []),
-        Post(profile: Profile(name: "Jennifer Lopez"),
-             imageURL: "",
-             caption: "Magna sit amet purus gravida quis blandit turpis cursus. Sed arcu non odio euismod lacinia at quis risus sed. Eget velit aliquet sagittis id.",
-             likes: [],
-             comments: []),
-        Post(profile: Profile(name: "Jimmy Fallon"),
-             imageURL: "",
-             caption: "Pellentesque massa placerat duis ultricies lacus sed turpis tincidunt.",
-             likes: [],
-             comments: []),
-    ]
+    var posts: [Post] = Post.mocks
     
     // MARK: - View Lifecycle
     

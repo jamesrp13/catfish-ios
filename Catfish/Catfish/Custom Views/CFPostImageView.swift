@@ -27,7 +27,7 @@ class CFPostImageView: UIImageView {
         image = placeholderImage
     }
     
-    func downloadImage(from url: String) {
+    func downloadImage(from url: URL) {
         // Network call to download image goes here
     }
 }
