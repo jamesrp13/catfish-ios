@@ -54,10 +54,10 @@ extension FeedViewController: UITableViewDataSource {
         }
         
         // Mock post
-        let post = Post(profile: Profile(name: "Jonny Appleseed", about: "", id: "4321"),
+        let post = Post(profile: Profile(username: "Jonny Appleseed", about: "", imageURL: URL(string: "")!, id: "4321"),
                         imageURL: URL(string: "")!,
                         caption: "Hey, look at me pick some apples from an apple tree!",
-                        likes: [],
+                        reactions: [],
                         comments: [],
                         id: "12345")
         

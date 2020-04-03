@@ -12,15 +12,12 @@ struct Post: Codable {
     var profile: Profile
     var imageURL: URL
     var caption: String
-    var likes: [Reaction]
+    var reactions: [Reaction]
     var comments: [Comment]
     var id: String
 }
 
 struct CreatePost: Codable {
-    var profile: Profile
-    var imageURL: URL
+    var profileID: String
     var caption: String
-    var likes: [Reaction]
-    var comments: [Comment]
 }

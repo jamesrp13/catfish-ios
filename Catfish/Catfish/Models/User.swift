@@ -8,10 +8,25 @@
 
 import Foundation
 
-struct User: Codable {
-    let firstName: String
-    let lastName: String
-    let email: String
-    let phone: String
-    let id: String
+protocol User {
+    var firstName: String { get }
+    var imageURL: URL { get }
+}
+
+struct CurrentUser: Codable, ProfileDisplayable, User {
+    var displayName: String { return firstName + " " + lastName }
+    var firstName: String
+    var lastName: String
+    var email: String
+    var phone: String
+    var imageURL: URL
+    var profiles: [Profile]
+    var uid: String
+}
+
+struct GameUser: Codable, ProfileDisplayable, User, Hashable {
+    var displayName: String { return firstName }
+    var imageURL: URL
+    var firstName: String
+    var uid: String
 }

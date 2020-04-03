@@ -29,7 +29,7 @@ class CFPostCell: UITableViewCell {
     
     func set(post: Post) {
         postImageView.downloadImage(from: post.imageURL)
-        userLabel.text = post.profile.name
+        userLabel.text = post.profile.username
         captionLabel.text = post.caption
     }
     

@@ -25,7 +25,7 @@ class NetworkController {
     // MARK: - Posts
 
     func createPost(post: Post, completion: @escaping (Response<Bool, NetworkError>) -> Void) {
-        let url = baseURL.appendingPathComponent("post")
+        let url = baseURL.appendingPathComponent("posts")
         guard let resource = try? URLPostableResource<Bool, Post>(url: url, object: post, method: .post, headers: createAuthHeaders()) else {
             completion(.failure(.badEncode))
             return
@@ -47,9 +47,9 @@ class NetworkController {
 
     // MARK: - User
     
-    func getUser(completion: @escaping (Response<User, NetworkError>) -> Void) {
-        let url = baseURL.appendingPathComponent("user")
-        guard let resource = try? URLResource<User>(url: url, headers: createAuthHeaders()) else {
+    func getCurrentUser(completion: @escaping (Response<CurrentUser, NetworkError>) -> Void) {
+        let url = baseURL.appendingPathComponent("users")
+        guard let resource = try? URLResource<CurrentUser>(url: url, headers: createAuthHeaders()) else {
             completion(.failure(.badURL))
             return
         }
@@ -57,9 +57,20 @@ class NetworkController {
         load(resource, completion: completion)
     }
     
-    func createUser(user: User, completion: @escaping (Response<Bool, NetworkError>) -> Void) {
+    func getProfiles(for instance: GameInstance, completion: @escaping (Response<[GameUser], NetworkError>) -> Void) {
+        let url = baseURL.appendingPathComponent("users")
+        let queries = [URLQueryItem(name: "instanceID", value: instance.id)]
+        guard let resource = try? URLResource<[GameUser]>(url: url, queries: queries, headers: createAuthHeaders()) else {
+            completion(.failure(.badURL))
+            return
+        }
+        
+        load(resource, completion: completion)
+    }
+    
+    func createUser(user: CurrentUser, completion: @escaping (Response<Bool, NetworkError>) -> Void) {
         let url = baseURL.appendingPathComponent("user")
-        guard let resource = try? URLPostableResource<Bool, User>(url: url, object: user, method: .post, headers: createAuthHeaders()) else {
+        guard let resource = try? URLPostableResource<Bool, CurrentUser>(url: url, object: user, method: .post, headers: createAuthHeaders()) else {
             completion(.failure(.badEncode))
             return
         }
@@ -136,4 +147,6 @@ class NetworkController {
     func createAuthHeaders() -> [String: String] {
         fatalError("Not implemented")
     }
+    
+    // TODO: Create Image Upload method
 }

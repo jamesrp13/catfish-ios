@@ -14,6 +14,7 @@
 		9C77E2392436C4EF008B63C2 /* URLResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C77E2382436C4EF008B63C2 /* URLResource.swift */; };
 		9C77E23F2436DD52008B63C2 /* NetworkingEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C77E23E2436DD52008B63C2 /* NetworkingEnums.swift */; };
 		9C77E2412437A9E0008B63C2 /* URLPostableResources.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C77E2402437A9E0008B63C2 /* URLPostableResources.swift */; };
+		9C77E2432437C997008B63C2 /* Guess.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C77E2422437C997008B63C2 /* Guess.swift */; };
 		9CC074782434FEC800EB37C3 /* GameCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC074772434FEC800EB37C3 /* GameCoordinator.swift */; };
 		9CD918942432EADD00587BC0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD918932432EADD00587BC0 /* AppDelegate.swift */; };
 		9CD918962432EADD00587BC0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD918952432EADD00587BC0 /* SceneDelegate.swift */; };
@@ -24,7 +25,7 @@
 		9CD918AB2432EAE000587BC0 /* CatfishTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD918AA2432EAE000587BC0 /* CatfishTests.swift */; };
 		9CD918B62432EAE000587BC0 /* CatfishUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD918B52432EAE000587BC0 /* CatfishUITests.swift */; };
 		9CD918DC2433B7A100587BC0 /* GameInstance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD918D62433B7A100587BC0 /* GameInstance.swift */; };
-		9CD918DD2433B7A100587BC0 /* Like.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD918D72433B7A100587BC0 /* Like.swift */; };
+		9CD918DD2433B7A100587BC0 /* Reaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD918D72433B7A100587BC0 /* Reaction.swift */; };
 		9CD918DE2433B7A100587BC0 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD918D82433B7A100587BC0 /* Profile.swift */; };
 		9CD918DF2433B7A100587BC0 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD918D92433B7A100587BC0 /* Post.swift */; };
 		9CD918E02433B7A100587BC0 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD918DA2433B7A100587BC0 /* User.swift */; };
@@ -84,6 +85,7 @@
 		9C77E2382436C4EF008B63C2 /* URLResource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLResource.swift; sourceTree = "<group>"; };
 		9C77E23E2436DD52008B63C2 /* NetworkingEnums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingEnums.swift; sourceTree = "<group>"; };
 		9C77E2402437A9E0008B63C2 /* URLPostableResources.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLPostableResources.swift; sourceTree = "<group>"; };
+		9C77E2422437C997008B63C2 /* Guess.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Guess.swift; sourceTree = "<group>"; };
 		9CC074772434FEC800EB37C3 /* GameCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameCoordinator.swift; sourceTree = "<group>"; };
 		9CD918902432EADD00587BC0 /* Catfish.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Catfish.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9CD918932432EADD00587BC0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -100,7 +102,7 @@
 		9CD918B52432EAE000587BC0 /* CatfishUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatfishUITests.swift; sourceTree = "<group>"; };
 		9CD918B72432EAE000587BC0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9CD918D62433B7A100587BC0 /* GameInstance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GameInstance.swift; path = Models/GameInstance.swift; sourceTree = "<group>"; };
-		9CD918D72433B7A100587BC0 /* Like.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Like.swift; path = Models/Like.swift; sourceTree = "<group>"; };
+		9CD918D72433B7A100587BC0 /* Reaction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Reaction.swift; path = Models/Reaction.swift; sourceTree = "<group>"; };
 		9CD918D82433B7A100587BC0 /* Profile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Profile.swift; path = Models/Profile.swift; sourceTree = "<group>"; };
 		9CD918D92433B7A100587BC0 /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Post.swift; path = Models/Post.swift; sourceTree = "<group>"; };
 		9CD918DA2433B7A100587BC0 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = User.swift; path = Models/User.swift; sourceTree = "<group>"; };
@@ -241,7 +243,8 @@
 			children = (
 				9CD918DB2433B7A100587BC0 /* Comment.swift */,
 				9CD918D62433B7A100587BC0 /* GameInstance.swift */,
-				9CD918D72433B7A100587BC0 /* Like.swift */,
+				9C77E2422437C997008B63C2 /* Guess.swift */,
+				9CD918D72433B7A100587BC0 /* Reaction.swift */,
 				9CD918D92433B7A100587BC0 /* Post.swift */,
 				9CD918D82433B7A100587BC0 /* Profile.swift */,
 				9CD918DA2433B7A100587BC0 /* User.swift */,
@@ -647,13 +650,14 @@
 				9CD918DF2433B7A100587BC0 /* Post.swift in Sources */,
 				9C77E2412437A9E0008B63C2 /* URLPostableResources.swift in Sources */,
 				C09580BE24340A6900E55916 /* CFPostCell.swift in Sources */,
+				9C77E2432437C997008B63C2 /* Guess.swift in Sources */,
 				9CD918EC2433D7E400587BC0 /* LoadingViewController.swift in Sources */,
 				9CD918E12433B7A100587BC0 /* Comment.swift in Sources */,
 				9CD918FA2434F0F200587BC0 /* CoordinatorProtocols.swift in Sources */,
 				9CC074782434FEC800EB37C3 /* GameCoordinator.swift in Sources */,
 				8590C5782435002B004BC31C /* CFGameCell.swift in Sources */,
 				C09580D6243547F700E55916 /* FeedViewController.swift in Sources */,
-				9CD918DD2433B7A100587BC0 /* Like.swift in Sources */,
+				9CD918DD2433B7A100587BC0 /* Reaction.swift in Sources */,
 				C09580DA2435480700E55916 /* NewGameViewController.swift in Sources */,
 				9C77E23524366C2E008B63C2 /* NetworkingProtocols.swift in Sources */,
 			);

@@ -9,9 +9,8 @@
 import Foundation
 
 struct Comment: Codable {
-    var postID: String
     var text: String
-    var author: Profile
+    var profile: Profile
     var id: String
 }
 
