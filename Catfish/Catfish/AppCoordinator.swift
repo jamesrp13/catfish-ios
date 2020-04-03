@@ -12,9 +12,10 @@ protocol AppCoordinatorDelegate: class {
     func handleAppCoordinatorRootChanged()
 }
 
-class AppCoordinator: AuthServiceDelegate {
+class AppCoordinator: ParentCoordinator, AuthServiceDelegate {
+    var rootViewController: UIViewController = LoadingViewController()
     
-    var rootViewController: UIViewController?
+    var children: [ChildCoordinator] = []
     
     weak var delegate: AppCoordinatorDelegate?
     
@@ -23,7 +24,6 @@ class AppCoordinator: AuthServiceDelegate {
     init(authService: AuthServiceProtocol) {
         self.authService = authService
         self.authService.delegate = self
-        
         setVC(authStatus: authService.authStatus)
         
     }
@@ -37,10 +37,37 @@ class AppCoordinator: AuthServiceDelegate {
         case .unknown:
             rootViewController = LoadingViewController()
         case .authenticated:
-            print("To Do")
-            // TODO: - add main view controller
+            children.removeAll(where: {!($0 is GameCoordinator)})
+            
+            let gameCoordinator: GameCoordinator
+            
+            if let coordinator = children.first(where: {$0 is GameCoordinator}) {
+                gameCoordinator = coordinator as! GameCoordinator
+            } else {
+                let coordinator = GameCoordinator()
+                children.append(coordinator)
+                gameCoordinator = coordinator
+            }
+            
+            rootViewController = gameCoordinator.rootViewController
         case .unauthenticated:
-            rootViewController = authService.authViewController
+            children.removeAll(where: {!($0 is AuthCoordinator)})
+            
+            let authCoordinator: AuthCoordinator
+            
+            if let coordinator = children.first(where: {$0 is AuthCoordinator}) {
+                authCoordinator = coordinator as! AuthCoordinator
+            } else {
+                let authService = FirebaseAuthService()
+                let coordinator = AuthCoordinator(authService: authService, authUIProvider: authService)
+                children.append(coordinator)
+                authCoordinator = coordinator
+            }
+            
+            rootViewController = authCoordinator.rootViewController
+        case let .error(error):
+            // TODO: - What to do here?
+            print(error)
         }
     }
 }

@@ -10,30 +10,21 @@ import UIKit
 import FirebaseAuth
 import FirebaseUI
 
-enum AuthStatus {
-    case unknown, authenticated, unauthenticated
-}
-
-enum Response<T, U: Error> {
-    case success(T)
-    case failure(U)
-}
-
-enum AuthError: Error {
-    case unknown
-}
-
 protocol AuthServiceDelegate: class {
     func handleNewAuthStatus(_ status: AuthStatus)
 }
 
 protocol AuthServiceProtocol {
-    var authViewController: UIViewController { get }
     var delegate: AuthServiceDelegate? { get set }
     var authStatus: AuthStatus { get }
+    func getToken(completion: @escaping (Result<String, AuthError>) -> Void)
 }
 
-class FirebaseAuthService: NSObject, AuthServiceProtocol, FUIAuthDelegate {
+protocol AuthUIProvider {
+    var authViewController: UIViewController { get }
+}
+
+class FirebaseAuthService: NSObject, AuthServiceProtocol, FUIAuthDelegate, AuthUIProvider {
     lazy var authViewController: UIViewController = { [weak self] in
         return authUI.authViewController()
     }()
@@ -45,6 +36,8 @@ class FirebaseAuthService: NSObject, AuthServiceProtocol, FUIAuthDelegate {
             delegate?.handleNewAuthStatus(authStatus)
         }
     }
+    
+    private var user: FirebaseAuth.User?
     
     private var authUI: FUIAuth
     
@@ -68,17 +61,40 @@ class FirebaseAuthService: NSObject, AuthServiceProtocol, FUIAuthDelegate {
     
     func authUI(_ authUI: FUIAuth, didSignInWith authDataResult: AuthDataResult?, error: Error?) {
         if let error = error {
-            print(error)
+            authStatus = .error(.unknown(error))
             return
         }
         
+        guard let result = authDataResult else {
+            authStatus = .error(.unknown(nil))
+            return
+        }
         
-        print(authDataResult?.user ?? "")
-        print(authDataResult?.additionalUserInfo ?? "")
-        print(authDataResult?.credential ?? "")
+        user = result.user
     }
     
     func setAuthStatus(from auth: FirebaseAuth.Auth) {
         authStatus = auth.currentUser == nil ? .unauthenticated : .authenticated
+    }
+    
+    func getToken(completion: @escaping (Result<String, AuthError>) -> Void) {
+        guard let user = user else {
+            completion(.failure(.unauthenticated(nil)))
+            return
+        }
+        
+        user.getIDToken(completion: { (token, error) in
+            if let error = error {
+                completion(.failure(.unknown(error)))
+                return
+            }
+            
+            guard let token = token else {
+                completion(.failure(.unknown(nil)))
+                return
+            }
+            
+            completion(.success(token))
+        })
     }
 }
