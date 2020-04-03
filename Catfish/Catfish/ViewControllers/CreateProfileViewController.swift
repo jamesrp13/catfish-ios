@@ -62,7 +62,7 @@ class CreateProfileViewController: UIViewController {
     private lazy var bioTextView: UITextView = {
         let bioTextView = UITextView()
         bioTextView.translatesAutoresizingMaskIntoConstraints = false
-        bioTextView.heightAnchor.constraint(equalToConstant: 200).isActive = true
+        bioTextView.heightAnchor.constraint(equalToConstant: 220).isActive = true
         
         bioTextView.layer.borderColor = UIColor.systemGray4.cgColor
         bioTextView.layer.borderWidth = 1.0
