@@ -20,6 +20,7 @@ class NewGameViewController: UIViewController {
     // MARK: - Private Properties
     
     private let inputAccessoryVC = InputAccessoryViewController()
+    private var durationManager: PickerTextFieldManager?
     
     // Views:
     
@@ -35,7 +36,7 @@ class NewGameViewController: UIViewController {
     }()
     
     private let gameDurationLabel = UILabel(text: "Game Duration:")
-    private let gameDurationTextField: UITextField = {
+    private lazy var gameDurationTextField: UITextField = {
         let gameDurationTextField = UITextField(placeholder: nil)
         gameDurationTextField.text = "7 Days"
         
@@ -43,7 +44,8 @@ class NewGameViewController: UIViewController {
         gameDurationTextField.layer.borderWidth = 1.0
         gameDurationTextField.layer.cornerRadius = 5.0
         
-        gameDurationTextField.inputView = UIPickerView()
+        durationManager = PickerTextFieldManager(textField: gameDurationTextField, options: ["3 Days", "5 Days", "7 Days"], initialIndex: 2)
+        
         return gameDurationTextField
     }()
     private lazy var gameDurationHStack: UIStackView = {
@@ -106,6 +108,7 @@ class NewGameViewController: UIViewController {
         ])
     }
 }
+
 
 
 
