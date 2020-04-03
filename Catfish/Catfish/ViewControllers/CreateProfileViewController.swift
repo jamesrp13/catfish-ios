@@ -36,6 +36,27 @@ class CreateProfileViewController: UIViewController {
         return nameVStack
     }()
     
+    private let profilePicImageView: CircularImageView = {
+        let profilePic = CircularImageView(width: 150, image: UIImage(systemName: "person.circle.fill"))
+        profilePic.tintColor = Colors.purple
+        return profilePic
+    }()
+    private let uploadButton: UIButton = {
+        let uploadButton = UIButton()
+        uploadButton.setTitle("Upload your Catfish profile picture", for: .normal)
+        uploadButton.setTitleColor(Colors.purple, for: .normal)
+        uploadButton.titleLabel?.font = .systemFont(ofSize: 16)
+        uploadButton.addTarget(self, action: #selector(uploadButtonTapped), for: .touchUpInside)
+        return uploadButton
+    }()
+    private lazy var profilePicVStack: UIStackView = {
+        let profilePicVStack = UIStackView(arrangedSubviews: [profilePicImageView, uploadButton])
+        profilePicVStack.axis = .vertical
+        profilePicVStack.alignment = .center
+        
+        return profilePicVStack
+    }()
+    
     private let bioLabel = UILabel(text: "Bio:")
     private let bioPlaceholder = "Say something about yourself..."
     private lazy var bioTextView: UITextView = {
@@ -50,7 +71,6 @@ class CreateProfileViewController: UIViewController {
         textViewPlaceholderManager = TextViewPlaceholderManager(textView: bioTextView, placeholder: bioPlaceholder)
         return bioTextView
     }()
-    
     private lazy var bioVStack: UIStackView = {
         let bioVStack = UIStackView(arrangedSubviews: [bioLabel, bioTextView])
         bioVStack.axis = .vertical
@@ -60,11 +80,12 @@ class CreateProfileViewController: UIViewController {
     
     private lazy var mainVStack = UIStackView(arrangedSubviews: [
         createProfileLabel,
+        profilePicVStack,
         nameVStack,
         bioVStack
     ])
     
-    private let createButton = CFButton(backgroundColor: Colors.purple, title: "Create", image: nil)
+    private let catfishButton = CFButton(backgroundColor: Colors.purple, title: "Catfish!", image: nil)
     
     // MARK: - Private Methods
     
@@ -89,13 +110,19 @@ class CreateProfileViewController: UIViewController {
             mainVStack.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
         ])
         
-        createButton.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(createButton)
+        catfishButton.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(catfishButton)
         
         NSLayoutConstraint.activate([
-            createButton.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
-            createButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -20)
+            catfishButton.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
+            catfishButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -20)
         ])
+    }
+    
+    // MARK: - Actions
+    
+    @objc private func uploadButtonTapped() {
+        
     }
 }
 
