@@ -12,14 +12,20 @@ private let reuseIdentifier = "Profile Cell"
 
 class ProfileMatchCollectionViewController: UICollectionViewController {
     
-    // MARK: - Publice
-    
-    let realLifeProfiles = [Profile]()
+    // MARK: - Public
 
-    typealias Match = (catFishProfile: Profile, realLifeProfile: Profile?)
+    typealias Match = (catfishProfile: Profile, gameUser: GameUser?)
     
     
-    var matches: [Match] = []
+    var matches: [Match] = {
+        var matches = [Match]()
+        
+        for i in 0..<Profile.mocks.count {
+            matches.append(Match(Profile.mocks[i], nil))
+        }
+        
+        return matches
+    }()
     
     // MARK: - Init
     
@@ -32,7 +38,7 @@ class ProfileMatchCollectionViewController: UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView.backgroundColor = .white
-        collectionView.register(CFProfileCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+        collectionView.register(CFProfileDisplayableCell.self, forCellWithReuseIdentifier: reuseIdentifier)
         collectionView.dragDelegate = self
         collectionView.dropDelegate = self
         collectionView.dragInteractionEnabled = true
@@ -50,18 +56,18 @@ class ProfileMatchCollectionViewController: UICollectionViewController {
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as? CFProfileCell else {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as? CFProfileDisplayableCell else {
             fatalError("Unable to cast cell as CFProfileCell")
         }
     
         let match = matches[indexPath.section]
         
         if indexPath.row == 0 {
-            let profile = match.catFishProfile
+            let profile = match.catfishProfile
             cell.set(state: .filled(profile), imageSize: 50, labelFont: .systemFont(ofSize: 16, weight: .bold), layoutAxis: .horizontal)
         } else if indexPath.row == 1 {
-            if let profile = match.realLifeProfile {
-                cell.set(state: .filled(profile), imageSize: 50, imageOnly: true)
+            if let gameUser = match.gameUser {
+                cell.set(state: .filled(gameUser), imageSize: 50, imageOnly: true)
             } else {
                 cell.set(state: .empty, imageSize: 50, imageOnly: true)
             }
@@ -105,12 +111,12 @@ extension ProfileMatchCollectionViewController: UICollectionViewDragDelegate {
     
     private func dragItems(at indexPath: IndexPath) -> [UIDragItem] {
         guard indexPath.item == 1,
-            let profile = matches[indexPath.section].realLifeProfile else { return [] }
+            let gameUser = matches[indexPath.section].gameUser else { return [] }
         
-        let name = profile.username as NSString
+        let name = gameUser.displayName as NSString
 
         let dragItem = UIDragItem(itemProvider: NSItemProvider(object: name))
-        dragItem.localObject = profile
+        dragItem.localObject = gameUser
         return [dragItem]
     }
 }
@@ -150,9 +156,9 @@ extension ProfileMatchCollectionViewController: UICollectionViewDropDelegate {
                 guard let sourceIndexPath = item.sourceIndexPath else { continue }
                 
                 collectionView.performBatchUpdates({
-                    let profile = matches[sourceIndexPath.section].realLifeProfile
-                    matches[sourceIndexPath.section].realLifeProfile = nil
-                    matches[destinationIndexPath.section].realLifeProfile = profile
+                    let gameUser = matches[sourceIndexPath.section].gameUser
+                    matches[sourceIndexPath.section].gameUser = nil
+                    matches[destinationIndexPath.section].gameUser = gameUser
                     collectionView.deleteItems(at: [sourceIndexPath])
                     collectionView.reloadItems(at: [destinationIndexPath])
                 })
@@ -160,10 +166,10 @@ extension ProfileMatchCollectionViewController: UICollectionViewDropDelegate {
         } else {
             
             for item in coordinator.items {
-                guard let profile = item.dragItem.localObject as? Profile else { continue }
+                guard let profile = item.dragItem.localObject as? GameUser else { continue }
                 
                 collectionView.performBatchUpdates({
-                    matches[destinationIndexPath.section].realLifeProfile = profile
+                    matches[destinationIndexPath.section].gameUser = profile
                     collectionView.reloadItems(at: [destinationIndexPath])
                 })
                 

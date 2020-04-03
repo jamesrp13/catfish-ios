@@ -10,10 +10,10 @@ import UIKit
 
 private let reuseIdentifier = "Profile Cell"
 
-class ProfileCollectionViewController: UICollectionViewController {
+class GameUserCollectionViewController: UICollectionViewController {
     
     // MARK: - Properties
-    let profiles = Profile.mocks
+    let gameUsers = GameUser.mocks
     
     // MARK: - Init
     
@@ -31,7 +31,7 @@ class ProfileCollectionViewController: UICollectionViewController {
         
         collectionView.backgroundColor = .white
         collectionView.showsHorizontalScrollIndicator = false
-        collectionView.register(CFProfileCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+        collectionView.register(CFProfileDisplayableCell.self, forCellWithReuseIdentifier: reuseIdentifier)
         
         collectionView.dragDelegate = self
         
@@ -43,16 +43,16 @@ class ProfileCollectionViewController: UICollectionViewController {
     // MARK: Collection View Data Source
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return profiles.count
+        return gameUsers.count
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as? CFProfileCell else {
-            fatalError("Unable to cast cell as CFProfileCell")
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as? CFProfileDisplayableCell else {
+            fatalError("Unable to cast cell as CFProfileDisplayableCell")
         }
         
-        let profile = profiles[indexPath.row]
-        cell.set(state: .filled(profile))
+        let gameUser = gameUsers[indexPath.row]
+        cell.set(state: .filled(gameUser))
         
         return cell
     }
@@ -60,7 +60,7 @@ class ProfileCollectionViewController: UICollectionViewController {
 
 // MARK: - Drag Delegate
 
-extension ProfileCollectionViewController: UICollectionViewDragDelegate {
+extension GameUserCollectionViewController: UICollectionViewDragDelegate {
     func collectionView(_ collectionView: UICollectionView, itemsForBeginning session: UIDragSession, at indexPath: IndexPath) -> [UIDragItem] {
         session.localContext = collectionView
         return dragItems(at: indexPath)
@@ -71,11 +71,11 @@ extension ProfileCollectionViewController: UICollectionViewDragDelegate {
     }
     
     private func dragItems(at indexPath: IndexPath) -> [UIDragItem] {
-        let profile = profiles[indexPath.row]
-        let name = profile.username as NSString
+        let gameUser = gameUsers[indexPath.row]
+        let name = gameUser.displayName as NSString
         
         let dragItem = UIDragItem(itemProvider: NSItemProvider(object: name))
-        dragItem.localObject = profile
+        dragItem.localObject = gameUser
         return [dragItem]
     }
 }

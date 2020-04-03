@@ -8,8 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		04C8BF1524360E3E004C276F /* CircularImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C8BF1424360E3E004C276F /* CircularImageView.swift */; };
-		04C8BF1724360FE5004C276F /* CFProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C8BF1624360FE5004C276F /* CFProfileCell.swift */; };
-		04C8BF1924361038004C276F /* ProfileCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C8BF1824361038004C276F /* ProfileCollectionViewController.swift */; };
+		04C8BF1724360FE5004C276F /* CFProfileDisplayableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C8BF1624360FE5004C276F /* CFProfileDisplayableCell.swift */; };
+		04C8BF1924361038004C276F /* GameUserCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C8BF1824361038004C276F /* GameUserCollectionViewController.swift */; };
 		04C8BF1F24362F10004C276F /* ProfileMatchCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C8BF1E24362F10004C276F /* ProfileMatchCollectionViewController.swift */; };
 		04C8BF232436588E004C276F /* MatchingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C8BF222436588E004C276F /* MatchingViewController.swift */; };
 		04E48AC62437554600A1C8DA /* PickerTextFieldManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E48AC52437554600A1C8DA /* PickerTextFieldManager.swift */; };
@@ -81,8 +81,8 @@
 /* Begin PBXFileReference section */
 		02AF1F8487090E63EA08AB09 /* Pods-Catfish-CatfishUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Catfish-CatfishUITests.debug.xcconfig"; path = "Target Support Files/Pods-Catfish-CatfishUITests/Pods-Catfish-CatfishUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		04C8BF1424360E3E004C276F /* CircularImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircularImageView.swift; sourceTree = "<group>"; };
-		04C8BF1624360FE5004C276F /* CFProfileCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CFProfileCell.swift; sourceTree = "<group>"; };
-		04C8BF1824361038004C276F /* ProfileCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileCollectionViewController.swift; sourceTree = "<group>"; };
+		04C8BF1624360FE5004C276F /* CFProfileDisplayableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CFProfileDisplayableCell.swift; sourceTree = "<group>"; };
+		04C8BF1824361038004C276F /* GameUserCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameUserCollectionViewController.swift; sourceTree = "<group>"; };
 		04C8BF1E24362F10004C276F /* ProfileMatchCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileMatchCollectionViewController.swift; sourceTree = "<group>"; };
 		04C8BF222436588E004C276F /* MatchingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchingViewController.swift; sourceTree = "<group>"; };
 		04E48AC52437554600A1C8DA /* PickerTextFieldManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerTextFieldManager.swift; sourceTree = SOURCE_ROOT; };
@@ -277,7 +277,7 @@
 			children = (
 				9CD918972432EADD00587BC0 /* ViewController.swift */,
 				C09580D5243547F700E55916 /* FeedViewController.swift */,
-				04C8BF1824361038004C276F /* ProfileCollectionViewController.swift */,
+				04C8BF1824361038004C276F /* GameUserCollectionViewController.swift */,
 				04C8BF1E24362F10004C276F /* ProfileMatchCollectionViewController.swift */,
 				04C8BF222436588E004C276F /* MatchingViewController.swift */,
 				C09580D72435480700E55916 /* InputAccessoryViewController.swift */,
@@ -316,7 +316,7 @@
 				C09580C624340D7F00E55916 /* CFPostImageView.swift */,
 				8590C5772435002A004BC31C /* CFGameCell.swift */,
 				04C8BF1424360E3E004C276F /* CircularImageView.swift */,
-				04C8BF1624360FE5004C276F /* CFProfileCell.swift */,
+				04C8BF1624360FE5004C276F /* CFProfileDisplayableCell.swift */,
 			);
 			path = "Custom Views";
 			sourceTree = "<group>";
@@ -641,11 +641,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				04C8BF1724360FE5004C276F /* CFProfileCell.swift in Sources */,
+				04C8BF1724360FE5004C276F /* CFProfileDisplayableCell.swift in Sources */,
 				04C8BF1524360E3E004C276F /* CircularImageView.swift in Sources */,
 				C09580C924340EE300E55916 /* CFButton.swift in Sources */,
 				C09580CB24340FCE00E55916 /* CFTitleLabel.swift in Sources */,
-				04C8BF1924361038004C276F /* ProfileCollectionViewController.swift in Sources */,
+				04C8BF1924361038004C276F /* GameUserCollectionViewController.swift in Sources */,
 				C09580C424340B7D00E55916 /* NetworkController.swift in Sources */,
 				04C8BF232436588E004C276F /* MatchingViewController.swift in Sources */,
 				9CD918EE2433D8CE00587BC0 /* AppCoordinator.swift in Sources */,
