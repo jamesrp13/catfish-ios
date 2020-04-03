@@ -9,10 +9,14 @@
 import UIKit
 
 class CFProfileCell: UICollectionViewCell {
+    enum State {
+        case filled(Profile)
+        case empty
+    }
     
     // MARK: - Public Methods
     
-    func set(profile: Profile,
+    func set(state: State,
              imageSize: CGFloat = 50,
              imageOnly: Bool = false,
              labelFont: UIFont = UIFont.systemFont(ofSize: 14, weight: .bold),
@@ -21,7 +25,7 @@ class CFProfileCell: UICollectionViewCell {
         self.imageOnly = imageOnly
         self.labelFont = labelFont
         self.layoutAxis = layoutAxis
-        updateViews(with: profile)
+        updateViews(with: state)
     }
     
     // MARK: - Initialization
@@ -64,17 +68,21 @@ class CFProfileCell: UICollectionViewCell {
         imageView.image = Images.postPlaceholder
     }
     
-    private func updateViews(with profile: Profile) {
-        imageView.setWidth(imageSize)
-        nameLabel.isHidden = imageOnly
-        nameLabel.font = labelFont
-        nameLabel.textAlignment = layoutAxis == .vertical ? .center : .left
-        stackView.spacing = layoutAxis == .vertical ? 0 : 12
-        stackView.axis = layoutAxis
-        
-        // Fetch image
-        
-        nameLabel.text = profile.name
+    private func updateViews(with state: State) {
+        if case let .filled(profile) = state {
+            imageView.setWidth(imageSize)
+            nameLabel.isHidden = imageOnly
+            nameLabel.font = labelFont
+            nameLabel.textAlignment = layoutAxis == .vertical ? .center : .left
+            stackView.spacing = layoutAxis == .vertical ? 0 : 12
+            stackView.axis = layoutAxis
+            
+            // Fetch image
+            
+            nameLabel.text = profile.username
+        } else {
+            // TODO: What does empty look like?
+        }
     }
 }
 

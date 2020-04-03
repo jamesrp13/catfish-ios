@@ -8,5 +8,16 @@
 
 import Foundation
 
-struct GameInstance: Codable, Equatable {
+struct GameInstance: Codable {
+    var id: String
+    var name: String
+    var imageURL: URL?
+    var members: [Profile]
+    var inviteCode: String
 }
+
+struct CreateGameInstance: Codable {
+    var name: String
+}
+
+// TODO: Endpoint for adding profiles to game instance

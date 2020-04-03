@@ -9,9 +9,19 @@
 import Foundation
 
 struct Post: Codable {
-    let profile: Profile
-    let imageURL: String
-    let caption: String
-    let likes: [Like]
-    let comments: [Comment]
+    var profile: Profile
+    var imageURL: URL
+    var caption: String
+    var reactions: [Reaction]
+    var comments: [Comment]
+    var id: String
+    
+    static var mocks: [Post] = {
+        return Profile.mocks.map { Post(profile: $0, imageURL: $0.imageURL, caption: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.", reactions: [], comments: [], id: $0.id)}
+    }()
+}
+
+struct CreatePost: Codable {
+    var profileID: String
+    var caption: String
 }
