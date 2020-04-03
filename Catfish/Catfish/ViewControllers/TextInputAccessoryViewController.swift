@@ -65,13 +65,7 @@ class TextInputAccessoryViewController: UIViewController {
     }
     
     deinit {
-        for textInput in managedTextInputs {
-            if let textField = textInput as? UITextField {
-                NotificationCenter.default.removeObserver(self, name: UITextField.textDidBeginEditingNotification, object: textField)
-            } else if let textView = textInput as? UITextView {
-                NotificationCenter.default.removeObserver(self, name: UITextView.textDidBeginEditingNotification, object: textView)
-            }
-        }
+        NotificationCenter.default.removeObserver(self)
     }
     
     // MARK: - Private Properties
