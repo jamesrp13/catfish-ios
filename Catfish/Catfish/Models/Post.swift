@@ -9,9 +9,18 @@
 import Foundation
 
 struct Post: Codable {
-    let profile: Profile
-    let imageURL: String
-    let caption: String
-    let likes: [Like]
-    let comments: [Comment]
+    var profile: Profile
+    var imageURL: URL
+    var caption: String
+    var likes: [Like]
+    var comments: [Comment]
+    var id: String
+}
+
+struct CreatePost: Codable {
+    var profile: Profile
+    var imageURL: URL
+    var caption: String
+    var likes: [Like]
+    var comments: [Comment]
 }

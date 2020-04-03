@@ -9,6 +9,14 @@
 import Foundation
 
 struct Comment: Codable {
-    let post: Post
-    let text: String
+    var postID: String
+    var text: String
+    var author: Profile
+    var id: String
+}
+
+struct CreateComment: Codable {
+    var postID: String
+    var text: String
+    var author: Profile
 }

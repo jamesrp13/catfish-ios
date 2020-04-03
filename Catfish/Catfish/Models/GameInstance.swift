@@ -9,4 +9,5 @@
 import Foundation
 
 struct GameInstance: Codable, Equatable {
+    var id: String
 }

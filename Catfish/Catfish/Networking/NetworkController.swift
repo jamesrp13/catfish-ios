@@ -8,28 +8,13 @@
 
 import UIKit
 
-enum NetworkError: Error {
-    case badDecode
-    case badEncode
-    case noData
-}
-
-enum HTTPMethod {
-    static let get = "GET"
-    static let put = "PUT"
-    static let post = "POST"
-    static let delete = "DELETE"
-}
-
 class NetworkController {
 
     // MARK: - Properties
 
-    var userController: UserController?
-    var authService: AuthServiceProtocol
+    private let authService: AuthServiceProtocol
     private let baseURL = URL(string: "URL HERE!!!")!
-    let cache = NSCache<NSString, UIImage>()
-    let method: String = HTTPMethod.post
+
     
     // MARK: - Lifecycle Methods
     
@@ -38,131 +23,117 @@ class NetworkController {
     }
     
     // MARK: - Posts
-    
-    func sendPostToServer(post: Post, completion: @escaping (Result<Post, Error>) -> Void) {
-        guard let postJSON = encode(item: post) else {
-            completion(.failure(NetworkError.badEncode))
+
+    func createPost(post: Post, completion: @escaping (Response<Bool, NetworkError>) -> Void) {
+        let url = baseURL.appendingPathComponent("post")
+        guard let resource = try? URLPostableResource<Bool, Post>(url: url, object: post, method: .post, headers: createAuthHeaders()) else {
+            completion(.failure(.badEncode))
             return
         }
-        var request = postURL(from: baseURL, method: HTTPMethod.post)
-        request.httpBody = postJSON
-        
-        perform(request) { result in
-            switch result {
-            case .failure(let error):
-                completion(.failure(error))
-            case .success(let data):
-                // Not sure what data we get back here
-                print(String(data: data, encoding: .utf8)!)
-            }
+            
+        load(resource, completion: completion)
+    }
+    
+    func getPosts(for instance: GameInstance, completion: @escaping (Response<[Post], NetworkError>) -> Void) {
+        let url = baseURL.appendingPathComponent("posts")
+        let queries = [URLQueryItem(name: "instanceID", value: instance.id)]
+        guard let resource = try? URLResource<[Post]>(url: url, queries: queries, method: .post, headers: createAuthHeaders()) else {
+            completion(.failure(.badURL))
+            return
         }
+        
+        load(resource, completion: completion)
     }
 
     // MARK: - User
-
-    func register(with username: String, password: String, email: String, completion: @escaping (Result<User, Error>) -> Void) {
-        let userToRegister = createUserJSON(username, password, and: email)
-        let token = ""// authService.getToken(completion: <#T##(Result<String, AuthError>) -> Void#>)
-        var request = userURL(from: baseURL, method: HTTPMethod.post, token: token)
-        request.httpBody = userToRegister
+    
+    func getUser(completion: @escaping (Response<User, NetworkError>) -> Void) {
+        let url = baseURL.appendingPathComponent("user")
+        guard let resource = try? URLResource<User>(url: url, headers: createAuthHeaders()) else {
+            completion(.failure(.badURL))
+            return
+        }
         
-        perform(request) { result in
-            switch result {
-            case .failure(let error):
-                print("Register error: \(error)")
-                completion(.failure(error))
-            case .success(let data):
-                // This is not actually going to be a user, it will be 
-                guard let returnedUser: ReturnedUser = self.decode(data: data) else {
-                    completion(.failure(NetworkError.badDecode))
-                    return
-                }
-                let user = User(username: username, password: password, email: email, id: returnedUser.id, token: returnedUser.token)
-                self.userController?.user = user
-            }
-        }
+        load(resource, completion: completion)
     }
-
-    private func createUserJSON(_ username: String, _ password: String, and email: String) -> Data? {
-        let json = """
-        {
-        "username": "\(username)",
-        "password": "\(password)",
-        "email": "\(email)"
+    
+    func createUser(user: User, completion: @escaping (Response<Bool, NetworkError>) -> Void) {
+        let url = baseURL.appendingPathComponent("user")
+        guard let resource = try? URLPostableResource<Bool, User>(url: url, object: user, method: .post, headers: createAuthHeaders()) else {
+            completion(.failure(.badEncode))
+            return
         }
-        """
-
-        let jsonData = json.data(using: .utf8)
-        guard let unwrappedJSON = jsonData else {
-            print("No data!")
-            return nil
+            
+        load(resource, completion: completion)
+    }
+    
+    // MARK: - Profile
+    
+    func getProfiles(for instance: GameInstance, completion: @escaping (Response<[Profile], NetworkError>) -> Void) {
+        let url = baseURL.appendingPathComponent("profiles")
+        let queries = [URLQueryItem(name: "instanceID", value: instance.id)]
+        guard let resource = try? URLResource<[Profile]>(url: url, queries: queries, headers: createAuthHeaders()) else {
+            completion(.failure(.badURL))
+            return
         }
-        return unwrappedJSON
+        
+        load(resource, completion: completion)
+    }
+    
+    func getProfile(forID id: String, completion: @escaping (Response<Profile, NetworkError>) -> Void) {
+        let url = baseURL.appendingPathComponent("profiles")
+        let queries = [URLQueryItem(name: "id", value: id)]
+        guard let resource = try? URLResource<Profile>(url: url, queries: queries, headers: createAuthHeaders()) else {
+            completion(.failure(.badURL))
+            return
+        }
+        
+        load(resource, completion: completion)
+    }
+    
+    func createProfile(profile: CreateProfile, completion: @escaping (Response<Profile, NetworkError>) -> Void) {
+        let url = baseURL.appendingPathComponent("profile")
+        guard let resource = try? URLPostableResource<Profile, CreateProfile>(url: url, object: profile, method: .post, headers: createAuthHeaders()) else {
+            completion(.failure(.badEncode))
+            return
+        }
+        
+        load(resource, completion: completion)
+    }
+    
+    // MARK: - Comment
+    
+    func createComment(comment: CreateComment, completion: @escaping (Response<Comment, NetworkError>) -> Void) {
+        let url = baseURL.appendingPathComponent("comment")
+        guard let resource = try? URLPostableResource<Comment, CreateComment>(url: url, object: comment, method: .post, headers: createAuthHeaders()) else {
+            completion(.failure(.badEncode))
+            return
+        }
+        
+        load(resource, completion: completion)
+    }
+    
+    // MARK: - Reaction
+    
+    func addReaction(_ reaction: CreateReaction, toPost post: Post, completion: @escaping (Response<Reaction, NetworkError>) -> Void) {
+        let url = baseURL.appendingPathComponent("reaction")
+        guard let resource = try? URLPostableResource<Reaction, CreateReaction>(url: url, object: reaction, method: .post, headers: createAuthHeaders()) else {
+            completion(.failure(.badEncode))
+            return
+        }
+        
+        load(resource, completion: completion)
     }
 
     // MARK: - Helper Methods
 
-    private func perform(_ request: URLRequest, session: URLSession = URLSession.shared, completion: @escaping (Result<Data, Error>) -> Void) {
-        let dataTask = session.dataTask(with: request) { data, response, error in
-
-            if let error = error {
-                print("NetworkController.fetch Error: \(error)")
-                completion(.failure(error))
-                return
-            }
-
-            guard let data = data else {
-                print("NetworkController.fetch Data is wrong")
-                completion(.failure(NetworkError.noData))
-                return
-            }
-            completion(.success(data))
-        }
-        dataTask.resume()
-    }
-
-    private func decode<T: Codable>(data: Data) -> T? {
-        let jsonDecoder = JSONDecoder()
-        jsonDecoder.keyDecodingStrategy = .convertFromSnakeCase
-        jsonDecoder.dateDecodingStrategy = .iso8601
-        do {
-            let decoded = try jsonDecoder.decode(T.self, from: data)
-            return decoded
-        } catch {
-            print("Error decoding item from data: \(error)")
-            print(String(data: data, encoding: .utf8)!)
-            return nil
-        }
-    }
-
-    private func encode<T: Codable>(item: T) -> Data? {
-        let jsonEncoder = JSONEncoder()
-        jsonEncoder.keyEncodingStrategy = .convertToSnakeCase
-        do{
-            let encoded = try jsonEncoder.encode(item)
-            return encoded
-        } catch {
-            print("Error encoding item from data: \(error)")
-            return nil
+    private func load<T: URLResourceType>(_ resource: T, session: URLSession = URLSession.shared, completion: @escaping (Response<T.Model, NetworkError>) -> Void) {
+        session.dataTask(with: resource.urlRequest) { (data, response, error) in
+            completion(resource.responseHandler(data, response, error))
         }
     }
     
-    func userURL(from url: URL, method: String, token: String) -> URLRequest {
-        let url = url
-            .appendingPathComponent("user")
-        var request = URLRequest(url: url)
-        request.httpMethod = method
-        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.setValue(token, forHTTPHeaderField: "Authorization")
-        return request
-    }
-    
-    func postURL(from url: URL, method: String) -> URLRequest {
-        let url = url
-            .appendingPathComponent("post")
-        var request = URLRequest(url: url)
-        request.httpMethod = method
-        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        return request
+    func createAuthHeaders() -> [String: String] {
+        fatalError("Not implemented")
     }
 }

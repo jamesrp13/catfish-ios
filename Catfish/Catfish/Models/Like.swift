@@ -8,7 +8,11 @@
 
 import Foundation
 
-struct Like: Codable {
+struct Reaction: Codable {
     // let comment: Comment
     // let user: User // Should this be a profile rather than a user?
+}
+
+struct CreateReaction: Codable {
+    
 }

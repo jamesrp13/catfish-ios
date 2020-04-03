@@ -9,5 +9,12 @@
 import Foundation
 
 struct Profile: Codable {
-    let name: String
+    var name: String
+    var about: String
+    var id: String
+}
+
+struct CreateProfile: Codable {
+    var name: String
+    var about: String
 }
