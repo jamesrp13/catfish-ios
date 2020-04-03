@@ -14,6 +14,7 @@
 		04C8BF232436588E004C276F /* MatchingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C8BF222436588E004C276F /* MatchingViewController.swift */; };
 		04E48AC62437554600A1C8DA /* PickerTextFieldManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E48AC52437554600A1C8DA /* PickerTextFieldManager.swift */; };
 		4032CFAF7A15238C0B4A518C /* Pods_Catfish_CatfishUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E412041373DC7AFF34CDE648 /* Pods_Catfish_CatfishUITests.framework */; };
+		9CC074782434FEC800EB37C3 /* GameCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC074772434FEC800EB37C3 /* GameCoordinator.swift */; };
 		8590C5782435002B004BC31C /* CFGameCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8590C5772435002A004BC31C /* CFGameCell.swift */; };
 		8590C57A243500A9004BC31C /* AddGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8590C579243500A9004BC31C /* AddGameViewController.swift */; };
 		9CD918942432EADD00587BC0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD918932432EADD00587BC0 /* AppDelegate.swift */; };
@@ -35,6 +36,9 @@
 		9CD918EC2433D7E400587BC0 /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD918EB2433D7E400587BC0 /* LoadingViewController.swift */; };
 		9CD918EE2433D8CE00587BC0 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD918ED2433D8CE00587BC0 /* AppCoordinator.swift */; };
 		9CD918F02433DDDF00587BC0 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD918EF2433DDDF00587BC0 /* AuthService.swift */; };
+		9CD918F22434462100587BC0 /* AuthCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD918F12434462100587BC0 /* AuthCoordinator.swift */; };
+		9CD918F72434EF1900587BC0 /* AuthEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD918F62434EF1900587BC0 /* AuthEnums.swift */; };
+		9CD918FA2434F0F200587BC0 /* CoordinatorProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD918F92434F0F200587BC0 /* CoordinatorProtocols.swift */; };
 		BCE80230D413F0F2EE571314 /* Pods_CatfishTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A85D8011438611879D09344D /* Pods_CatfishTests.framework */; };
 		C09580BE24340A6900E55916 /* CFPostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09580BD24340A6900E55916 /* CFPostCell.swift */; };
 		C09580C124340B3600E55916 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09580C024340B3600E55916 /* Constants.swift */; };
@@ -84,6 +88,7 @@
 		8590C5772435002A004BC31C /* CFGameCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CFGameCell.swift; sourceTree = "<group>"; };
 		8590C579243500A9004BC31C /* AddGameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddGameViewController.swift; sourceTree = "<group>"; };
 		954C5B92C48E07EF4537D489 /* Pods-CatfishTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CatfishTests.debug.xcconfig"; path = "Target Support Files/Pods-CatfishTests/Pods-CatfishTests.debug.xcconfig"; sourceTree = "<group>"; };
+		9CC074772434FEC800EB37C3 /* GameCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameCoordinator.swift; sourceTree = "<group>"; };
 		9CD918902432EADD00587BC0 /* Catfish.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Catfish.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9CD918932432EADD00587BC0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9CD918952432EADD00587BC0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -110,6 +115,9 @@
 		9CD918EB2433D7E400587BC0 /* LoadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
 		9CD918ED2433D8CE00587BC0 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		9CD918EF2433DDDF00587BC0 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
+		9CD918F12434462100587BC0 /* AuthCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthCoordinator.swift; sourceTree = "<group>"; };
+		9CD918F62434EF1900587BC0 /* AuthEnums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthEnums.swift; sourceTree = "<group>"; };
+		9CD918F92434F0F200587BC0 /* CoordinatorProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorProtocols.swift; sourceTree = "<group>"; };
 		A85D8011438611879D09344D /* Pods_CatfishTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CatfishTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C09580BD24340A6900E55916 /* CFPostCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CFPostCell.swift; sourceTree = "<group>"; };
 		C09580C024340B3600E55916 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -195,7 +203,9 @@
 				9CD918932432EADD00587BC0 /* AppDelegate.swift */,
 				9CD918952432EADD00587BC0 /* SceneDelegate.swift */,
 				9CD918ED2433D8CE00587BC0 /* AppCoordinator.swift */,
-				9CD918EF2433DDDF00587BC0 /* AuthService.swift */,
+				9CC074772434FEC800EB37C3 /* GameCoordinator.swift */,
+				9CD918F82434F0E100587BC0 /* Coordinator */,
+				9CD918F52434EEC800587BC0 /* Auth */,
 				9CD918D52433B77300587BC0 /* Models */,
 				9CD918E42433B7D500587BC0 /* Model Controllers */,
 				C09580BF24340A6E00E55916 /* Custom Views */,
@@ -266,6 +276,24 @@
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
+		};
+		9CD918F52434EEC800587BC0 /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				9CD918F12434462100587BC0 /* AuthCoordinator.swift */,
+				9CD918EF2433DDDF00587BC0 /* AuthService.swift */,
+				9CD918F62434EF1900587BC0 /* AuthEnums.swift */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
+		9CD918F82434F0E100587BC0 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				9CD918F92434F0F200587BC0 /* CoordinatorProtocols.swift */,
+			);
+			path = Coordinator;
+		sourceTree = "<group>";
 		};
 		C09580BF24340A6E00E55916 /* Custom Views */ = {
 			isa = PBXGroup;
@@ -609,6 +637,7 @@
 				9CD918DC2433B7A100587BC0 /* GameInstance.swift in Sources */,
 				9CD918DE2433B7A100587BC0 /* Profile.swift in Sources */,
 				9CD918E62433B7D500587BC0 /* UserController.swift in Sources */,
+				9CD918F22434462100587BC0 /* AuthCoordinator.swift in Sources */,
 				9CD918982432EADD00587BC0 /* ViewController.swift in Sources */,
 				C09580C124340B3600E55916 /* Constants.swift in Sources */,
 				C09580D42435475100E55916 /* UILabel+Convenience.swift in Sources */,
@@ -620,6 +649,7 @@
 				C09580CD2434110F00E55916 /* CFBodyLabel.swift in Sources */,
 				9CD918E02433B7A100587BC0 /* User.swift in Sources */,
 				9CD918962432EADD00587BC0 /* SceneDelegate.swift in Sources */,
+				9CD918F72434EF1900587BC0 /* AuthEnums.swift in Sources */,
 				C09580D92435480700E55916 /* InputAccessoryViewController.swift in Sources */,
 				04E48AC62437554600A1C8DA /* PickerTextFieldManager.swift in Sources */,
 				C09580C724340D7F00E55916 /* CFPostImageView.swift in Sources */,
@@ -628,6 +658,8 @@
 				C09580BE24340A6900E55916 /* CFPostCell.swift in Sources */,
 				9CD918EC2433D7E400587BC0 /* LoadingViewController.swift in Sources */,
 				9CD918E12433B7A100587BC0 /* Comment.swift in Sources */,
+				9CD918FA2434F0F200587BC0 /* CoordinatorProtocols.swift in Sources */,
+				9CC074782434FEC800EB37C3 /* GameCoordinator.swift in Sources */,
 				8590C5782435002B004BC31C /* CFGameCell.swift in Sources */,
 				C09580D6243547F700E55916 /* FeedViewController.swift in Sources */,
 				9CD918DD2433B7A100587BC0 /* Like.swift in Sources */,
