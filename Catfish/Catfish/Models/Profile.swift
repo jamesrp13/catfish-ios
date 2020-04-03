@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 protocol ProfileDisplayable {
     var displayName: String { get }
@@ -21,8 +22,9 @@ struct Profile: Codable, ProfileDisplayable {
     var id: String
     
     static var mocks: [Profile] = {
-//        let imageURL = Bundle.main.url(forResource: "TestImage", withExtension: ".HEIC")!
-        let imageURL = URL(string: "https://www.google.com")!
+        let imageURL = FileManager.default.temporaryDirectory.absoluteURL.appendingPathComponent("mockImage").appendingPathExtension("png")
+        let data = UIImage(named: "TestImage")?.pngData()
+        try? data?.write(to: imageURL)
         
         return [
             Profile(username: "Jonny", about: "", imageURL: imageURL, id: "12345"),
