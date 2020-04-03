@@ -20,7 +20,8 @@ class CreateProfileViewController: UIViewController {
     // MARK: - Private Properties
     
     private let inputAccessoryVC = TextInputAccessoryViewController()
-    private var durationManager: PickerTextFieldManager?
+    private var textViewPlaceholderManager: TextViewPlaceholderManager?
+
     
     // Views:
     
@@ -36,6 +37,7 @@ class CreateProfileViewController: UIViewController {
     }()
     
     private let bioLabel = UILabel(text: "Bio:")
+    private let bioPlaceholder = "Say something about yourself..."
     private lazy var bioTextView: UITextView = {
         let bioTextView = UITextView()
         bioTextView.translatesAutoresizingMaskIntoConstraints = false
@@ -45,6 +47,7 @@ class CreateProfileViewController: UIViewController {
         bioTextView.layer.borderWidth = 1.0
         bioTextView.layer.cornerRadius = 5.0
         
+        textViewPlaceholderManager = TextViewPlaceholderManager(textView: bioTextView, placeholder: bioPlaceholder)
         return bioTextView
     }()
     
@@ -99,6 +102,8 @@ class CreateProfileViewController: UIViewController {
 
 
 
+
+
 // Uncomment below to enable SwiftUI previews for visual feedback
 
 import SwiftUI
@@ -107,7 +112,7 @@ struct ViewWrapper: UIViewRepresentable {
     func makeUIView(context: UIViewRepresentableContext<ViewWrapper>) -> UIView {
         return CreateProfileViewController().view
     }
-
+    
     func updateUIView(_ uiView: ViewWrapper.UIViewType, context: UIViewRepresentableContext<ViewWrapper>) {
     }
 }
