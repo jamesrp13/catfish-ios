@@ -13,7 +13,7 @@ class NetworkController {
     // MARK: - Properties
 
     private let authService: AuthServiceProtocol
-    private let baseURL = URL(string: "URL HERE!!!")!
+    private let baseURL = URL(string: "https://www.google.com")!
 
     
     // MARK: - Lifecycle Methods

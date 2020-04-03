@@ -21,7 +21,8 @@ struct Profile: Codable, ProfileDisplayable {
     var id: String
     
     static var mocks: [Profile] = {
-        let imageURL = Bundle.main.url(forResource: "TestImage", withExtension: ".HEIC")!
+//        let imageURL = Bundle.main.url(forResource: "TestImage", withExtension: ".HEIC")!
+        let imageURL = URL(string: "https://www.google.com")!
         
         return [
             Profile(username: "Jonny", about: "", imageURL: imageURL, id: "12345"),

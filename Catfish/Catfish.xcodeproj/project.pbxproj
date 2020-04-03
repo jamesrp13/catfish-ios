@@ -21,10 +21,9 @@
 		9C77E23F2436DD52008B63C2 /* NetworkingEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C77E23E2436DD52008B63C2 /* NetworkingEnums.swift */; };
 		9C77E2412437A9E0008B63C2 /* URLPostableResources.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C77E2402437A9E0008B63C2 /* URLPostableResources.swift */; };
 		9C77E2432437C997008B63C2 /* Guess.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C77E2422437C997008B63C2 /* Guess.swift */; };
-		9CC074782434FEC800EB37C3 /* GameCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC074772434FEC800EB37C3 /* GameCoordinator.swift */; };
+		9CC074782434FEC800EB37C3 /* CatfishCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC074772434FEC800EB37C3 /* CatfishCoordinator.swift */; };
 		9CD918942432EADD00587BC0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD918932432EADD00587BC0 /* AppDelegate.swift */; };
 		9CD918962432EADD00587BC0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD918952432EADD00587BC0 /* SceneDelegate.swift */; };
-		9CD918982432EADD00587BC0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD918972432EADD00587BC0 /* ViewController.swift */; };
 		9CD9189B2432EADD00587BC0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9CD918992432EADD00587BC0 /* Main.storyboard */; };
 		9CD9189D2432EAE000587BC0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9CD9189C2432EAE000587BC0 /* Assets.xcassets */; };
 		9CD918A02432EAE000587BC0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9CD9189E2432EAE000587BC0 /* LaunchScreen.storyboard */; };
@@ -58,6 +57,8 @@
 		C09580D6243547F700E55916 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09580D5243547F700E55916 /* FeedViewController.swift */; };
 		C09580D92435480700E55916 /* InputAccessoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09580D72435480700E55916 /* InputAccessoryViewController.swift */; };
 		C09580DA2435480700E55916 /* NewGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09580D82435480700E55916 /* NewGameViewController.swift */; };
+		C0A9D8312437DCC10093A74F /* CreateUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A9D8302437DCC10093A74F /* CreateUserViewController.swift */; };
+		C0A9D8332437DDFB0093A74F /* CFTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A9D8322437DDFB0093A74F /* CFTextField.swift */; };
 		D781294EBAB16167C5D8B8A3 /* Pods_Catfish.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CB728BBE6667CD78D729242 /* Pods_Catfish.framework */; };
 /* End PBXBuildFile section */
 
@@ -98,11 +99,10 @@
 		9C77E23E2436DD52008B63C2 /* NetworkingEnums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingEnums.swift; sourceTree = "<group>"; };
 		9C77E2402437A9E0008B63C2 /* URLPostableResources.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLPostableResources.swift; sourceTree = "<group>"; };
 		9C77E2422437C997008B63C2 /* Guess.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Guess.swift; sourceTree = "<group>"; };
-		9CC074772434FEC800EB37C3 /* GameCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameCoordinator.swift; sourceTree = "<group>"; };
+		9CC074772434FEC800EB37C3 /* CatfishCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatfishCoordinator.swift; sourceTree = "<group>"; };
 		9CD918902432EADD00587BC0 /* Catfish.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Catfish.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9CD918932432EADD00587BC0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9CD918952432EADD00587BC0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		9CD918972432EADD00587BC0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		9CD9189A2432EADD00587BC0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		9CD9189C2432EAE000587BC0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9CD9189F2432EAE000587BC0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -142,6 +142,8 @@
 		C09580D5243547F700E55916 /* FeedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
 		C09580D72435480700E55916 /* InputAccessoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputAccessoryViewController.swift; sourceTree = "<group>"; };
 		C09580D82435480700E55916 /* NewGameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewGameViewController.swift; sourceTree = "<group>"; };
+		C0A9D8302437DCC10093A74F /* CreateUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateUserViewController.swift; sourceTree = "<group>"; };
+		C0A9D8322437DDFB0093A74F /* CFTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CFTextField.swift; sourceTree = "<group>"; };
 		D8A0B94B8D441C8DF38DC431 /* Pods-CatfishTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CatfishTests.release.xcconfig"; path = "Target Support Files/Pods-CatfishTests/Pods-CatfishTests.release.xcconfig"; sourceTree = "<group>"; };
 		E412041373DC7AFF34CDE648 /* Pods_Catfish_CatfishUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Catfish_CatfishUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -213,7 +215,7 @@
 				9CD918932432EADD00587BC0 /* AppDelegate.swift */,
 				9CD918952432EADD00587BC0 /* SceneDelegate.swift */,
 				9CD918ED2433D8CE00587BC0 /* AppCoordinator.swift */,
-				9CC074772434FEC800EB37C3 /* GameCoordinator.swift */,
+				9CC074772434FEC800EB37C3 /* CatfishCoordinator.swift */,
 				9CD918F82434F0E100587BC0 /* Coordinator */,
 				9CD918F52434EEC800587BC0 /* Auth */,
 				9CD918D52433B77300587BC0 /* Models */,
@@ -275,8 +277,8 @@
 		9CD918E72433B7F100587BC0 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				9CD918972432EADD00587BC0 /* ViewController.swift */,
 				C09580D5243547F700E55916 /* FeedViewController.swift */,
+				C0A9D8302437DCC10093A74F /* CreateUserViewController.swift */,
 				04C8BF1824361038004C276F /* ProfileCollectionViewController.swift */,
 				04C8BF1E24362F10004C276F /* ProfileMatchCollectionViewController.swift */,
 				04C8BF222436588E004C276F /* MatchingViewController.swift */,
@@ -317,6 +319,7 @@
 				8590C5772435002A004BC31C /* CFGameCell.swift */,
 				04C8BF1424360E3E004C276F /* CircularImageView.swift */,
 				04C8BF1624360FE5004C276F /* CFProfileCell.swift */,
+				C0A9D8322437DDFB0093A74F /* CFTextField.swift */,
 			);
 			path = "Custom Views";
 			sourceTree = "<group>";
@@ -647,13 +650,13 @@
 				C09580CB24340FCE00E55916 /* CFTitleLabel.swift in Sources */,
 				04C8BF1924361038004C276F /* ProfileCollectionViewController.swift in Sources */,
 				C09580C424340B7D00E55916 /* NetworkController.swift in Sources */,
+				C0A9D8332437DDFB0093A74F /* CFTextField.swift in Sources */,
 				04C8BF232436588E004C276F /* MatchingViewController.swift in Sources */,
 				9CD918EE2433D8CE00587BC0 /* AppCoordinator.swift in Sources */,
 				9CD918DC2433B7A100587BC0 /* GameInstance.swift in Sources */,
 				9CD918DE2433B7A100587BC0 /* Profile.swift in Sources */,
 				9CD918E62433B7D500587BC0 /* UserController.swift in Sources */,
 				9CD918F22434462100587BC0 /* AuthCoordinator.swift in Sources */,
-				9CD918982432EADD00587BC0 /* ViewController.swift in Sources */,
 				C09580C124340B3600E55916 /* Constants.swift in Sources */,
 				C09580D42435475100E55916 /* UILabel+Convenience.swift in Sources */,
 				C09580D22435474300E55916 /* UITextField+Convenience.swift in Sources */,
@@ -674,11 +677,12 @@
 				9CD918DF2433B7A100587BC0 /* Post.swift in Sources */,
 				9C77E2412437A9E0008B63C2 /* URLPostableResources.swift in Sources */,
 				C09580BE24340A6900E55916 /* CFPostCell.swift in Sources */,
+				C0A9D8312437DCC10093A74F /* CreateUserViewController.swift in Sources */,
 				9C77E2432437C997008B63C2 /* Guess.swift in Sources */,
 				9CD918EC2433D7E400587BC0 /* LoadingViewController.swift in Sources */,
 				9CD918E12433B7A100587BC0 /* Comment.swift in Sources */,
 				9CD918FA2434F0F200587BC0 /* CoordinatorProtocols.swift in Sources */,
-				9CC074782434FEC800EB37C3 /* GameCoordinator.swift in Sources */,
+				9CC074782434FEC800EB37C3 /* CatfishCoordinator.swift in Sources */,
 				8590C5782435002B004BC31C /* CFGameCell.swift in Sources */,
 				C09580D6243547F700E55916 /* FeedViewController.swift in Sources */,
 				9CD918DD2433B7A100587BC0 /* Reaction.swift in Sources */,

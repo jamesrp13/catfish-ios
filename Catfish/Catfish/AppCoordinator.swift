@@ -37,14 +37,14 @@ class AppCoordinator: ParentCoordinator, AuthServiceDelegate {
         case .unknown:
             rootViewController = LoadingViewController()
         case .authenticated:
-            children.removeAll(where: {!($0 is GameCoordinator)})
+            children.removeAll(where: {!($0 is CatfishCoordinator)})
             
-            let gameCoordinator: GameCoordinator
+            let gameCoordinator: CatfishCoordinator
             
-            if let coordinator = children.first(where: {$0 is GameCoordinator}) {
-                gameCoordinator = coordinator as! GameCoordinator
+            if let coordinator = children.first(where: {$0 is CatfishCoordinator}) {
+                gameCoordinator = coordinator as! CatfishCoordinator
             } else {
-                let coordinator = GameCoordinator()
+                let coordinator = CatfishCoordinator(networkController: NetworkController(authService: authService))
                 children.append(coordinator)
                 gameCoordinator = coordinator
             }
