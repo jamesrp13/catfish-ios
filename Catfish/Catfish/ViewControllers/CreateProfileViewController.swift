@@ -122,10 +122,21 @@ class CreateProfileViewController: UIViewController {
     // MARK: - Actions
     
     @objc private func uploadButtonTapped() {
-        
+        let imagePicker = UIImagePickerController()
+        imagePicker.delegate = self
+        imagePicker.mediaTypes = ["public.image"]
+        present(imagePicker, animated: true)
     }
 }
 
+//MARK: - UIImagePickerControllerDelegate
+
+extension CreateProfileViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        profilePicImageView.image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage
+        picker.dismiss(animated: true)
+    }
+}
 
 
 
