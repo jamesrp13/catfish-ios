@@ -11,8 +11,11 @@ import UIKit
 /// A view controller that expands to fit content vertically
 /// and responds to keyboard showing in order to not obscure text inputs.
 ///
-/// Add all of your views to contentView. Be sure to fully define
-/// the contentView's height through use of constraints.
+/// Add all of your subviews to contentView. If your content should extend beyond the size of the scrollview,
+/// be sure to fully define the contentView's height through use of constraints.
+/// This view controller also adds an inputAccessoryView to each textField or textView in the content view.
+/// This facilitates easy navigation between text inputs.
+
 class FormViewController: UIViewController {
     
     // MARK: - Public
@@ -27,7 +30,36 @@ class FormViewController: UIViewController {
         configure()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        if !inputAccessoryConfigured {
+            configureInputAccessory()
+        }
+    }
+    
     // MARK: - Private
+    
+    private let inputAccessoryVC = TextInputAccessoryViewController()
+    private var inputAccessoryConfigured = false
+    
+    private func configureInputAccessory() {
+        addChild(inputAccessoryVC)
+        inputAccessoryVC.didMove(toParent: self)
+        registerTextInputs(in: contentView)
+        inputAccessoryConfigured = true
+    }
+    
+    private func registerTextInputs(in view: UIView) {
+        for subview in view.subviews {
+            if let textField = subview as? UITextField {
+                inputAccessoryVC.register(textField)
+            } else if let textView = subview as? UITextView {
+                inputAccessoryVC.register(textView)
+            } else if !subview.subviews.isEmpty {
+                registerTextInputs(in: subview)
+            }
+        }
+    }
     
     private func configure() {
         contentView.translatesAutoresizingMaskIntoConstraints = false
@@ -35,7 +67,6 @@ class FormViewController: UIViewController {
         
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(scrollView)
-        
         
         NSLayoutConstraint.activate([
             contentView.topAnchor.constraint(equalTo: scrollView.contentLayoutGuide.topAnchor),
@@ -50,6 +81,10 @@ class FormViewController: UIViewController {
             scrollView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
             scrollView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
         ])
+        
+        let weakHeightConstraint = contentView.heightAnchor.constraint(equalTo: scrollView.frameLayoutGuide.heightAnchor)
+        weakHeightConstraint.priority = .defaultLow
+        weakHeightConstraint.isActive = true
         
         scrollView.contentInsetAdjustmentBehavior = .never
         scrollView.keyboardDismissMode = .interactive
@@ -93,16 +128,26 @@ class FormViewController: UIViewController {
         guard let selectedTextInput = selectedTextInput,
         let keyboardHeight = keyboardHeight else { return }
         
-        var bottomPoint = selectedTextInput.frame.origin
+        let frame = selectedTextInput.frame
+        
+        guard let convertedFrame = selectedTextInput.superview?.convert(frame, to: view) else { return }
+        
+        let origin = convertedFrame.origin
+        var bottomPoint = origin
         bottomPoint.y += selectedTextInput.frame.maxY
         
-        guard let point = selectedTextInput.superview?.convert(bottomPoint, to: view) else { return }
+        let distanceToTop = origin.y
+        let distanceToBottom = view.frame.height - bottomPoint.y
         
-        let distanceToBottom = view.frame.height - point.y
-        let distanceToMove = keyboardHeight - distanceToBottom
-        
-        scrollView.contentInset.bottom += distanceToMove
-        scrollView.contentInset.top -= distanceToMove
+        if distanceToTop < 0 {
+            let distanceToMove = distanceToTop - frame.height - view.safeAreaInsets.top
+            scrollView.contentInset.bottom += distanceToMove
+            scrollView.contentInset.top -= distanceToMove
+        } else if distanceToBottom < keyboardHeight {
+            let distanceToMove = keyboardHeight - distanceToBottom
+            scrollView.contentInset.bottom += distanceToMove
+            scrollView.contentInset.top -= distanceToMove
+        }
         
         self.keyboardHeight = nil
         self.selectedTextInput = nil

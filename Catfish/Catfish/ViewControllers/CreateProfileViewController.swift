@@ -19,7 +19,6 @@ class CreateProfileViewController: FormViewController {
     
     // MARK: - Private Properties
     
-    private let inputAccessoryVC = TextInputAccessoryViewController()
     private var textViewPlaceholderManager: TextViewPlaceholderManager?
     
     // Views:
@@ -99,10 +98,6 @@ class CreateProfileViewController: FormViewController {
     
     private func configure() {
         view.backgroundColor = .white
-        
-        addChild(inputAccessoryVC)
-        inputAccessoryVC.didMove(toParent: self)
-        inputAccessoryVC.register(nameTextField, bioTextView)
         
         mainVStack.translatesAutoresizingMaskIntoConstraints = false
         catfishButton.translatesAutoresizingMaskIntoConstraints = false

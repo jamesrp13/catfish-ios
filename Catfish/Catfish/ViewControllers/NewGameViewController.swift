@@ -8,7 +8,7 @@
 
 import UIKit
 
-class NewGameViewController: UIViewController {
+class NewGameViewController: FormViewController {
 
     // MARK: - View Lifecycle
     
@@ -19,7 +19,7 @@ class NewGameViewController: UIViewController {
     
     // MARK: - Private Properties
     
-    private let inputAccessoryVC = TextInputAccessoryViewController()
+//    private let inputAccessoryVC = TextInputAccessoryViewController()
     private var durationManager: PickerTextFieldManager?
     
     // Views:
@@ -81,9 +81,9 @@ class NewGameViewController: UIViewController {
     private func configure() {
         view.backgroundColor = .white
         
-        addChild(inputAccessoryVC)
-        inputAccessoryVC.didMove(toParent: self)
-        inputAccessoryVC.register(teamNameTextField, gameDurationTextField, inviteCodeTextField)
+//        addChild(inputAccessoryVC)
+//        inputAccessoryVC.didMove(toParent: self)
+//        inputAccessoryVC.register(teamNameTextField, gameDurationTextField, inviteCodeTextField)
         
         mainVStack.axis = .vertical
         mainVStack.spacing = 25
@@ -91,20 +91,21 @@ class NewGameViewController: UIViewController {
         mainVStack.directionalLayoutMargins = .init(top: 20, leading: 20, bottom: 0, trailing: 20)
         
         mainVStack.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(mainVStack)
+        contentView.addSubview(mainVStack)
         
         NSLayoutConstraint.activate([
-            mainVStack.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            mainVStack.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
-            mainVStack.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+            mainVStack.topAnchor.constraint(equalTo: contentView.topAnchor),
+            mainVStack.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            mainVStack.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
         ])
         
         createButton.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(createButton)
+        contentView.addSubview(createButton)
         
         NSLayoutConstraint.activate([
-            createButton.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
-            createButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -20)
+            createButton.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
+            createButton.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -20),
+//            contentView.heightAnchor.constraint(equalTo: scrollView.frameLayoutGuide.heightAnchor)
         ])
     }
 }
