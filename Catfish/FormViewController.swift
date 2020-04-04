@@ -8,6 +8,11 @@
 
 import UIKit
 
+/// A view controller that expands to fit content vertically
+/// and responds to keyboard showing in order to not obscure text inputs.
+///
+/// Add all of your views to contentView. Be sure to fully define
+/// the contentView's height through use of constraints.
 class FormViewController: UIViewController {
     
     // MARK: - Public
