@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CreateProfileViewController: UIViewController {
+class CreateProfileViewController: FormViewController {
     
     // MARK: - View Lifecycle
     
@@ -95,40 +95,6 @@ class CreateProfileViewController: UIViewController {
    
     private let catfishButton = CFButton(backgroundColor: Colors.purple, title: "Catfish!", image: nil)
     
-    private lazy var scrollView: UIScrollView = {
-        let scrollView = UIScrollView()
-        let contentView = UIView()
-        
-        mainVStack.translatesAutoresizingMaskIntoConstraints = false
-        catfishButton.translatesAutoresizingMaskIntoConstraints = false
-        contentView.translatesAutoresizingMaskIntoConstraints = false
-        
-        contentView.addSubviews(mainVStack, catfishButton)
-        scrollView.addSubview(contentView)
-        
-        NSLayoutConstraint.activate([
-            mainVStack.topAnchor.constraint(equalTo: contentView.topAnchor),
-            mainVStack.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            mainVStack.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            
-            catfishButton.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
-            catfishButton.topAnchor.constraint(equalTo: mainVStack.bottomAnchor, constant: 20),
-            
-            contentView.topAnchor.constraint(equalTo: scrollView.contentLayoutGuide.topAnchor),
-            contentView.leadingAnchor.constraint(equalTo: scrollView.contentLayoutGuide.leadingAnchor),
-            contentView.trailingAnchor.constraint(equalTo: scrollView.contentLayoutGuide.trailingAnchor),
-            contentView.bottomAnchor.constraint(equalTo: scrollView.contentLayoutGuide.bottomAnchor),
-            
-            contentView.heightAnchor.constraint(equalTo: scrollView.frameLayoutGuide.heightAnchor, multiplier: 1, constant: 0),
-            contentView.widthAnchor.constraint(equalTo: scrollView.frameLayoutGuide.widthAnchor, multiplier: 1, constant: 0),
-        ])
-
-        scrollView.contentInsetAdjustmentBehavior = .never
-        scrollView.keyboardDismissMode = .interactive
-        scrollView.isUserInteractionEnabled = true
-        return scrollView
-    }()
-    
     // MARK: - Private Methods
     
     private func configure() {
@@ -138,71 +104,19 @@ class CreateProfileViewController: UIViewController {
         inputAccessoryVC.didMove(toParent: self)
         inputAccessoryVC.register(nameTextField, bioTextView)
         
-        scrollView.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(scrollView)
+        mainVStack.translatesAutoresizingMaskIntoConstraints = false
+        catfishButton.translatesAutoresizingMaskIntoConstraints = false
+        contentView.addSubviews(mainVStack, catfishButton)
         
         NSLayoutConstraint.activate([
-            scrollView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            scrollView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
-            scrollView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
-            scrollView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+            mainVStack.topAnchor.constraint(equalTo: contentView.topAnchor),
+            mainVStack.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            mainVStack.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            
+            catfishButton.topAnchor.constraint(equalTo: mainVStack.bottomAnchor, constant: 20),
+            catfishButton.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
+            catfishButton.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
         ])
-        
-        setupKeyboardNotifications()
-    }
-    
-    // MARK: - Keyboard Handling
-    
-    private func setupKeyboardNotifications() {
-        NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardShow), name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardHide), name: UIResponder.keyboardWillHideNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(handleTextInputBeginEditing), name: UITextField.textDidBeginEditingNotification, object: nameTextField)
-        NotificationCenter.default.addObserver(self, selector: #selector(handleTextInputBeginEditing), name: UITextView.textDidBeginEditingNotification, object: bioTextView)
-    }
-    
-    @objc private func handleTextInputBeginEditing(notification: Notification) {
-        guard let textInput = notification.object as? UIView else { return }
-        selectedTextInput = textInput
-    }
-    
-    @objc private func handleKeyboardShow(notification: Notification) {
-        guard let value = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else { return }
-        let keyboardFrame = value.cgRectValue
-        
-        keyboardHeight = keyboardFrame.height
-        
-        scrollView.alwaysBounceVertical = true
-    }
-    
-    @objc private func handleKeyboardHide() {
-        scrollView.contentInset.bottom = 0
-        scrollView.contentInset.top = 0
-        
-        scrollView.alwaysBounceVertical = false
-    }
-    
-    private var keyboardHeight: CGFloat? { didSet { moveForKeyboard() }}
-    
-    private var selectedTextInput: UIView? { didSet { moveForKeyboard() }}
-    
-    private func moveForKeyboard() {
-        guard let selectedTextInput = selectedTextInput,
-        let keyboardHeight = keyboardHeight else { return }
-        
-        var bottomPoint = selectedTextInput.frame.origin
-        bottomPoint.y += selectedTextInput.frame.maxY
-        
-        guard let point = selectedTextInput.superview?.convert(bottomPoint, to: view) else { return }
-        
-        let distanceToBottom = view.frame.height - point.y
-        
-        let distanceToMove = keyboardHeight - distanceToBottom
-        
-        scrollView.contentInset.bottom += distanceToMove
-        scrollView.contentInset.top -= distanceToMove
-        
-        self.keyboardHeight = nil
-        self.selectedTextInput = nil
     }
     
     // MARK: - Actions
@@ -223,6 +137,8 @@ extension CreateProfileViewController: UIImagePickerControllerDelegate, UINaviga
         picker.dismiss(animated: true)
     }
 }
+
+
 
 
 // Uncomment below to enable SwiftUI previews for visual feedback

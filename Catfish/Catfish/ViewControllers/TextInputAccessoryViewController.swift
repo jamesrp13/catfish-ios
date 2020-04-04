@@ -107,17 +107,8 @@ class TextInputAccessoryViewController: UIViewController {
     // MARK: - Private Methods
     
     private func configure() {
-        view.frame = CGRect(x: 0, y: 0, width: 0, height: 44)
-        
         toolbar.setItems([upButton, downButton, spacer, doneButton], animated: false)
-        toolbar.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(toolbar)
-        
-        NSLayoutConstraint.activate([
-            toolbar.topAnchor.constraint(equalTo: view.topAnchor),
-            toolbar.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            toolbar.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            toolbar.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-        ])
+        toolbar.sizeToFit()
+        view = toolbar
     }
 }
