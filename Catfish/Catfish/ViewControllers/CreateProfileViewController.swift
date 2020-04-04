@@ -108,9 +108,8 @@ class CreateProfileViewController: FormViewController {
             mainVStack.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             mainVStack.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             
-            catfishButton.topAnchor.constraint(equalTo: mainVStack.bottomAnchor, constant: 20),
             catfishButton.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
-            catfishButton.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
+            catfishButton.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -20)
         ])
     }
     
