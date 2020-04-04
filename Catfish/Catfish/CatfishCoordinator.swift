@@ -22,7 +22,7 @@ class CatfishCoordinator: ChildCoordinator {
     }
     
     func setUser() {
-        guard let user = 
+//        guard let user =
     }
     
     // User created: show games
