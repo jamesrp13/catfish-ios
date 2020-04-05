@@ -14,8 +14,7 @@ struct URLResource<T>: URLResourceType {
     
     var responseHandler: (Data?, URLResponse?, Error?) -> Response<T, NetworkError>
     
-    init(url: URL, pathParameters: String? = nil, queries: [URLQueryItem]? = nil, method: HTTPMethod = .get, headers: [String: String]? = nil, responseHandler: @escaping (Data?, URLResponse?, Error?) -> Response<T, NetworkError>) throws {
-        self.responseHandler = responseHandler
+    static func create(url: URL, pathParameters: String? = nil, queries: [URLQueryItem]? = nil, body: Data? = nil, method: HTTPMethod = .get, headers: [String: String]? = nil, responseHandler: @escaping (Data?, URLResponse?, Error?) -> Response<T, NetworkError>) throws -> URLResource<T> {
         
         var fullURL = url
         if let pathParameters = pathParameters {
@@ -29,15 +28,26 @@ struct URLResource<T>: URLResourceType {
             throw NetworkError.invalidURL
         }
         
-        urlRequest = URLRequest(url: url)
+        var urlRequest = URLRequest(url: url)
         urlRequest.httpMethod = method.rawValue
         urlRequest.allHTTPHeaderFields = headers
+        urlRequest.httpBody = body
+        
+        return URLResource<T>(urlRequest: urlRequest, responseHandler: responseHandler)
     }
 }
 
 extension URLResource where T: Decodable {
-    init(url: URL, pathParameters: String? = nil, queries: [URLQueryItem]? = nil, method: HTTPMethod = .get, headers: [String: String]? = nil) throws {
-        try self.init(url: url, pathParameters: pathParameters, queries: queries, method: method, headers: headers) { (data, response, error) in
+    static func create<Input: Encodable>(url: URL, pathParameters: String? = nil, queries: [URLQueryItem]? = nil, object: Input? = nil, method: HTTPMethod = .get, headers: [String: String]? = nil) throws -> URLResource<T> {
+        let encoder = JSONEncoder()
+        encoder.keyEncodingStrategy = .convertToSnakeCase
+        let body = try encoder.encode(object)
+        
+        return try URLResource<T>.create(url: url, pathParameters: pathParameters, queries: queries, body: body, method: method, headers: headers)
+    }
+    
+    static func create(url: URL, pathParameters: String? = nil, queries: [URLQueryItem]? = nil, body: Data? = nil, method: HTTPMethod = .get, headers: [String: String]? = nil) throws -> URLResource<T> {
+        return try URLResource<T>.create(url: url, pathParameters: pathParameters, queries: queries, body: body, method: method, headers: headers) { (data, response, error) in
             if let error = error {
                 return .failure(.serverError(error))
             }

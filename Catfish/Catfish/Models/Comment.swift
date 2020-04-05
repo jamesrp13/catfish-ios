@@ -15,7 +15,7 @@ struct Comment: Codable {
 }
 
 struct CreateComment: Codable {
-    var postID: String
-    var text: String
-    var author: Profile
+    var postId: String
+    var content: String
+    var profileId: Profile
 }
