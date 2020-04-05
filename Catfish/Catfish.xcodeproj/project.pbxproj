@@ -277,8 +277,8 @@
 		9CD918E72433B7F100587BC0 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				C09580D5243547F700E55916 /* FeedViewController.swift */,
 				C0A9D8302437DCC10093A74F /* CreateUserViewController.swift */,
+				C09580D5243547F700E55916 /* FeedViewController.swift */,
 				04C8BF1824361038004C276F /* ProfileCollectionViewController.swift */,
 				04C8BF1E24362F10004C276F /* ProfileMatchCollectionViewController.swift */,
 				04C8BF222436588E004C276F /* MatchingViewController.swift */,
