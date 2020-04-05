@@ -8,11 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		04C8BF1524360E3E004C276F /* CircularImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C8BF1424360E3E004C276F /* CircularImageView.swift */; };
-		04C8BF1724360FE5004C276F /* CFProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C8BF1624360FE5004C276F /* CFProfileCell.swift */; };
-		04C8BF1924361038004C276F /* ProfileCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C8BF1824361038004C276F /* ProfileCollectionViewController.swift */; };
+		04C8BF1724360FE5004C276F /* CFProfileDisplayableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C8BF1624360FE5004C276F /* CFProfileDisplayableCell.swift */; };
+		04C8BF1924361038004C276F /* GameUserCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C8BF1824361038004C276F /* GameUserCollectionViewController.swift */; };
 		04C8BF1F24362F10004C276F /* ProfileMatchCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C8BF1E24362F10004C276F /* ProfileMatchCollectionViewController.swift */; };
 		04C8BF232436588E004C276F /* MatchingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C8BF222436588E004C276F /* MatchingViewController.swift */; };
 		04E48AC62437554600A1C8DA /* PickerTextFieldManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E48AC52437554600A1C8DA /* PickerTextFieldManager.swift */; };
+		04E48AC82437660B00A1C8DA /* CreateProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E48AC72437660B00A1C8DA /* CreateProfileViewController.swift */; };
+		04E48ACA2437826D00A1C8DA /* TextViewPlaceholderManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E48AC92437826D00A1C8DA /* TextViewPlaceholderManager.swift */; };
+		04E48ACE24389FB900A1C8DA /* BGGradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E48ACD24389FB900A1C8DA /* BGGradientView.swift */; };
+		04E48AD02438C24E00A1C8DA /* FormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E48ACF2438C24E00A1C8DA /* FormViewController.swift */; };
 		4032CFAF7A15238C0B4A518C /* Pods_Catfish_CatfishUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E412041373DC7AFF34CDE648 /* Pods_Catfish_CatfishUITests.framework */; };
 		8590C5782435002B004BC31C /* CFGameCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8590C5772435002A004BC31C /* CFGameCell.swift */; };
 		8590C57A243500A9004BC31C /* AddGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8590C579243500A9004BC31C /* AddGameViewController.swift */; };
@@ -55,7 +59,7 @@
 		C09580D22435474300E55916 /* UITextField+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09580D12435474300E55916 /* UITextField+Convenience.swift */; };
 		C09580D42435475100E55916 /* UILabel+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09580D32435475100E55916 /* UILabel+Convenience.swift */; };
 		C09580D6243547F700E55916 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09580D5243547F700E55916 /* FeedViewController.swift */; };
-		C09580D92435480700E55916 /* InputAccessoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09580D72435480700E55916 /* InputAccessoryViewController.swift */; };
+		C09580D92435480700E55916 /* TextInputAccessoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09580D72435480700E55916 /* TextInputAccessoryViewController.swift */; };
 		C09580DA2435480700E55916 /* NewGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09580D82435480700E55916 /* NewGameViewController.swift */; };
 		C0A9D8312437DCC10093A74F /* CreateUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A9D8302437DCC10093A74F /* CreateUserViewController.swift */; };
 		C0A9D8332437DDFB0093A74F /* CFTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A9D8322437DDFB0093A74F /* CFTextField.swift */; };
@@ -82,11 +86,15 @@
 /* Begin PBXFileReference section */
 		02AF1F8487090E63EA08AB09 /* Pods-Catfish-CatfishUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Catfish-CatfishUITests.debug.xcconfig"; path = "Target Support Files/Pods-Catfish-CatfishUITests/Pods-Catfish-CatfishUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		04C8BF1424360E3E004C276F /* CircularImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircularImageView.swift; sourceTree = "<group>"; };
-		04C8BF1624360FE5004C276F /* CFProfileCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CFProfileCell.swift; sourceTree = "<group>"; };
-		04C8BF1824361038004C276F /* ProfileCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileCollectionViewController.swift; sourceTree = "<group>"; };
+		04C8BF1624360FE5004C276F /* CFProfileDisplayableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CFProfileDisplayableCell.swift; sourceTree = "<group>"; };
+		04C8BF1824361038004C276F /* GameUserCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameUserCollectionViewController.swift; sourceTree = "<group>"; };
 		04C8BF1E24362F10004C276F /* ProfileMatchCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileMatchCollectionViewController.swift; sourceTree = "<group>"; };
 		04C8BF222436588E004C276F /* MatchingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchingViewController.swift; sourceTree = "<group>"; };
 		04E48AC52437554600A1C8DA /* PickerTextFieldManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerTextFieldManager.swift; sourceTree = SOURCE_ROOT; };
+		04E48AC72437660B00A1C8DA /* CreateProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateProfileViewController.swift; sourceTree = "<group>"; };
+		04E48AC92437826D00A1C8DA /* TextViewPlaceholderManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextViewPlaceholderManager.swift; sourceTree = "<group>"; };
+		04E48ACD24389FB900A1C8DA /* BGGradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = BGGradientView.swift; path = Catfish/ViewControllers/BGGradientView.swift; sourceTree = SOURCE_ROOT; };
+		04E48ACF2438C24E00A1C8DA /* FormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormViewController.swift; sourceTree = SOURCE_ROOT; };
 		0EACC25E6D37D990176363A4 /* Pods-Catfish.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Catfish.release.xcconfig"; path = "Target Support Files/Pods-Catfish/Pods-Catfish.release.xcconfig"; sourceTree = "<group>"; };
 		5B9975F0BB384C962280CA6E /* Pods-Catfish-CatfishUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Catfish-CatfishUITests.release.xcconfig"; path = "Target Support Files/Pods-Catfish-CatfishUITests/Pods-Catfish-CatfishUITests.release.xcconfig"; sourceTree = "<group>"; };
 		5CB728BBE6667CD78D729242 /* Pods_Catfish.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Catfish.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -140,7 +148,7 @@
 		C09580D12435474300E55916 /* UITextField+Convenience.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITextField+Convenience.swift"; sourceTree = "<group>"; };
 		C09580D32435475100E55916 /* UILabel+Convenience.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UILabel+Convenience.swift"; sourceTree = "<group>"; };
 		C09580D5243547F700E55916 /* FeedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
-		C09580D72435480700E55916 /* InputAccessoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputAccessoryViewController.swift; sourceTree = "<group>"; };
+		C09580D72435480700E55916 /* TextInputAccessoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextInputAccessoryViewController.swift; sourceTree = "<group>"; };
 		C09580D82435480700E55916 /* NewGameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewGameViewController.swift; sourceTree = "<group>"; };
 		C0A9D8302437DCC10093A74F /* CreateUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateUserViewController.swift; sourceTree = "<group>"; };
 		C0A9D8322437DDFB0093A74F /* CFTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CFTextField.swift; sourceTree = "<group>"; };
@@ -278,14 +286,17 @@
 			isa = PBXGroup;
 			children = (
 				C0A9D8302437DCC10093A74F /* CreateUserViewController.swift */,
+				04E48ACF2438C24E00A1C8DA /* FormViewController.swift */,
+				9CD918972432EADD00587BC0 /* ViewController.swift */,
 				C09580D5243547F700E55916 /* FeedViewController.swift */,
-				04C8BF1824361038004C276F /* ProfileCollectionViewController.swift */,
+				04C8BF1824361038004C276F /* GameUserCollectionViewController.swift */,
 				04C8BF1E24362F10004C276F /* ProfileMatchCollectionViewController.swift */,
 				04C8BF222436588E004C276F /* MatchingViewController.swift */,
-				C09580D72435480700E55916 /* InputAccessoryViewController.swift */,
+				C09580D72435480700E55916 /* TextInputAccessoryViewController.swift */,
 				C09580D82435480700E55916 /* NewGameViewController.swift */,
 				9CD918EB2433D7E400587BC0 /* LoadingViewController.swift */,
 				8590C579243500A9004BC31C /* AddGameViewController.swift */,
+				04E48AC72437660B00A1C8DA /* CreateProfileViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -311,6 +322,7 @@
 		C09580BF24340A6E00E55916 /* Custom Views */ = {
 			isa = PBXGroup;
 			children = (
+				04E48ACD24389FB900A1C8DA /* BGGradientView.swift */,
 				C09580BD24340A6900E55916 /* CFPostCell.swift */,
 				C09580C824340EE300E55916 /* CFButton.swift */,
 				C09580CA24340FCE00E55916 /* CFTitleLabel.swift */,
@@ -320,6 +332,7 @@
 				04C8BF1424360E3E004C276F /* CircularImageView.swift */,
 				04C8BF1624360FE5004C276F /* CFProfileCell.swift */,
 				C0A9D8322437DDFB0093A74F /* CFTextField.swift */,
+				04C8BF1624360FE5004C276F /* CFProfileDisplayableCell.swift */,
 			);
 			path = "Custom Views";
 			sourceTree = "<group>";
@@ -327,6 +340,7 @@
 		C09580C224340B3C00E55916 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				04E48AC92437826D00A1C8DA /* TextViewPlaceholderManager.swift */,
 				04E48AC52437554600A1C8DA /* PickerTextFieldManager.swift */,
 				C09580C024340B3600E55916 /* Constants.swift */,
 			);
@@ -644,11 +658,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				04C8BF1724360FE5004C276F /* CFProfileCell.swift in Sources */,
+				04C8BF1724360FE5004C276F /* CFProfileDisplayableCell.swift in Sources */,
 				04C8BF1524360E3E004C276F /* CircularImageView.swift in Sources */,
 				C09580C924340EE300E55916 /* CFButton.swift in Sources */,
 				C09580CB24340FCE00E55916 /* CFTitleLabel.swift in Sources */,
-				04C8BF1924361038004C276F /* ProfileCollectionViewController.swift in Sources */,
+				04C8BF1924361038004C276F /* GameUserCollectionViewController.swift in Sources */,
+				04E48ACE24389FB900A1C8DA /* BGGradientView.swift in Sources */,
 				C09580C424340B7D00E55916 /* NetworkController.swift in Sources */,
 				C0A9D8332437DDFB0093A74F /* CFTextField.swift in Sources */,
 				04C8BF232436588E004C276F /* MatchingViewController.swift in Sources */,
@@ -670,7 +685,9 @@
 				9CD918E02433B7A100587BC0 /* User.swift in Sources */,
 				9CD918962432EADD00587BC0 /* SceneDelegate.swift in Sources */,
 				9CD918F72434EF1900587BC0 /* AuthEnums.swift in Sources */,
-				C09580D92435480700E55916 /* InputAccessoryViewController.swift in Sources */,
+				C09580D92435480700E55916 /* TextInputAccessoryViewController.swift in Sources */,
+				04E48AC82437660B00A1C8DA /* CreateProfileViewController.swift in Sources */,
+				04E48ACA2437826D00A1C8DA /* TextViewPlaceholderManager.swift in Sources */,
 				04E48AC62437554600A1C8DA /* PickerTextFieldManager.swift in Sources */,
 				C09580C724340D7F00E55916 /* CFPostImageView.swift in Sources */,
 				C09580CF2434150C00E55916 /* UIView+Extension.swift in Sources */,
@@ -679,6 +696,7 @@
 				C09580BE24340A6900E55916 /* CFPostCell.swift in Sources */,
 				C0A9D8312437DCC10093A74F /* CreateUserViewController.swift in Sources */,
 				9C77E2432437C997008B63C2 /* Guess.swift in Sources */,
+				04E48AD02438C24E00A1C8DA /* FormViewController.swift in Sources */,
 				9CD918EC2433D7E400587BC0 /* LoadingViewController.swift in Sources */,
 				9CD918E12433B7A100587BC0 /* Comment.swift in Sources */,
 				9CD918FA2434F0F200587BC0 /* CoordinatorProtocols.swift in Sources */,

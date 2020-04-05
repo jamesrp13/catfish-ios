@@ -8,9 +8,9 @@
 
 import UIKit
 
-class CFProfileCell: UICollectionViewCell {
+class CFProfileDisplayableCell: UICollectionViewCell {
     enum State {
-        case filled(Profile)
+        case filled(ProfileDisplayable)
         case empty
     }
     
@@ -52,6 +52,8 @@ class CFProfileCell: UICollectionViewCell {
     private lazy var stackView = UIStackView(arrangedSubviews: [imageView, nameLabel])
     
     private func configure() {
+        tintColor = Colors.purple
+        
         stackView.axis = layoutAxis
         stackView.alignment = .center
         stackView.translatesAutoresizingMaskIntoConstraints = false
@@ -63,25 +65,23 @@ class CFProfileCell: UICollectionViewCell {
             stackView.trailingAnchor.constraint(equalTo: trailingAnchor),
             stackView.bottomAnchor.constraint(equalTo: bottomAnchor),
         ])
-        
-        imageView.backgroundColor = Colors.purple
-        imageView.image = Images.postPlaceholder
     }
     
     private func updateViews(with state: State) {
+        nameLabel.isHidden = imageOnly
+        nameLabel.font = labelFont
+        nameLabel.textAlignment = layoutAxis == .vertical ? .center : .left
+        stackView.spacing = layoutAxis == .vertical ? 0 : 12
+        stackView.axis = layoutAxis
+        imageView.setWidth(imageSize)
+        
         if case let .filled(profile) = state {
-            imageView.setWidth(imageSize)
-            nameLabel.isHidden = imageOnly
-            nameLabel.font = labelFont
-            nameLabel.textAlignment = layoutAxis == .vertical ? .center : .left
-            stackView.spacing = layoutAxis == .vertical ? 0 : 12
-            stackView.axis = layoutAxis
-            
-            // Fetch image
-            
-            nameLabel.text = profile.username
+            // TODO: Fetch image
+            imageView.image = UIImage(systemName: "person.circle.fill")
+            nameLabel.text = profile.displayName
         } else {
-            // TODO: What does empty look like?
+            imageView.image = UIImage(systemName: "questionmark.circle")
+            nameLabel.text = "Unknown"
         }
     }
 }
