@@ -14,6 +14,8 @@ enum Images {
 }
 
 enum Colors {
+    static let textFieldGray = UIColor(red: 198.0/255, green: 206.0/255, blue: 213.0/255, alpha: 1)
+    static let labelText = UIColor(red: 44.0/255, green: 56.0/255, blue: 68.00/255, alpha: 1)
     static let purple = UIColor(named: "BGGradientTop")! // TODO: Delete after switching colors to final scheme
     
     static let aqua = UIColor(named: "Aqua")!

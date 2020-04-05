@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import UIKit.UIImage
+import UIKit
 
 protocol ProfileDisplayable {
     var displayName: String { get }
