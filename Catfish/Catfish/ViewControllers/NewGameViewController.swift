@@ -8,7 +8,7 @@
 
 import UIKit
 
-class NewGameViewController: UIViewController {
+class NewGameViewController: FormViewController {
 
     // MARK: - View Lifecycle
     
@@ -19,7 +19,6 @@ class NewGameViewController: UIViewController {
     
     // MARK: - Private Properties
     
-    private let inputAccessoryVC = InputAccessoryViewController()
     private var durationManager: PickerTextFieldManager?
     
     // Views:
@@ -66,13 +65,23 @@ class NewGameViewController: UIViewController {
         return inviteVStack
     }()
     
-    private lazy var mainVStack = UIStackView(arrangedSubviews: [
-        createGameLabel,
-        teamVStack,
-        gameDurationHStack,
-        sendCodeLabel,
-        inviteVStack
-    ])
+    private lazy var mainVStack: UIStackView = {
+        let mainVStack =  UIStackView(arrangedSubviews: [
+            createGameLabel,
+            teamVStack,
+            gameDurationHStack,
+            sendCodeLabel,
+            inviteVStack
+        ])
+        
+        mainVStack.axis = .vertical
+        mainVStack.spacing = 25
+        mainVStack.isLayoutMarginsRelativeArrangement = true
+        mainVStack.directionalLayoutMargins = .init(top: 20, leading: 20, bottom: 0, trailing: 20)
+        
+        return mainVStack
+    }()
+       
     
     private let createButton = CFButton(backgroundColor: Colors.purple, title: "Create", image: nil)
     
@@ -80,31 +89,18 @@ class NewGameViewController: UIViewController {
     
     private func configure() {
         view.backgroundColor = .white
-        
-        addChild(inputAccessoryVC)
-        inputAccessoryVC.didMove(toParent: self)
-        inputAccessoryVC.register(teamNameTextField, gameDurationTextField, inviteCodeTextField)
-        
-        mainVStack.axis = .vertical
-        mainVStack.spacing = 25
-        mainVStack.isLayoutMarginsRelativeArrangement = true
-        mainVStack.directionalLayoutMargins = .init(top: 20, leading: 20, bottom: 0, trailing: 20)
-        
+
         mainVStack.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(mainVStack)
-        
-        NSLayoutConstraint.activate([
-            mainVStack.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            mainVStack.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
-            mainVStack.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
-        ])
-        
         createButton.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(createButton)
+        contentView.addSubviews(mainVStack, createButton)
         
         NSLayoutConstraint.activate([
-            createButton.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
-            createButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -20)
+            mainVStack.topAnchor.constraint(equalTo: contentView.topAnchor),
+            mainVStack.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            mainVStack.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            
+            createButton.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
+            createButton.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -20),
         ])
     }
 }
