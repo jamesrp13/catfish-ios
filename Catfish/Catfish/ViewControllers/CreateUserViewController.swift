@@ -10,8 +10,6 @@ import UIKit
 
 class CreateUserViewController: UIViewController {
     
-    let nameTextField: UITextView()
-    let phoneText
 
     override func viewDidLoad() {
         super.viewDidLoad()
