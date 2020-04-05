@@ -9,19 +9,17 @@
 import Foundation
 
 enum ReactionType: String, Codable {
-    case like, love, laugh
+    case love = "❤️"
 }
 
 struct Reaction: Codable {
-    
-    
     var type: ReactionType
     var profile: Profile
     var id: String
 }
 
 struct CreateReaction: Codable {
-    var postID: String
+    var postId: String
     var type: ReactionType
-    var profile: Profile
+    var profileId: String
 }

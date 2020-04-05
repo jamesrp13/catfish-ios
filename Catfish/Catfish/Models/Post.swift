@@ -22,6 +22,7 @@ struct Post: Codable {
 }
 
 struct CreatePost: Codable {
-    var profileID: String
+    var profile: Profile
     var caption: String
+    var imageUrl: URL
 }

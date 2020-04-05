@@ -24,9 +24,10 @@ class NetworkController {
     
     // MARK: - Posts
 
-    func createPost(post: Post, completion: @escaping (Response<Bool, NetworkError>) -> Void) {
-        let url = baseURL.appendingPathComponent("posts")
-        guard let resource = try? URLPostableResource<Bool, Post>(url: url, object: post, method: .post, headers: createAuthHeaders()) else {
+    func createPost(post: CreatePost, completion: @escaping (Response<Post, NetworkError>) -> Void) {
+        let url = baseURL.appendingPathComponent("post")
+        
+        guard let resource = try? URLResource<Post>.create(url: url, object: post, method: .post, headers: createAuthHeaders()) else {
             completion(.failure(.badEncode))
             return
         }
@@ -34,10 +35,74 @@ class NetworkController {
         load(resource, completion: completion)
     }
     
-    func getPosts(for instance: GameInstance, completion: @escaping (Response<[Post], NetworkError>) -> Void) {
-        let url = baseURL.appendingPathComponent("posts")
-        let queries = [URLQueryItem(name: "instanceID", value: instance.id)]
-        guard let resource = try? URLResource<[Post]>(url: url, queries: queries, method: .post, headers: createAuthHeaders()) else {
+    func getPosts(for instance: GameInstance, lastPost: Post?, completion: @escaping (Response<[Post], NetworkError>) -> Void) {
+        let url = baseURL.appendingPathComponent("feed").appendingPathComponent(instance.id)
+        // last_post is optional - will get newest items if not included, otherwise will get x posts older than last_post
+        let queries = [
+            URLQueryItem(name: "num_items", value: String(15)),
+            URLQueryItem(name: "last_post", value: lastPost?.id)
+        ]
+        
+        guard let resource = try? URLResource<[Post]>.create(url: url, queries: queries, method: .post, headers: createAuthHeaders()) else {
+            completion(.failure(.badURL))
+            return
+        }
+        
+        load(resource, completion: completion)
+    }
+    
+    func getPosts(for profile: Profile, lastPost: Post?, completion: @escaping (Response<[Post], NetworkError>) -> Void) {
+        let url = baseURL.appendingPathComponent("post")
+        // last_post is optional - will get newest items if not included, otherwise will get x posts older than last_post
+        let queries = [
+            URLQueryItem(name: "profile_id", value: profile.id),
+            URLQueryItem(name: "num_items", value: String(15)),
+            URLQueryItem(name: "last_post", value: lastPost?.id)
+        ]
+        
+        guard let resource = try? URLResource<[Post]>.create(url: url, queries: queries, method: .post, headers: createAuthHeaders()) else {
+            completion(.failure(.badURL))
+            return
+        }
+        
+        load(resource, completion: completion)
+    }
+    
+    // MARK: - Comments
+    
+    func getPagedComments(for post: Post, lastComment: Comment?, completion: @escaping (Response<[Comment], NetworkError>) -> Void) {
+        let url = baseURL.appendingPathComponent("comment")
+        let queries = [
+            URLQueryItem(name: "post_id", value: post.id),
+            URLQueryItem(name: "num_comments", value: String(15)),
+            URLQueryItem(name: "last_comment", value: lastComment?.id)
+        ]
+        
+        guard let resource = try? URLResource<[Comment]>.create(url: url, queries: queries, method: .post, headers: createAuthHeaders()) else {
+            completion(.failure(.badURL))
+            return
+        }
+        
+        load(resource, completion: completion)
+    }
+    
+    func addComment(comment: CreateComment, completion: @escaping (Response<Comment, NetworkError>) -> Void) {
+        let url = baseURL.appendingPathComponent("comment")
+        
+        guard let resource = try? URLResource<Comment>.create(url: url, object: comment, method: .post, headers: createAuthHeaders()) else {
+            completion(.failure(.badURL))
+            return
+        }
+        
+        load(resource, completion: completion)
+    }
+    
+    // MARK: - Reactions
+    
+    func addReaction(reaction: CreateReaction, completion: @escaping (Response<Reaction, NetworkError>) -> Void) {
+        let url = baseURL.appendingPathComponent("post/react")
+        
+        guard let resource = try? URLResource<Reaction>.create(url: url, object: reaction, method: .post, headers: createAuthHeaders()) else {
             completion(.failure(.badURL))
             return
         }
@@ -48,29 +113,20 @@ class NetworkController {
     // MARK: - User
     
     func getCurrentUser(completion: @escaping (Response<CurrentUser, NetworkError>) -> Void) {
-        let url = baseURL.appendingPathComponent("users")
-        guard let resource = try? URLResource<CurrentUser>(url: url, headers: createAuthHeaders()) else {
-            completion(.failure(.badURL))
-            return
-        }
-        
-        load(resource, completion: completion)
-    }
-    
-    func getProfiles(for instance: GameInstance, completion: @escaping (Response<[GameUser], NetworkError>) -> Void) {
-        let url = baseURL.appendingPathComponent("users")
-        let queries = [URLQueryItem(name: "instanceID", value: instance.id)]
-        guard let resource = try? URLResource<[GameUser]>(url: url, queries: queries, headers: createAuthHeaders()) else {
-            completion(.failure(.badURL))
-            return
-        }
-        
-        load(resource, completion: completion)
-    }
-    
-    func createUser(user: CurrentUser, completion: @escaping (Response<Bool, NetworkError>) -> Void) {
         let url = baseURL.appendingPathComponent("user")
-        guard let resource = try? URLPostableResource<Bool, CurrentUser>(url: url, object: user, method: .post, headers: createAuthHeaders()) else {
+        
+        guard let resource = try? URLResource<CurrentUser>.create(url: url, headers: createAuthHeaders()) else {
+            completion(.failure(.badURL))
+            return
+        }
+        
+        load(resource, completion: completion)
+    }
+    
+    func createUser(user: CurrentUser, completion: @escaping (Response<CurrentUser, NetworkError>) -> Void) {
+        let url = baseURL.appendingPathComponent("user")
+        
+        guard let resource = try? URLResource<CurrentUser>.create(url: url, object: user, method: .post, headers: createAuthHeaders()) else {
             completion(.failure(.badEncode))
             return
         }
@@ -78,33 +134,14 @@ class NetworkController {
         load(resource, completion: completion)
     }
     
-    // MARK: - Profile
+    // MARK: - Profiles
     
-    func getProfiles(for instance: GameInstance, completion: @escaping (Response<[Profile], NetworkError>) -> Void) {
-        let url = baseURL.appendingPathComponent("profiles")
-        let queries = [URLQueryItem(name: "instanceID", value: instance.id)]
-        guard let resource = try? URLResource<[Profile]>(url: url, queries: queries, headers: createAuthHeaders()) else {
-            completion(.failure(.badURL))
-            return
-        }
-        
-        load(resource, completion: completion)
-    }
-    
-    func getProfile(forID id: String, completion: @escaping (Response<Profile, NetworkError>) -> Void) {
-        let url = baseURL.appendingPathComponent("profiles")
-        let queries = [URLQueryItem(name: "id", value: id)]
-        guard let resource = try? URLResource<Profile>(url: url, queries: queries, headers: createAuthHeaders()) else {
-            completion(.failure(.badURL))
-            return
-        }
-        
-        load(resource, completion: completion)
-    }
-    
-    func createProfile(profile: CreateProfile, completion: @escaping (Response<Profile, NetworkError>) -> Void) {
+    func createProfile(profile: CreateProfile, inGameInstance instance: GameInstance, completion: @escaping (Response<Profile, NetworkError>) -> Void) {
         let url = baseURL.appendingPathComponent("profile")
-        guard let resource = try? URLPostableResource<Profile, CreateProfile>(url: url, object: profile, method: .post, headers: createAuthHeaders()) else {
+        
+        let queries = [URLQueryItem(name: "inst_id", value: instance.id)]
+        
+        guard let resource = try? URLResource<Profile>.create(url: url, queries: queries, object: profile, method: .post, headers: createAuthHeaders()) else {
             completion(.failure(.badEncode))
             return
         }
@@ -112,11 +149,10 @@ class NetworkController {
         load(resource, completion: completion)
     }
     
-    // MARK: - Comment
-    
-    func createComment(comment: CreateComment, completion: @escaping (Response<Comment, NetworkError>) -> Void) {
-        let url = baseURL.appendingPathComponent("comment")
-        guard let resource = try? URLPostableResource<Comment, CreateComment>(url: url, object: comment, method: .post, headers: createAuthHeaders()) else {
+    func updateProfile(profile: Profile, completion: @escaping (Response<Profile, NetworkError>) -> Void) {
+        let url = baseURL.appendingPathComponent("profile")
+        
+        guard let resource = try? URLResource<Profile>.create(url: url, object: profile, method: .patch, headers: createAuthHeaders()) else {
             completion(.failure(.badEncode))
             return
         }
@@ -124,16 +160,18 @@ class NetworkController {
         load(resource, completion: completion)
     }
     
-    // MARK: - Reaction
+    // MARK: - GameInstance
     
-    func addReaction(_ reaction: CreateReaction, toPost post: Post, completion: @escaping (Response<Reaction, NetworkError>) -> Void) {
-        let url = baseURL.appendingPathComponent("reaction")
-        guard let resource = try? URLPostableResource<Reaction, CreateReaction>(url: url, object: reaction, method: .post, headers: createAuthHeaders()) else {
-            completion(.failure(.badEncode))
-            return
-        }
+    func getGameInstance(fromInviteCode code: String, completion: @escaping (Response<GameInstance, NetworkError>) -> Void) {
         
-        load(resource, completion: completion)
+    }
+    
+    func createGameInstance(gameInstance: CreateGameInstance, completion: @escaping (Response<GameInstance, NetworkError>) -> Void) {
+        
+    }
+    
+    func listGameInstances(completion: @escaping (Response<[GameInstance], NetworkError>) -> Void) {
+        
     }
 
     // MARK: - Helper Methods

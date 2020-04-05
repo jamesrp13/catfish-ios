@@ -17,8 +17,9 @@ protocol ProfileDisplayable {
 struct Profile: Codable, ProfileDisplayable {
     var username: String
     var displayName: String { return username }
-    var about: String
+    var bio: String
     var imageURL: URL
+    var dob: Date
     var id: String
     
     static var mocks: [Profile] = {
@@ -27,12 +28,12 @@ struct Profile: Codable, ProfileDisplayable {
         try? data?.write(to: imageURL)
         
         return [
-            Profile(username: "Jonny", about: "", imageURL: imageURL, id: "12345"),
-            Profile(username: "Caitlyn", about: "", imageURL: imageURL, id: "1245"),
-            Profile(username: "Barbara", about: "", imageURL: imageURL, id: "2345"),
-            Profile(username: "Susan", about: "", imageURL: imageURL, id: "1235"),
-            Profile(username: "Jeffery", about: "", imageURL: imageURL, id: "1234"),
-            Profile(username: "Timothy", about: "", imageURL: imageURL, id: "1345"),
+            Profile(username: "Jonny", bio: "", imageURL: imageURL, dob: Date(), id: "12345"),
+            Profile(username: "Caitlyn", bio: "", imageURL: imageURL, dob: Date(), id: "1245"),
+            Profile(username: "Barbara", bio: "", imageURL: imageURL, dob: Date(), id: "2345"),
+            Profile(username: "Susan", bio: "", imageURL: imageURL, dob: Date(), id: "1235"),
+            Profile(username: "Jeffery", bio: "", imageURL: imageURL, dob: Date(), id: "1234"),
+            Profile(username: "Timothy", bio: "", imageURL: imageURL, dob: Date(), id: "1345"),
         ]
     }()
 }

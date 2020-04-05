@@ -23,7 +23,6 @@
 		9C77E23524366C2E008B63C2 /* NetworkingProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C77E23424366C2E008B63C2 /* NetworkingProtocols.swift */; };
 		9C77E2392436C4EF008B63C2 /* URLResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C77E2382436C4EF008B63C2 /* URLResource.swift */; };
 		9C77E23F2436DD52008B63C2 /* NetworkingEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C77E23E2436DD52008B63C2 /* NetworkingEnums.swift */; };
-		9C77E2412437A9E0008B63C2 /* URLPostableResources.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C77E2402437A9E0008B63C2 /* URLPostableResources.swift */; };
 		9C77E2432437C997008B63C2 /* Guess.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C77E2422437C997008B63C2 /* Guess.swift */; };
 		9CC074782434FEC800EB37C3 /* CatfishCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC074772434FEC800EB37C3 /* CatfishCoordinator.swift */; };
 		9CD918942432EADD00587BC0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD918932432EADD00587BC0 /* AppDelegate.swift */; };
@@ -105,7 +104,6 @@
 		9C77E23424366C2E008B63C2 /* NetworkingProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingProtocols.swift; sourceTree = "<group>"; };
 		9C77E2382436C4EF008B63C2 /* URLResource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLResource.swift; sourceTree = "<group>"; };
 		9C77E23E2436DD52008B63C2 /* NetworkingEnums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingEnums.swift; sourceTree = "<group>"; };
-		9C77E2402437A9E0008B63C2 /* URLPostableResources.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLPostableResources.swift; sourceTree = "<group>"; };
 		9C77E2422437C997008B63C2 /* Guess.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Guess.swift; sourceTree = "<group>"; };
 		9CC074772434FEC800EB37C3 /* CatfishCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatfishCoordinator.swift; sourceTree = "<group>"; };
 		9CD918902432EADD00587BC0 /* Catfish.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Catfish.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -354,7 +352,6 @@
 				9C77E23E2436DD52008B63C2 /* NetworkingEnums.swift */,
 				9C77E23424366C2E008B63C2 /* NetworkingProtocols.swift */,
 				9C77E2382436C4EF008B63C2 /* URLResource.swift */,
-				9C77E2402437A9E0008B63C2 /* URLPostableResources.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -692,7 +689,6 @@
 				C09580C724340D7F00E55916 /* CFPostImageView.swift in Sources */,
 				C09580CF2434150C00E55916 /* UIView+Extension.swift in Sources */,
 				9CD918DF2433B7A100587BC0 /* Post.swift in Sources */,
-				9C77E2412437A9E0008B63C2 /* URLPostableResources.swift in Sources */,
 				C09580BE24340A6900E55916 /* CFPostCell.swift in Sources */,
 				C0A9D8312437DCC10093A74F /* CreateUserViewController.swift in Sources */,
 				9C77E2432437C997008B63C2 /* Guess.swift in Sources */,

@@ -12,7 +12,7 @@ struct GameInstance: Codable {
     var id: String
     var name: String
     var imageURL: URL?
-    var members: [Profile]
+    var members: [GameUser]
     var inviteCode: String
 }
 
