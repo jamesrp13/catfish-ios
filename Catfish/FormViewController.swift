@@ -20,7 +20,7 @@ class FormViewController: UIViewController {
     
     // MARK: - Public
     
-    let contentView = UIView()
+    var contentView = UIView()
     let scrollView =  UIScrollView()
     
     // MARK: - View Lifecycle
