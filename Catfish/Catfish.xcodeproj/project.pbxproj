@@ -287,17 +287,17 @@
 		9CD918E72433B7F100587BC0 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				8590C579243500A9004BC31C /* AddGameViewController.swift */,
+				044C8AC5243B5A9E00565E3F /* CreateProfileViewController.swift */,
 				C0A9D8302437DCC10093A74F /* CreateUserViewController.swift */,
 				04E48ACF2438C24E00A1C8DA /* FormViewController.swift */,
 				C09580D5243547F700E55916 /* FeedViewController.swift */,
 				04C8BF1824361038004C276F /* GameUserCollectionViewController.swift */,
-				04C8BF1E24362F10004C276F /* ProfileMatchCollectionViewController.swift */,
-				04C8BF222436588E004C276F /* MatchingViewController.swift */,
-				C09580D72435480700E55916 /* TextInputAccessoryViewController.swift */,
-				C09580D82435480700E55916 /* NewGameViewController.swift */,
 				9CD918EB2433D7E400587BC0 /* LoadingViewController.swift */,
-				8590C579243500A9004BC31C /* AddGameViewController.swift */,
-				044C8AC5243B5A9E00565E3F /* CreateProfileViewController.swift */,
+				04C8BF222436588E004C276F /* MatchingViewController.swift */,
+				C09580D82435480700E55916 /* NewGameViewController.swift */,
+				04C8BF1E24362F10004C276F /* ProfileMatchCollectionViewController.swift */,
+				C09580D72435480700E55916 /* TextInputAccessoryViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -323,18 +323,18 @@
 		C09580BF24340A6E00E55916 /* Custom Views */ = {
 			isa = PBXGroup;
 			children = (
+				04E48ACD24389FB900A1C8DA /* BGGradientView.swift */,
+				C09580CC2434110F00E55916 /* CFBodyLabel.swift */,
+				C09580C824340EE300E55916 /* CFButton.swift */,
+				8590C5772435002A004BC31C /* CFGameCell.swift */,
+				C09580BD24340A6900E55916 /* CFPostCell.swift */,
+				C09580C624340D7F00E55916 /* CFPostImageView.swift */,
+				04C8BF1624360FE5004C276F /* CFProfileDisplayableCell.swift */,
+				C0A9D8322437DDFB0093A74F /* CFTextField.swift */,
+				C09580CA24340FCE00E55916 /* CFTitleLabel.swift */,
+				04C8BF1424360E3E004C276F /* CircularImageView.swift */,
 				044C8AC3243B5A8800565E3F /* CreateProfileView.swift */,
 				044C8AC7243B5E8F00565E3F /* NewGameView.swift */,
-				04E48ACD24389FB900A1C8DA /* BGGradientView.swift */,
-				C09580BD24340A6900E55916 /* CFPostCell.swift */,
-				C09580C824340EE300E55916 /* CFButton.swift */,
-				C09580CA24340FCE00E55916 /* CFTitleLabel.swift */,
-				C09580CC2434110F00E55916 /* CFBodyLabel.swift */,
-				C09580C624340D7F00E55916 /* CFPostImageView.swift */,
-				8590C5772435002A004BC31C /* CFGameCell.swift */,
-				04C8BF1424360E3E004C276F /* CircularImageView.swift */,
-				C0A9D8322437DDFB0093A74F /* CFTextField.swift */,
-				04C8BF1624360FE5004C276F /* CFProfileDisplayableCell.swift */,
 			);
 			path = "Custom Views";
 			sourceTree = "<group>";
@@ -342,9 +342,9 @@
 		C09580C224340B3C00E55916 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
-				04E48AC92437826D00A1C8DA /* TextViewPlaceholderManager.swift */,
-				04E48AC52437554600A1C8DA /* PickerTextFieldManager.swift */,
 				C09580C024340B3600E55916 /* Constants.swift */,
+				04E48AC52437554600A1C8DA /* PickerTextFieldManager.swift */,
+				04E48AC92437826D00A1C8DA /* TextViewPlaceholderManager.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
