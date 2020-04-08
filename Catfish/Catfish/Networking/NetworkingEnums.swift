@@ -8,14 +8,16 @@
 
 import Foundation
 
-enum NetworkError: Error {
+enum NetworkError: Error, Equatable {
     case badDecode
     case badEncode
     case noData
     case invalidURL
     case unknown
     case badURL
-    case serverError(Error)
+    case serverError
+    case notFound404
+    case unauthenticated
 }
 
 enum HTTPMethod: String {

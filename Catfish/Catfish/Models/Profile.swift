@@ -9,9 +9,10 @@
 import Foundation
 import UIKit
 
-protocol ProfileDisplayable {
+protocol ProfileDisplayable: Codable {
     var displayName: String { get }
     var imageURL: URL { get }
+    var id: String { get }
 }
 
 struct Profile: Codable, ProfileDisplayable {
@@ -23,8 +24,8 @@ struct Profile: Codable, ProfileDisplayable {
     var id: String
     
     static var mocks: [Profile] = {
-        let imageURL = FileManager.default.temporaryDirectory.absoluteURL.appendingPathComponent("mockImage").appendingPathExtension("png")
-        let data = UIImage(named: "TestImage")?.pngData()
+        let imageURL = FileManager.default.temporaryDirectory.absoluteURL.appendingPathComponent("mockProfileImage").appendingPathExtension("png")
+        let data = UIImage(named: "Profile")?.pngData()
         try? data?.write(to: imageURL)
         
         return [

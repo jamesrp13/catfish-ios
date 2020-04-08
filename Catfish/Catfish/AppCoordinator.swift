@@ -13,7 +13,11 @@ protocol AppCoordinatorDelegate: class {
 }
 
 class AppCoordinator: ParentCoordinator, AuthServiceDelegate {
-    var rootViewController: UIViewController = LoadingViewController()
+    var rootViewController: UIViewController {
+        return containerViewController
+    }
+    
+    private var containerViewController = ContainerViewController(child: LoadingViewController())
     
     var children: [ChildCoordinator] = []
     
@@ -35,22 +39,22 @@ class AppCoordinator: ParentCoordinator, AuthServiceDelegate {
     func setVC(authStatus: AuthStatus) {
         switch authStatus {
         case .unknown:
-            rootViewController = LoadingViewController()
+            containerViewController.child = LoadingViewController()
         case .authenticated:
             children.removeAll(where: {!($0 is CatfishCoordinator)})
             
-            let gameCoordinator: CatfishCoordinator
+            let catfishCoordinator: CatfishCoordinator
             
             if let coordinator = children.first(where: {$0 is CatfishCoordinator}) {
-                gameCoordinator = coordinator as! CatfishCoordinator
+                catfishCoordinator = coordinator as! CatfishCoordinator
             } else {
                 let coordinator = CatfishCoordinator(networkController: NetworkController(authService: authService))
                 children.append(coordinator)
-                gameCoordinator = coordinator
+                catfishCoordinator = coordinator
             }
             
-            rootViewController = gameCoordinator.rootViewController
-        case .unauthenticated:
+            containerViewController.child = catfishCoordinator.rootViewController
+        case .unauthenticated(let error):
             children.removeAll(where: {!($0 is AuthCoordinator)})
             
             let authCoordinator: AuthCoordinator
@@ -64,10 +68,11 @@ class AppCoordinator: ParentCoordinator, AuthServiceDelegate {
                 authCoordinator = coordinator
             }
             
-            rootViewController = authCoordinator.rootViewController
-        case let .error(error):
-            // TODO: - What to do here?
-            print(error)
+            containerViewController.child = authCoordinator.rootViewController
+            
+            if let error = error {
+                print(error)
+            }
         }
     }
 }

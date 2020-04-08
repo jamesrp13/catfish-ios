@@ -17,7 +17,7 @@ protocol AuthServiceDelegate: class {
 protocol AuthServiceProtocol {
     var delegate: AuthServiceDelegate? { get set }
     var authStatus: AuthStatus { get }
-    func getToken(completion: @escaping (Result<String, AuthError>) -> Void)
+    func getToken(completion: @escaping (Response<String, AuthError>) -> Void)
 }
 
 protocol AuthUIProvider {
@@ -37,7 +37,9 @@ class FirebaseAuthService: NSObject, AuthServiceProtocol, FUIAuthDelegate, AuthU
         }
     }
     
-    private var user: FirebaseAuth.User?
+    private var user: FirebaseAuth.User? {
+        return authUI.auth?.currentUser
+    }
     
     private var authUI: FUIAuth
     
@@ -61,20 +63,20 @@ class FirebaseAuthService: NSObject, AuthServiceProtocol, FUIAuthDelegate, AuthU
     
     func authUI(_ authUI: FUIAuth, didSignInWith authDataResult: AuthDataResult?, error: Error?) {
         if let error = error {
-            authStatus = .error(.unknown(error))
+            authStatus = .unauthenticated(AuthError.unknown(error))
             return
         }
         
-        guard let result = authDataResult else {
-            authStatus = .error(.unknown(nil))
+        guard let _ = authDataResult else {
+            authStatus = .unauthenticated(.unknown(nil))
             return
         }
         
-        user = result.user
+        authStatus = .authenticated
     }
     
-    func setAuthStatus(from auth: FirebaseAuth.Auth) {
-        authStatus = auth.currentUser == nil ? .unauthenticated : .authenticated
+    private func setAuthStatus(from auth: FirebaseAuth.Auth) {
+        authStatus = auth.currentUser == nil ? .unauthenticated(nil) : .authenticated
         
         if auth.currentUser != nil {
             getToken { (result) in
@@ -85,7 +87,7 @@ class FirebaseAuthService: NSObject, AuthServiceProtocol, FUIAuthDelegate, AuthU
         }
     }
     
-    func getToken(completion: @escaping (Result<String, AuthError>) -> Void) {
+    func getToken(completion: @escaping (Response<String, AuthError>) -> Void) {
         guard let user = user else {
             completion(.failure(.unauthenticated(nil)))
             return

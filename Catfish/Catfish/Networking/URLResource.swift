@@ -48,8 +48,8 @@ extension URLResource where T: Decodable {
     
     static func create(url: URL, pathParameters: String? = nil, queries: [URLQueryItem]? = nil, body: Data? = nil, method: HTTPMethod = .get, headers: [String: String]? = nil) throws -> URLResource<T> {
         return try URLResource<T>.create(url: url, pathParameters: pathParameters, queries: queries, body: body, method: method, headers: headers) { (data, response, error) in
-            if let error = error {
-                return .failure(.serverError(error))
+            if error != nil {
+                return .failure(.serverError)
             }
             
             guard let data = data else {
