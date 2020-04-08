@@ -13,7 +13,12 @@ struct GameInstance: Codable {
     var name: String
     var imageURL: URL?
     var members: [GameUser]
+    var profiles: [Profile]
     var inviteCode: String
+    
+    static var mock: GameInstance = {
+        return GameInstance(id: "8217404", name: "A Team", imageURL: nil, members: GameUser.mocks, profiles: Profile.mocks, inviteCode: "12345")
+    }()
 }
 
 struct CreateGameInstance: Codable {

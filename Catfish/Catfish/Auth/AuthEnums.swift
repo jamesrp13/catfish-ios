@@ -9,8 +9,7 @@
 import Foundation
 
 enum AuthStatus {
-    case unknown, authenticated, unauthenticated
-    case error(AuthError)
+    case unknown, authenticated, unauthenticated(AuthError?)
 }
 
 enum Response<T, U: Error> {

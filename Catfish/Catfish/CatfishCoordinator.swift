@@ -12,17 +12,41 @@ class CatfishCoordinator: ChildCoordinator {
     var delegate: ChildCoordinatorDelegate?
     
     var networkController: NetworkController
-    var rootViewController: UIViewController
+    var rootViewController: UIViewController {
+        return containerViewController
+    }
+    
+    private var containerViewController = ContainerViewController(child: LoadingViewController())
     
     var currentUser: User?
     
     init(networkController: NetworkController) {
-        rootViewController = LoadingViewController()
         self.networkController = networkController
+        getSetUser()
     }
     
-    func setUser() {
-//        guard let user =
+    func getSetUser() {
+        networkController.getCurrentUser { (response) in
+            switch response {
+            case let .success(user):
+                self.currentUser = user
+                self.setGameListVC()
+            case let .failure(error):
+                if error == .notFound404 {
+                    self.setCreateUserVC()
+                } else {
+                    // TODO: - go back to login screen and show error message
+                }
+            }
+        }
+    }
+    
+    func setCreateUserVC() {
+        containerViewController.child = CreateUserViewController()
+    }
+    
+    func setGameListVC() {
+        containerViewController.child = GameListViewController()
     }
     
     // User created: show games

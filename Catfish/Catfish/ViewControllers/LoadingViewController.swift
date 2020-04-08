@@ -22,7 +22,11 @@ class LoadingViewController: UIViewController {
         view.addSubview(loadingWheel)
         loadingWheel.translatesAutoresizingMaskIntoConstraints = false
         
-        view.backgroundColor = .lightGray
+        if presentingViewController == nil {
+            view.backgroundColor = .lightGray
+        } else {
+            view.backgroundColor = .clear
+        }
         
         NSLayoutConstraint.activate([
             loadingWheel.centerXAnchor.constraint(equalTo: view.centerXAnchor),

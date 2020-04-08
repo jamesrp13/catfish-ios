@@ -12,6 +12,10 @@ struct Comment: Codable {
     var text: String
     var profile: Profile
     var id: String
+    
+    static var mocks: [Comment] = {
+        Profile.mocks.map { Comment(text: "Hey!", profile: $0, id: $0.id + "4") }
+    }()
 }
 
 struct CreateComment: Codable {

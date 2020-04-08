@@ -16,6 +16,10 @@ struct Reaction: Codable {
     var type: ReactionType
     var profile: Profile
     var id: String
+    
+    static var mocks: [Reaction] = {
+        return Profile.mocks.map { Reaction(type: .love, profile: $0, id: $0.id + "5") }
+    }()
 }
 
 struct CreateReaction: Codable {
